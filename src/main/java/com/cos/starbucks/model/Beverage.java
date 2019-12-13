@@ -13,7 +13,6 @@ public class Beverage {
 
 	private int id;
 	private String name;
-	private String detail;
 	private String image;
 	private int price;
 	private Timestamp createDate;
