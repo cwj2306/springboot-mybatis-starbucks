@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 수정중 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,17 +11,17 @@
     <link rel="stylesheet" href="../css/content.css">
     <link rel="stylesheet" href="../css/jquery.bxslider.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title>Starbucks Coffee Korea :: drink </title>
+<title>Starbucks Coffee Korea :: food </title>
 </head>
 <body>
 <div class="wrap">
     <div id="header_include"></div>
     
-	<%@include file="../include/nav.jsp"%>
-
+    <%@include file="../include/nav.jsp"%>
+    
     <!-- 본문 시작 -->
     <div class="content">
-        <h1>음료</h1>
+        <h1>푸드</h1>
         <div class="content_category">
             <h4>분류 보기</h4>
             <hr>
@@ -28,15 +29,13 @@
                 <li><a href="#">전체 상품보기</a></li>
             </ul>
             <form class="content_category_list">
-                <label><input type="checkbox" name="content_drink" value="coldbrew">콜드 브루 커피</label>
-                <label><input type="checkbox" name="content_drink" value="brewed">브루드 커피</label>
-                <label><input type="checkbox" name="content_drink" value="espresso">에스프레소</label>
-                <label><input type="checkbox" name="content_drink" value="frappuccino">프라푸치노</label>
-                <label><input type="checkbox" name="content_drink" value="blended">블렌디드</label>
-                <label><input type="checkbox" name="content_drink" value="fizzio">스타벅스 피지오</label>
-                <label><input type="checkbox" name="content_drink" value="tea">티(티바나)</label>
-                <label><input type="checkbox" name="content_drink" value="etc">키타 제조 음료</label>
-                <label><input type="checkbox" name="content_drink" value="bottle">병음료</label>
+                <label><input type="checkbox" name="content_food" value="bakery">베이커리</label>
+                <label><input type="checkbox" name="content_food" value="cake">케이크</label>
+                <label><input type="checkbox" name="content_food" value="sandwich_salad">샌드위치 & 샐러드</label>
+                <label><input type="checkbox" name="content_food" value="hot_food">따뜻한 푸드</label>
+                <label><input type="checkbox" name="content_food" value="fruit_yogurt">과일 & 요거트</label>
+                <label><input type="checkbox" name="content_food" value="snack_dessert">스낵 & 미니 디저트</label>
+                <label><input type="checkbox" name="content_food" value="icecream"">아이스크림</label>
             </form>
         </div>
         <!-- 음료 메뉴 시작 -->
@@ -51,7 +50,7 @@
             </div>
             <!-- 아이템 (for문 돌려서 출력 / 샘플 데이터만 넣음) -->
             <div class="content_item_container">
-                <div class="content_item_img_container"><a href="#"><img src="/img/menu/coffee_sample.jpg"/></a></div>
+                <div class="content_item_img_container"><a href="#"><img src="../img/menu/coffee_sample.jpg"/></a></div>
                 <p class="content_item_name">커피 이름 (샘플) </p>
                 <p class="content_item_price">가격 : 7000원</p>
             </div>
@@ -135,9 +134,9 @@
         <!--음료 메뉴 끝-->
     </div>
     <!-- 본문 끝 -->
-
-	<%@include file="../include/footer.jsp"%>
-   
+    
+    <%@include file="../include/footer.jsp"%>
+    
 </div>
 </body>
 </html>

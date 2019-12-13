@@ -1,26 +1,28 @@
 package com.cos.starbucks.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping("/coffee")
 public class CoffeeController {
 
 	@GetMapping("/product_list")
 	public String productList() {
-		return "커피 리스트입니다";
+		return "coffee/product_list";
 	}
 
 	@GetMapping("/productFinder")
-	public String productFinder() {
+	public @ResponseBody String productFinder() {
 		return "나와 어울리는 커피입니다.";
 	}
 
 	@GetMapping("/espresso")
 	public String espresso() {
-		return "에스프레소 음료입니다.";
+		return "coffee/espresso";
 	}
 
 }

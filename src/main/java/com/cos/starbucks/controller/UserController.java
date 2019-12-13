@@ -56,4 +56,5 @@ public class UserController {
 	public @ResponseBody String join2() {
 		return "회원가입 정보입력페이지입니다.";
 	}
+	
 }
