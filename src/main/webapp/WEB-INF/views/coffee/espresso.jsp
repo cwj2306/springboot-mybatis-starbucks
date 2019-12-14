@@ -75,6 +75,7 @@
     <!-- 컨텐츠 끝 -->
     
     <%@include file="../include/footer.jsp"%>
+
     
 </div>
 </body>

@@ -1,0 +1,192 @@
+h1 {font-size:30px;}
+h4 {
+    font-size:18px;
+    font-weight: bold;
+}
+
+hr {
+    color: #ebebeb;
+    margin:20px 0;
+}
+
+/* 전체 본문 박스 */
+
+.content {
+    width:55%;
+    margin: 20px auto;
+}
+
+/* 상단 카테고리 */ 
+
+.content_category {
+    border:1px solid #dbdbdb;
+    border-radius: 3px;
+    padding:20px;
+    margin:30px 0;
+}
+
+.content_category_selectAll {
+    display: inline-block;
+}
+
+.content_category_selectAll li {
+    float:left;
+    width:80px;
+    height:20px;
+    background-color: #f4f4f1;
+    text-align:center;
+    line-height:20px;
+    padding:5px 30px;
+    margin-right:10px;
+    border-radius: 5px;
+    margin-bottom:5px;
+}
+
+.content_category_selectAll li:hover, .content_category_selectAll li:active{background-color: #006633;}
+.content_category_selectAll li a:hover, .content_category_selectAll li a:active{text-decoration:none; color: #fff;}
+
+.content_category .content_category_list {
+    font-size:15px;
+}
+
+.content_category .content_category_list label {
+    margin-right:15px;
+}
+
+/* 아이템 타이틀 - 공통 */
+.content_item_title {
+    width:100%; height:50px;
+    background-color: #f4f4f2;
+    margin:35px 0;
+}
+
+.content_item_title .content_item_title_icon {
+    width:30px; height: 30px;
+    border-radius: 50%;
+    margin: 10px 10px 10px 15px;
+    float:left;
+}
+
+.content_item_title .content_item_title_icon img {
+    width:17px; height:17px;
+    position:relative;
+    top:6px; left:6px;
+}
+.content_item_title p {
+    font-size:18px;
+    font-weight: bold;
+    line-height:45px;
+    float:left;
+}
+
+/* menu - drink 추가 설명글*/
+.content_item_title .drink_item_p {
+    font-size:12px;
+    line-height:45px;
+    float:left;
+    font-weight: lighter;
+}
+
+
+/* 아이템 본문 - 공통 */
+
+.content_item_container {
+    width:25%;
+    float:left;
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.content_item_container .content_item_img_container img {
+    width:80%;
+}
+
+.content_item_img_container {
+    width:100%;
+    overflow: hidden;
+}
+
+
+.content_item_container .content_item_img_container img:hover {
+    transform:scale(1.1);
+    transition:all 0.3s ease-in-out; 
+    overflow: hidden;
+}
+
+.content_item_name {
+    margin-top:10px;
+}
+
+.content_item_price {
+    margin-top:5px;
+    font-size:12px;
+    color:#006633;
+}
+
+/* espresso - 상단 소개 박스 */
+
+.espresso_intro_box {
+    width:100%;
+    margin:30px 0 60px 0;
+}
+
+.espresso_intro_box img {width:100%;}
+
+.espresso_intro_box div {
+    margin:20px 0;
+}
+.espresso_intro_box div q {
+    font-style: italic;
+    color:#006633;
+    font-size:19px;
+    font-weight: 550;
+    margin:20px 0;
+}
+
+.espresso_intro_box p {
+    font-size:13px;
+    color:#444;
+    line-height: 18px;
+}
+
+/* espresso - 아이템 본문 */
+
+.espresso_content_box {
+    width:100%; height:1000px;
+    background-color: #f4f4f2; 
+}
+
+.espresso_content_div {
+    width:60%;
+    margin:0 auto;
+    display:block;
+}
+
+.espresso_content_div .espresso_content_div_2 {width:100%; margin:40px;}
+
+.espresso_content_div .espresso_content_div_2 .espresso_content_item {
+    float:left;
+    width:30%;
+    margin:5px;
+}
+
+.espresso_content_div .espresso_content_div_2 .espresso_content_item img {
+    width:100%;
+}
+
+.espresso_img_container {
+    width:100%;
+    margin:20px 0 15px 0;
+    overflow: hidden;
+}
+
+.espresso_content_item img:hover {
+    transform:scale(1.1);
+    transition:all 0.3s ease-in-out;
+}
+
+.espresso_content_div .espresso_content_div_2 .espresso_content_item p {
+    font-size:13px;
+    color: #555;
+    text-align:center;
+}

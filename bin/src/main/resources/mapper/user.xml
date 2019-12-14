@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
+<mapper namespace="com.cos.starbucks.repository.UserRepository">
+	<select id="findByUsername" resultType="com.cos.starbucks.model.User">
+		select * from User where username = #{username}
+	</select>
+	
+	<insert id="join">
+		INSERT INTO user (username, password) VALUES (#{username}, #{password})
+	</insert>
+
+</mapper>

@@ -4,5 +4,47 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
 <mapper namespace="com.cos.starbucks.repository.MenuRepository">
+	<select id="findById" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where id = #{?}
+	</select>
+	<select id="findAll" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage
+	</select>
+	
+	<select id="findCold" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='콜드 브루 커피'
+	</select>
+	
+	<select id="findBrud" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='브루드 커피'
+	</select>
+	
+	<select id="findEspr" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='에스프레소'
+	</select>
+	
+	<select id="findPrap" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='프라프치노'
+	</select>
+	
+	<select id="findBlend" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='블렌디드'
+	</select>
+	
+	<select id="findFiz" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='스타벅스 피지오'
+	</select>
+	
+	<select id="findTea" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='티(티바나)'
+	</select>
+	
+	<select id="findEtc" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='기타 제조 음료'
+	</select>
+	
+	<select id="findJuice" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage where category='스타벅스 주스(병음료)'
+	</select>
 	
 </mapper>
