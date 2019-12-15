@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
+<mapper namespace="com.cos.starbucks.repository.BoardRepository">
+
+	<select id="findAll" resultType="com.cos.starbucks.model.Board">
+		SELECT * 
+		FROM board 
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='search' and keyword != null and keyword != '' ">
+				AND title LIKE CONCAT('%', #{keyword}, '%') 
+				OR content Like CONCAT('%', #{keyword}, '%')
+			</if>
+		</trim> 
+		ORDER BY id DESC 
+		LIMIT #{startList}, #{listSize}
+	</select>
+	
+	<select id="getBoardListCnt" resultType="int">
+		SELECT count(*) as listCnt 
+		FROM  board 
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='search' and keyword != null and keyword != '' ">
+				AND title LIKE CONCAT('%', #{keyword}, '%') 
+				OR content Like CONCAT('%', #{keyword}, '%')
+			</if>
+		</trim> 
+	</select>
+
+	<select id="findById" resultType="com.cos.starbucks.model.Board">
+		SELECT * FROM board WHERE id = #{id}
+	</select>
+	
+	<select id="prevAndNext" resultType="com.cos.starbucks.model.Board">
+		SELECT 
+ 		* 
+		FROM 
+		board WHERE id IN ( 
+		(SELECT id FROM board WHERE id &lt; #{id} ORDER BY id DESC LIMIT 1), 
+		(SELECT id FROM board WHERE id > #{id} ORDER BY id LIMIT 1) 
+		)
+	</select>
+	
+	<insert id="writeProc">
+	<!-- 줄 바꿀때 한칸 띄우고 엔터쳐라 -->
+		INSERT INTO board(title, content, userId, createDate) 
+		VALUES(#{title},#{content},#{userId},now())
+	</insert>
+	
+	<update id="updateProc">
+		UPDATE board SET title = #{title}, content = #{content} 
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM board WHERE id = #{id}
+	</delete>
+	
+</mapper>
