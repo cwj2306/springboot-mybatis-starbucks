@@ -10,7 +10,7 @@
         <div class="nav_div">
             <nav class="top_first_nav">
                 <ul>
-                    <li class="top_fNav_01"><a href="#">Sign In</a></li>
+                    <li class="top_fNav_01"><a href="/user/login">Sign In</a></li>
                     <li class="top_fNav_02">｜</li>
                     <li class="top_fNav_03"><a href="#">My Starbucks</a></li>
                 </ul>
@@ -37,7 +37,7 @@
                         </ul>
                     </li>
                     <li class="top_sNav_li"> <a class="menuLink" href="#">STORE</li>
-                    <li class="top_sNav_li"> <a class="menuLink" href="#">WHAT'S NEW</a> </li>
+                    <li class="top_sNav_li"> <a class="menuLink" href="/board">WHAT'S NEW</a> </li>
                 </ul>
             </nav>
         </div>

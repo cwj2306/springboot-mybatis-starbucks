@@ -22,30 +22,37 @@ public class UserController {
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
+	@GetMapping("")
+	public String index(){
+		return "index";
+	}
+	
 	@GetMapping("/user")
 	public @ResponseBody User getUser() {
 		User user = URepo.findByUsername("cos");
 		return user;
 	}
 	
-	@GetMapping("/joinForm")
-	public String joinForm() {
-		return "join";
+	@GetMapping("/join")
+	public String join() {
+		return "auth/join";
 	}
 	
-	@PostMapping("/join")
+	@PostMapping("/joinProc")
 	public String create(User user) {
 		String rawPassword = user.getPassword();
 		String encPassword = passwordEncoder.encode(rawPassword);
 		user.setPassword(encPassword);
 		URepo.join(user);
-		return "home";
+		return "index";
 	}
 	
 	@GetMapping("/login")
-	public @ResponseBody String login() {
-		return "로그인페이지입니다";
+	public String login() {
+		return "auth/login";
 	}
+	
+
 	
 	@GetMapping("/join1")
 	public @ResponseBody String join1() {

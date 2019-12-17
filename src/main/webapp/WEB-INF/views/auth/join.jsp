@@ -17,23 +17,43 @@
 <body>
 	<%@include file="../include/nav.jsp"%>
 
-	<form action="/user/loginProc" method="POST" onsubmit="return validateCheck()">
+	<form action="/user/joinProc" method="POST" onsubmit="return validateCheck()">
 		<table>
 			<tr>
 				<th>Username</th>
 				<td><input type="text" name="username" id="username" value="username" /></td>
 			</tr>
 			<tr>
+				<th>Name</th>
+				<td><input type="text" name="name" id="name" value="name" /></td>
+			</tr>
+			<tr>
 				<th>Password</th>
 				<td><input type="password" name="password" id="password"/></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="로그인" /></td>
+				<th>PasswordCheck</th>
+				<td><input type="password" name="passwordCheck"	id="passwordCheck"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="가입완료" /></td>
 			</tr>
 		</table>
 	</form>
-	<button onclick='location.href="/user/join"'>회원가입</button>
 
+	<script>
+		function validateCheck() {
+			var password = document.querySelector('#password').value;
+			var passwordCheck = document.querySelector('#passwordCheck').value;
+
+			if (password === passwordCheck) {
+				return true;
+			} else {
+				alert('비밀번호가 동일하지 않습니다. 다시 입력해주세요.');
+				return false;
+			}
+		}
+	</script>
 
 	<%@include file="../include/footer.jsp"%>
 </body>

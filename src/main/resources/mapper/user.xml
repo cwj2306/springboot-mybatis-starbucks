@@ -9,7 +9,7 @@
 	</select>
 	
 	<insert id="join">
-		INSERT INTO user (username, password) VALUES (#{username}, #{password})
+		INSERT INTO user (username, password, name, createDate) VALUES (#{username}, #{password}, #{name}, now())
 	</insert>
 
 </mapper>

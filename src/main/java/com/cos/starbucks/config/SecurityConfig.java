@@ -38,17 +38,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//위의 주소를 타는 것을 제외한 접근은 시큐리티가 막지 않는다.
 		.anyRequest().permitAll()
 		.and()
-		.formLogin();
+		.formLogin()
 		//내 모델의 아이디와 패스워드 변수명이 username과 password가 아니라면 꼭 해줘라
 		//우리는 지금 필요없지만 나중에 다르게 쓰게된다면 보게될 설정 코드다
 		//.usernameParameter("username")
 		//.passwordParameter("password")
 		// 시큐리티가 기본 제공하는 로그인페이지가 아니라 내가 커스텀한 페이지 사용한다.
-		//.loginPage(loginPage);
+		.loginPage("/user/login")
 		//이 주소를 타고 로그인이 된다 (로그인폼에서 아래의 주소로 액션을 타게 해야한다.)
-		//.loginProcessingUrl("/user/loginProcess")
+		.loginProcessingUrl("/user/loginProc")
 		//로그인이 성공 할 때 이동
-		//.defaultSuccessUrl("/");
+		.defaultSuccessUrl("/user");
 		//.and()
 		//.logout()
 		//로그아웃에 성공했을 때
