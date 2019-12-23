@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -37,6 +38,14 @@ public class CoffeeController {
 		return "coffee/product_list";
 	}
 
+	@GetMapping("/detail/{id}")
+	public String detail(@PathVariable int id,Model model) {
+		Coffee coffee=cRepo.findById(id);
+		model.addAttribute("coffee",coffee);		
+		
+		return "/coffee/detail";
+	}
+	
 	@GetMapping("/productFinder")
 	public @ResponseBody String productFinder() {
 		return "나와 어울리는 커피입니다.";

@@ -37,22 +37,12 @@
                 <p>카드</p>
             </div>
             <!-- 아이템 시작 -->
-            <div class="content_item_container">
-                <div class="content_item_img_container"><img src="../img/menu/sb_card_01.png" /></div>
-                <p class="content_item_name">커피하우스 카드</p>
-            </div>
-            <div class="content_item_container">
-                <div class="content_item_img_container"><img src="../img/menu/sb_card_02.png" /></div>
-                <p class="content_item_name">윈터 코어 블랙 카드</p>
-            </div>
-            <div class="content_item_container">
-                <div class="content_item_img_container"><img src="../img/menu/sb_card_03.png" /></div>
-                <p class="content_item_name">스타벅스 18주년 카드</p>
-            </div>
-            <div class="content_item_container">
-                <div class="content_item_img_container"><img src="../img/menu/sb_card_04.png" /></div>
-                <p class="content_item_name">크리스마스 카드</p>
-            </div>
+            <c:forEach var="card" items="${cardList}">
+            <a href="/menu/card/detail/${card.id}"><div class="content_item_container">
+                <div class="content_item_img_container"><img src="${card.image}" /></div>
+                <p class="content_item_name">${card.name}</p>
+            </div></a>
+            </c:forEach>
             <!-- 아이템 끝 -->
         </div>
         <!-- 카드 끝 -->

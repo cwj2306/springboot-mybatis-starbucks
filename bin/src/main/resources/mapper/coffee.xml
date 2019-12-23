@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
+<mapper namespace="com.cos.starbucks.repository.CoffeeRepository">
+	<select id="findById" resultType="com.cos.starbucks.model.Coffee">
+		select * from coffee where id = #{?}
+	</select>
+	<select id="findAll" resultType="com.cos.starbucks.model.Coffee">
+		select * from coffee
+	</select>
+	<select id="findBlonde" resultType="com.cos.starbucks.model.Coffee">
+		select * from coffee where roast='블론드 로스트'
+	</select>
+	<select id="findMedium" resultType="com.cos.starbucks.model.Coffee">
+		select * from coffee where roast='미디엄 로스트'
+	</select>
+	<select id="findDark" resultType="com.cos.starbucks.model.Coffee">
+		select * from coffee where roast='다크 로스트'
+	</select>
+</mapper>

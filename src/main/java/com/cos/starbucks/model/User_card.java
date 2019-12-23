@@ -15,6 +15,8 @@ public class User_card {
 	
 	private int userId;
 	private int cardId;
+	private String cardName;
+	private String cardImage;
 	private int point;
 	private Timestamp createDate;
 

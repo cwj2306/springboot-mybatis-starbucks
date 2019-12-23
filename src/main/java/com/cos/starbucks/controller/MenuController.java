@@ -5,10 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.starbucks.model.Beverage;
+import com.cos.starbucks.model.Card;
 import com.cos.starbucks.repository.MenuRepository;
 
 @Controller
@@ -19,8 +20,9 @@ public class MenuController {
 	private MenuRepository mRepo;
 	
 	@GetMapping("/card_list")
-	public String cardList() {
-		
+	public String cardList(Model model) {
+		List<Card> cardList=mRepo.findAllCard();
+		model.addAttribute("cardList",cardList);
 		
 		return "menu/card_list";
 	}
@@ -51,6 +53,22 @@ public class MenuController {
 		model.addAttribute("juice",juice);
 		
 		return "menu/drink_list";
+	}
+	
+	@GetMapping("/detail/{id}")
+	public String detail(@PathVariable int id,Model model) {
+		Beverage bev=mRepo.findById(id);
+		model.addAttribute("bev",bev);		
+		
+		return "/menu/detail";
+	}
+	
+	@GetMapping("/card/detail/{id}")
+	public String cardDetail(@PathVariable int id,Model model) {
+		Card card=mRepo.findByIdCard(id);
+		model.addAttribute("card",card);		
+		
+		return "/menu/cardDetail";
 	}
 	
 	@GetMapping("/food_list")

@@ -47,4 +47,11 @@
 		select * from beverage where category='스타벅스 주스(병음료)'
 	</select>
 	
+	<select id="findAllCard" resultType="com.cos.starbucks.model.Card">
+		select * from card;
+	</select>
+	
+	<select id="findByIdCard" resultType="com.cos.starbucks.model.Card">
+		select * from card where id=#{?};
+	</select>
 </mapper>

@@ -4,5 +4,53 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
 <mapper namespace="com.cos.starbucks.repository.MypageRepository">
+
+	<select id="findByUserId"
+		resultType="com.cos.starbucks.model.MyCoffee">
+		select * from myCoffee where userId= #{?}
+	</select>
 	
+	<select id="findByUserIdBev"
+		resultType="com.cos.starbucks.model.MyBeverage">
+		select * from myBeverage where userId= #{?}
+	</select>
+	
+	<select id="findByUserIdCard"
+		resultType="com.cos.starbucks.model.User_card">
+		select * from user_card where userId= #{?}
+	</select>
+
+	<insert id="coffeeSave">
+		insert into myCoffee(coffeeId,userId,coffeeName,createDate)
+		values(#{coffeeId},#{userId},#{coffeeName},now())
+	</insert>
+	
+	<insert id="bevSave">
+		insert into myBeverage(beverageId,userId,beverageName,createDate)
+		values(#{bevId},#{userId},#{bevName},now())
+	</insert>
+	
+	<insert id="cardSave">
+		insert into user_card(cardId,userId,cardName,cardImage,createDate)
+		values(#{cardId},#{userId},#{cardName},#{cardImage},now())
+	</insert>
+	
+	<select id="countByUserId" resultType="Integer">
+		select count(*) from user_card where userId= #{?}
+	</select>
+	
+	<update id="updatePoint">
+	update user_card set point=#{point} where userId=#{id} 
+	</update>
+	
+	<delete id="deleteCoffee">
+		delete from myCoffee where id=#{id}
+	</delete>
+
+	<delete id="deleteBev">
+		delete from myBeverage where id=#{id}
+	</delete>
+	<delete id="deleteCard">
+		delete from user_card where id=#{id}
+	</delete>
 </mapper>

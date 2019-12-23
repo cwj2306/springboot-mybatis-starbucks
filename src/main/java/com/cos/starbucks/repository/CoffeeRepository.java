@@ -11,4 +11,5 @@ public interface CoffeeRepository {
 	List<Coffee> findBlonde();
 	List<Coffee> findMedium();
 	List<Coffee> findDark();
+	Coffee findById(int id);
 }

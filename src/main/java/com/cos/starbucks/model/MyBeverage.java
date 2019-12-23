@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Mymenu {
+public class MyBeverage {
 
 	private int id;
 	private int beverageId;
+	private String beverageName;
 	private int userId;
 	private Timestamp createDate;
 }
