@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.starbucks.model.Beverage;
 import com.cos.starbucks.model.Card;
@@ -56,19 +57,17 @@ public class MenuController {
 	}
 	
 	@GetMapping("/detail/{id}")
-	public String detail(@PathVariable int id,Model model) {
+	public @ResponseBody Beverage detail(@PathVariable int id,Model model) {
 		Beverage bev=mRepo.findById(id);
-		model.addAttribute("bev",bev);		
-		
-		return "/menu/detail";
+				
+		return bev;
 	}
 	
 	@GetMapping("/card/detail/{id}")
-	public String cardDetail(@PathVariable int id,Model model) {
+	public @ResponseBody Card cardDetail(@PathVariable int id,Model model) {
 		Card card=mRepo.findByIdCard(id);
-		model.addAttribute("card",card);		
 		
-		return "/menu/cardDetail";
+		return card;
 	}
 	
 	@GetMapping("/food_list")

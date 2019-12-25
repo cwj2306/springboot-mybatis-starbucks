@@ -8,10 +8,8 @@
 </head>
 <body>
 <form action="/mypage/cardSave/${card.id}" method="post">
-<input type="hidden" name="image" value="${card.image}">
-<img src="${card.image}">
-<input type="hidden" name="name" value="${card.name}">
-<div>${card.name}</div>
+<input type="hidden" name="image" value="${detail.image}"><img src="${detail.image}">
+<input type="hidden" name="name" value="${detail.name}"><div>${detail.name}</div>
 <button>내카드 등록</button>
 </form>
 </body>

@@ -19,6 +19,18 @@
 		resultType="com.cos.starbucks.model.User_card">
 		select * from user_card where userId= #{?}
 	</select>
+	
+	<select id="CheckCoffeeDelete" resultType="Integer">
+		select userId from myCoffee where id=#{?} 
+	</select>
+	
+	<select id="CheckBevDelete" resultType="Integer">
+		select userId from myBeverage where id=#{?} 
+	</select>
+	
+	<select id="CheckCardDelete" resultType="Integer">
+		select userId from user_card where id=#{?} 
+	</select>
 
 	<insert id="coffeeSave">
 		insert into myCoffee(coffeeId,userId,coffeeName,createDate)

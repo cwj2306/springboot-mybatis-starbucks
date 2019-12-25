@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cos.starbucks.model.Card;
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
+import com.cos.starbucks.model.User;
 import com.cos.starbucks.model.User_card;
 import com.cos.starbucks.repository.MypageRepository;
 import com.cos.starbucks.security.MyUserDetails;
@@ -29,8 +31,12 @@ public class MypageController {
 	
 	//deleteMapping으로 바꿔야함 체크박스로 삭제 어캐하는지 몰겠음 ㅠㅠ
 	@GetMapping("/deleteCoffee/{id}")
-	public String coffeeDelete(@PathVariable int id) {
-		mRepo.deleteCoffee(id);
+	public String coffeeDelete(@PathVariable int id ,@AuthenticationPrincipal MyUserDetails userDetail) {
+		int result=mRepo.CheckCoffeeDelete(id);
+		System.out.println(result);
+		if(result==userDetail.getUser().getId())
+			mRepo.deleteCoffee(id);
+		else return "index";
 		
 		
 		return "redirect:/mypage/mylist";
@@ -38,8 +44,14 @@ public class MypageController {
 	
 	//deleteMapping으로 바꿔야함 체크박스로 삭제 어캐하는지 몰겠음 ㅠㅠ
 	@GetMapping("/deleteBev/{id}")
-	public String bevDelete(@PathVariable int id) {
-		mRepo.deleteBev(id);
+	public String bevDelete(@PathVariable int id,@AuthenticationPrincipal MyUserDetails userDetail) {
+		int result=mRepo.CheckBevDelete(id);
+		System.out.println(result);
+		if(result==userDetail.getUser().getId())
+			mRepo.deleteBev(id);
+		else return "index";
+		
+		
 		
 		
 		return "redirect:/mypage/mybev";
@@ -47,8 +59,13 @@ public class MypageController {
 	
 	//deleteMapping으로 바꿔야함
 	@GetMapping("/deleteCard/{id}")
-	public String cardDelete(@PathVariable int id) {
-		mRepo.deleteCard(id);
+	public String cardDelete(@PathVariable int id,@AuthenticationPrincipal MyUserDetails userDetail) {
+		int result=mRepo.CheckCardDelete(id);
+		System.out.println(result);
+		if(result==userDetail.getUser().getId())
+			mRepo.deleteCard(id);
+		else return "index";
+		
 		
 		
 		return "redirect:/menu/card_list";

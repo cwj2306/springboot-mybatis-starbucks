@@ -8,11 +8,8 @@
 </head>
 <body>
 <form action="/mypage/bevSave/${bev.id}" method="post">
-<img src="${bev.image}">
-<input type="hidden" name="name" value="${bev.name}">
-<div>${bev.name}</div>
-${bev.price}원
-<button>내상품 등록</button>
+<img src="${detail.image}"><input type="hidden" name="name" value="${detail.name}">
+<div>${detail.name}</div><div>${detail.price}원</div><button>내상품 등록</button>
 </form>
 </body>
 </html>

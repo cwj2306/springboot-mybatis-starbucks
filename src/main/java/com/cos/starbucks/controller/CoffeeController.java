@@ -39,11 +39,10 @@ public class CoffeeController {
 	}
 
 	@GetMapping("/detail/{id}")
-	public String detail(@PathVariable int id,Model model) {
+	public @ResponseBody Coffee detail(@PathVariable int id,Model model) {
 		Coffee coffee=cRepo.findById(id);
-		model.addAttribute("coffee",coffee);		
 		
-		return "/coffee/detail";
+		return coffee;
 	}
 	
 	@GetMapping("/productFinder")
