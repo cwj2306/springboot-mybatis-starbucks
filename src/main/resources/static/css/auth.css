@@ -1,0 +1,137 @@
+/* login */
+
+.login_container {
+    width:100%; height:700px;
+    background-image: url("../img/auth/login_bg.jpg");
+    background-color: #000;
+    overflow: hidden;
+}
+
+.login_whiteBox {
+    width:540px;
+    height:460px;
+    background-color:#fff;
+    margin:0 auto;
+    border-radius: 3px;
+    padding:20px;
+    text-align:center;
+}
+
+.login_title {
+    margin:60px 0 35px 0;
+    font-size: 28px;
+    color:#fff;
+    text-align:center;
+    font-weight: bold;
+}
+
+.login_whiteBox_p1 {
+    font-size:17px;
+    margin:10px 0;
+    color:#222;
+}
+
+.login_whiteBox_p2 {
+    font-size:13px;
+    color:#006633;
+}
+
+.login_container hr {margin:30px 0 20px 0;}
+
+.login_container form {margin-bottom:10px;}
+.login_container form input {
+    width:96%; height:45px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding-left: 15px;
+    color:#222;
+}
+
+.login_container .login_submit {
+    width:48%; height:45px;
+    background-color:#006633;
+    float:left;
+    color:#fff; font-size: 20px;
+    border-radius: 5px;
+}
+
+.login_container label {
+    float:left;
+    margin-top:10px; margin-bottom:15px;
+}
+
+.login_container .login_saveId {
+    width:20px; height:20px;
+    margin-right: 5px;
+    float:left;
+}
+
+.login_container ul {
+    display: inline-block;
+    text-align: center;
+}
+
+.login_container ul li {
+    float:left;
+    margin:0 25px;
+    margin-top:25px;
+    font-size:15px;
+}
+
+/* join */
+
+.join_title {
+    text-align:center;
+    font-weight: bold;
+    font-size:28px;
+    margin-top:50px; margin-bottom:35px;
+}
+
+.join_container {
+    width:55%;
+    border:1px solid #d4d4d4;
+    border-radius: 2px;
+    margin:0 auto;
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.join_container .join_illust {
+    margin:30px 0;
+}
+
+.join_container .join_manual_title {
+    text-align:left;
+    font-size:17px;
+    font-weight: bolder;
+    margin:30px 0 20px 35px;
+}
+
+.join_container .join_manual_title span {color:#006633;}
+
+.join_container .join_manual_title_checkbox {
+    width:25px; height:25px;
+    float:right;
+    margin-right:35px;
+}
+
+.join_manual {
+    margin:0 auto;
+    overflow:scroll;
+    width:85%; height:150px;
+    padding:10px;
+    background-color:#f7f7f7;
+    border:1px solid #d4d4d4;
+    border-radius: 2px;
+    text-align:left;
+    font-size:13.5px;
+    margin-bottom:30px;
+}
+
+/* kakao box */
+.panel-body {
+	text-align:right;
+	margin-right:30px;
+	position:relative;
+	top:-50px;
+}
