@@ -15,6 +15,10 @@ public class User {
 	private String name;
 	private String username;
 	private String password;
+	private String email;
+	
+	private String provider;
+	private String providerId;
 	
 	private String level;
 	private Timestamp createDate;

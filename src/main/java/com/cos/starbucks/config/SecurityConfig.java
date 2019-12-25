@@ -10,6 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
+import com.cos.starbucks.handler.MyLoginSuccessHandler;
 
 
 @Configuration
@@ -29,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//csrf와 cors가 뭔지는 인터넷으로 공부해봐!
 		http.csrf().disable();
 		http.cors().disable();
-		
 		http.authorizeRequests()
 		//해당주소를 타는 것은 전부 시큐리티가 막는다.
 		// ex) board/접근을 세분화해서 막고싶으면 먼저 추가해주고 밑에 다막으면된다 순서 잘지켜라!!
@@ -47,8 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.loginPage("/user/login")
 		//이 주소를 타고 로그인이 된다 (로그인폼에서 아래의 주소로 액션을 타게 해야한다.)
 		.loginProcessingUrl("/user/loginProc")
+		.successHandler(new MyLoginSuccessHandler());
 		//로그인이 성공 할 때 이동
-		.defaultSuccessUrl("/user");
+		//	.defaultSuccessUrl("/user");
 		//.and()
 		//.logout()
 		//로그아웃에 성공했을 때
@@ -56,9 +61,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//로그인처럼 url을 사용해도된다.
 		//.logoutSuccessUrl("/home")
 		//.logoutSuccessHandler(new MyLogoutSuccessHandler());
-
 		
 	}
+
 	
 	@Autowired
 	private UserDetailsService userDetailsService;

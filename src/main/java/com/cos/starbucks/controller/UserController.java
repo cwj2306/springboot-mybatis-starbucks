@@ -33,9 +33,14 @@ public class UserController {
 		return user;
 	}
 	
-	@GetMapping("/join")
-	public String join() {
-		return "auth/join";
+	@GetMapping("/join1")
+	public String join1() {
+		return "auth/join1";
+	}
+	
+	@GetMapping("/join2")
+	public String join2() {
+		return "auth/join2";
 	}
 	
 	@PostMapping("/joinProc")
@@ -54,14 +59,6 @@ public class UserController {
 	
 
 	
-	@GetMapping("/join1")
-	public @ResponseBody String join1() {
-		return "회원가입 인증페이지입니다.";
-	}
-	
-	@GetMapping("/join2")
-	public @ResponseBody String join2() {
-		return "회원가입 정보입력페이지입니다.";
-	}
+
 	
 }
