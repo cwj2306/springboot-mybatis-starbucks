@@ -93,3 +93,35 @@ function makeDetailBox3(detail){
 	return detailBox;
 }
 ////////////////카드팝업 끝/////////////////////
+
+////////////////내게어울리는커피 팝업 시작/////////////////////
+$(".favorite").click(function(){
+	var id=$(this).attr("param");
+	console.log(id);
+	loadDetailPopup4(id);
+});
+
+$(".detailPoupClose button").click(function(){
+	$(".detailPopupItem").empty();
+	$("#modal").removeClass("active");
+});
+
+async function loadDetailPopup4(id){
+	
+	let response=await fetch("/coffee/detail/"+id)
+	let detail=await response.json();
+	
+	let detailBox= makeDetailBox4(detail);
+	$("#modal .detailPopupItem").append(detailBox);
+	
+	$("#modal").addClass("active");
+}
+
+function makeDetailBox4(detail){
+	let detailBox=`<form action="/mypage/coffeeSave/${detail.id}" method="post">`
+	detailBox+=`<img src="${detail.image}"><input type="hidden" name="name" value="${detail.name}">`
+	detailBox+=`<div>${detail.name}</div>${detail.price}원 <button>내상품 등록</button></form>`
+
+	return detailBox;
+}
+////////////////내게어울리는커피 팝업 끝/////////////////////

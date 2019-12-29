@@ -19,6 +19,7 @@ public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
 		String username = request.getParameter("username");
 		String rememberMe = request.getParameter("rememberMe");
 
+		
 		if (rememberMe != null) {
 
 			Cookie c = new Cookie("username", username);
@@ -31,6 +32,11 @@ public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
 			c.setMaxAge(0);// 즉시 사라짐
 			response.addCookie(c);
 		}
-		response.sendRedirect("/user");
+		if(username.equals("admin")) {
+			response.sendRedirect("/admin");
+		}else {
+			response.sendRedirect("/");
+		}
+		
 	}
 }

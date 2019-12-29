@@ -12,4 +12,6 @@ public interface CoffeeRepository {
 	List<Coffee> findMedium();
 	List<Coffee> findDark();
 	Coffee findById(int id);
+	Coffee findCoffee(String flavor,String feel,String strong);
+	void uploadCoffee(Coffee coffee);
 }

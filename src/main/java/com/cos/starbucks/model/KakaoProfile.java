@@ -1,8 +1,11 @@
 package com.cos.starbucks.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class KakaoProfile {
 	private String id;
 	private Properties properties;

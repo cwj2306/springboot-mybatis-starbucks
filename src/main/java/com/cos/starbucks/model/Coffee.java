@@ -18,7 +18,6 @@ public class Coffee {
 	private int price;
 	
 	private String roast;
-	private String box;
 	private String flavor;
 	private String feel;
 	private String strong;

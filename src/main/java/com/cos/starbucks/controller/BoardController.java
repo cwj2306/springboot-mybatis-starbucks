@@ -3,6 +3,7 @@ package com.cos.starbucks.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.starbucks.model.Board;
 import com.cos.starbucks.repository.BoardRepository;
-import com.cos.starbucks.util.Pagination;
+import com.cos.starbucks.security.MyUserDetails;
 import com.cos.starbucks.util.Search;
 
 @Controller
@@ -46,13 +46,17 @@ public class BoardController {
 	}
 	
 	@GetMapping("/write")
-	public String write() {
+	public String write(@AuthenticationPrincipal MyUserDetails userDetail) {
+		if(userDetail.getUser().getUsername().equals("admin"))
 		return "board/write";
+		
+		return null;
 	}
 	
 	@PostMapping("/writeProc")
-	public String writeProc(Board board) {
+	public String writeProc(@AuthenticationPrincipal MyUserDetails userDetail,Board board) {
 		try {
+		if(userDetail.getUser().getUsername().equals("admin"))
 			mBoardRepo.writeProc(board);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,19 +65,22 @@ public class BoardController {
 	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable int id, Model model) {
+	public String update(@AuthenticationPrincipal MyUserDetails userDetail,@PathVariable int id, Model model) {
+		if(userDetail.getUser().getUsername().equals("admin")) {
 		Board board = mBoardRepo.findById(id);
-		model.addAttribute("board", board);
-
+		model.addAttribute("board", board);	
 		return "board/update";
+		}
+		return null;
 	}
 
 	
 	@PostMapping("/updateProc")
-	public String updateProc(Board board) { 
+	public String updateProc(@AuthenticationPrincipal MyUserDetails userDetail,Board board) { 
 		try {
+			if(userDetail.getUser().getUsername().equals("admin")) {
 			mBoardRepo.updateProc(board);	
-			return "redirect:/board";
+			return "redirect:/board";}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -81,8 +88,9 @@ public class BoardController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable int id) {
+	public String delete(@AuthenticationPrincipal MyUserDetails userDetail,@PathVariable int id) {
 		try {
+			if(userDetail.getUser().getUsername().equals("admin"))
 			mBoardRepo.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +100,7 @@ public class BoardController {
 	
 
 
-	@GetMapping("/{id}")
+	@GetMapping("/detail/{id}")
 	public String post(@PathVariable int id, Model model) {
 		Board board = mBoardRepo.findById(id);
 		model.addAttribute("board", board);

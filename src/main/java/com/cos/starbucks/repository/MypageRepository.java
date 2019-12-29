@@ -2,7 +2,6 @@ package com.cos.starbucks.repository;
 
 import java.util.List;
 
-import com.cos.starbucks.model.Coffee;
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
 import com.cos.starbucks.model.User_card;

@@ -10,19 +10,29 @@
     <link rel="stylesheet" href="../css/content.css">
     <link rel="stylesheet" href="../css/jquery.bxslider.css">
     <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<title>Starbucks Coffee Korea :: CardDetail</title>
+<title>Starbucks Coffee Korea :: Favorite</title>
 </head>
 <body>
 	<%@include file="../include/nav.jsp"%>
-	<form action="/mypage/cardSave/${card.id}" method="post">
-		<input type="hidden" name="image" value="${detail.image}"><img
-			src="${detail.image}"> <input type="hidden" name="name"
-			value="${detail.name}">
-		<div>${detail.name}</div>
-		<button>내카드 등록</button>
-	</form>
-	<%@include file="../include/footer.jsp"%>
+	
+	<label class="favorite" param="${coffee.id}"><div class="content_item_container">
+	<div class="content_item_img_container"><img src="${coffee.image}"></div>
+	<p>${coffee.name}</p>
+</div></label>
+
+<!-- 디테일 Modal 시작 -->
+		<div id="modal">
+			<div id="detailBox">
+				<div class="detailPopupItem"></div>
+				<div class="detailPoupClose">
+					<button type="button">닫기</button>
+				</div>
+			</div>
+		</div>
+	<!-- 디테일 Modal 끝 -->
+	<script type="text/javascript" src="/js/modal.js"></script>
 </body>
 </html>

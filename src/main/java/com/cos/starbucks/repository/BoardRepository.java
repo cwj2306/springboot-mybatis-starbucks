@@ -3,7 +3,6 @@ package com.cos.starbucks.repository;
 import java.util.List;
 
 import com.cos.starbucks.model.Board;
-import com.cos.starbucks.util.Pagination;
 import com.cos.starbucks.util.Search;
 
 public interface BoardRepository {

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.starbucks.model.Coffee;
@@ -46,8 +47,8 @@ public class CoffeeController {
 	}
 	
 	@GetMapping("/productFinder")
-	public @ResponseBody String productFinder() {
-		return "나와 어울리는 커피입니다.";
+	public String productFinder() {
+		return "coffee/productFinder";
 	}
 
 	@GetMapping("/espresso")
@@ -55,6 +56,13 @@ public class CoffeeController {
 		return "coffee/espresso";
 	}
 	
+	@GetMapping("/favorite")
+	public String favorite(@RequestParam String flavor,@RequestParam String feel, @RequestParam String strong,Model model) {
+		System.out.println(flavor+feel+strong);
+		Coffee coffee=cRepo.findCoffee(flavor,feel,strong);
+		model.addAttribute("coffee",coffee);
+		return "coffee/favorite";
+	}
 	
 
 }

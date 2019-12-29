@@ -20,8 +20,10 @@
 	<br /> 작성자 아이디 : ${board.userId}
 	<br /> 내용 : ${board.content}
 	<br />
+	<c:if test="${principal.user.username eq 'admin'}">
 	<a href="/board/update/${board.id}">수정하기</a>
 	<a href="/board/delete/${board.id}">삭제하기</a>
+	</c:if>
 	<button onclick="location.href='/board'">목록</button>
 	
 	<c:choose>
@@ -29,7 +31,7 @@
 				<table border="1">
 					<tr>
 						<th>윗글</th>
-						<td><a href="/board/${pan[0].id}">${pan[0].title}</a></td>
+						<td><a href="/board/detail/${pan[0].id}">${pan[0].title}</a></td>
 					</tr>
 				</table>
 		</c:when>
@@ -38,14 +40,14 @@
 				<c:if test="${!empty pan[1].id}">
 					<tr>
 						<th>윗글</th>
-						<td><a href="/board/${pan[1].id}">${pan[1].title}</a></td>
+						<td><a href="/board/detail/${pan[1].id}">${pan[1].title}</a></td>
 					</tr>
 				</c:if>
 
 				<c:if test="${!empty pan[0].id}">
 					<tr>
 						<th>아랫글</th>
-						<td><a href="/board/${pan[0].id}">${pan[0].title}</a></td>
+						<td><a href="/board/detail/${pan[0].id}">${pan[0].title}</a></td>
 					</tr>
 				</c:if>
 			</table>

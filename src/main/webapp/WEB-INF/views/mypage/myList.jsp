@@ -2,25 +2,38 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <link rel="stylesheet" href="../css/jquery.bxslider.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Starbucks Coffee Korea ::MyCoffee</title>
 </head>
 <body>
-	<table>
-		<tr>
-			<th>음료명</th>
-			<th>등록일</th>
-			<th>삭제</th>
-		</tr>
-		<c:forEach var="coffee" items="${coffeeList}">
+	<%@include file="../include/nav.jsp"%>
+	<form action="/mypage/deleteCoffee" method="post">
+		<table>
 			<tr>
-				<td>${coffee.coffeeName}</td>
-				<td>${coffee.createDate}</td>
-				<td><a href="/mypage/deleteCoffee/${coffee.id}">삭제</a></td> <!--체크박스로바꿔야함 체크박스 삭제 요청 어캐하지-->
+				<th>선택</th>
+				<th>음료명</th>
+				<th>등록일</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach var="coffee" items="${coffeeList}">
+				<tr>
+					<td><input type="checkbox" name="check" value="${coffee.id}"></td>
+					<td>${coffee.coffeeName}</td>
+					<td>${coffee.createDate}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<button>선택삭제</button>
+	</form>
+	<%@include file="../include/footer.jsp"%>
 </body>
 </html>

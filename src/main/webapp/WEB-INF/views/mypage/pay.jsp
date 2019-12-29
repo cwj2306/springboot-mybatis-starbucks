@@ -12,17 +12,20 @@
     <link rel="stylesheet" href="../css/auth.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<title>Starbucks Coffee Korea :: CardDetail</title>
+<title>Starbucks Coffee Korea ::Pay</title>
 </head>
 <body>
-	<%@include file="../include/nav.jsp"%>
-	<form action="/mypage/cardSave/${card.id}" method="post">
-		<input type="hidden" name="image" value="${detail.image}"><img
-			src="${detail.image}"> <input type="hidden" name="name"
-			value="${detail.name}">
-		<div>${detail.name}</div>
-		<button>내카드 등록</button>
-	</form>
-	<%@include file="../include/footer.jsp"%>
+<%@include file="../include/nav.jsp"%>
+	
+<form action="/mypage/pointup" method="post">
+	카드번호<input type="number" required="required"><br />
+	카드유효기간<input type="date" required="required"><br /> 
+	카드비밀번호<input type="password" required="required"><br /> 
+	충전금액<input type="number" value="${point}" name="point" readonly="readonly">원
+	<button>충전하기</button>
+</form>
+	
+<%@include file="../include/footer.jsp"%>
+
 </body>
 </html>

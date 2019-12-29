@@ -10,9 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.RememberMeServices;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.cos.starbucks.handler.MyLoginSuccessHandler;
 
@@ -37,8 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		//해당주소를 타는 것은 전부 시큐리티가 막는다.
 		// ex) board/접근을 세분화해서 막고싶으면 먼저 추가해주고 밑에 다막으면된다 순서 잘지켜라!!
-		.antMatchers("/board/list").permitAll()
-		.antMatchers("/my/**").authenticated()
+		.antMatchers("/board","/board/detail/**").permitAll()
+		.antMatchers("/my/**","/mypage/**","/board/**").authenticated()
 		//위의 주소를 타는 것을 제외한 접근은 시큐리티가 막지 않는다.
 		.anyRequest().permitAll()
 		.and()
