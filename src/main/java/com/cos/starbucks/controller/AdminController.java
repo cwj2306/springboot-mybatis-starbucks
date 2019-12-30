@@ -114,4 +114,25 @@ public class AdminController {
 
 		return null;
 	}
+	
+	@GetMapping("/index")
+	public String index() {
+		return "admin/index";
+	}
+	@GetMapping("/login")
+	public String login() {
+		return "admin/login";
+	}
+	@GetMapping("/register")
+	public String register() {
+		return "admin/register";
+	}
+	@GetMapping("/tables")
+	public String tables() {
+		return "admin/tables";
+	}
+	@GetMapping("/forgot")
+	public String forgot() {
+		return "admin/forgot-password";
+	}
 }
