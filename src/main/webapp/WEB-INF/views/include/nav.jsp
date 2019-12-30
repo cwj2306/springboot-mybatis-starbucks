@@ -48,7 +48,7 @@
                             <li><a href="/menu/card_list" class="submenuLink">카드</a></li>
                         </ul>
                     </li>
-                    <li class="top_sNav_li"> <a class="menuLink" href="#">STORE</li>
+                    <li class="top_sNav_li"> <a class="menuLink" href="/store_map">STORE</a></li>
                     <li class="top_sNav_li"> <a class="menuLink" href="/board">WHAT'S NEW</a> </li>
                 </ul>
             </nav>

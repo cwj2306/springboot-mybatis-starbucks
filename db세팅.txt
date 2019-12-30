@@ -1,0 +1,195 @@
+﻿create user 'starbucks'@'%' identified by 'bitc5600';
+GRANT ALL PRIVILEGES ON *.* TO 'starbucks'@'%';
+create database starbucks;
+use starbucks;
+
+
+CREATE TABLE coffee(
+    id int auto_increment primary key,
+    name varchar(100) not null unique,
+    detail varchar(200) not null,
+    price int not null,
+    flavor varchar(100) CHECK(flavor IN('짭짤한 맛','과일 맛','구운 맛','달콤한(캐러멜) 맛')),
+    feel varchar(100) CHECK(feel IN('상쾌하고 부드러운 느낌','오랫동안 여운이 남는 느낌')),
+    strong varchar(100) CHECK(strong IN('은은하고 부드러움','강도가 세고 강렬함')),
+    roast varchar(100) CHECK(roast IN('블론드 로스트','미디엄 로스트','다크 로스트')),
+    createDate timestamp,
+    image varchar(300) default '/image/coffee/default.png'
+) engine=InnoDB default charset=utf8;
+
+
+CREATE TABLE beverage(
+    id int auto_increment primary key,
+    name varchar(100) not null unique,
+    price int not null,
+    category varchar(100) CHECK(category IN('콜드 브루 커피','브루드 커피','에스프레소','프라프치노','블렌디드','스타벅스 피지오','티(티바나)','기타 제조 음료','스타벅스 주스(병음료)')),
+    createDate timestamp,
+    image varchar(300) default '/images/beverage/default.png'
+) engine=InnoDB default charset=utf8;
+
+
+create table card(
+    id int auto_increment primary key,
+    name varchar(30) not null unique,
+    image varchar(300) default "/image/card/default.png",
+    createDate timestamp
+)engine=InnoDB default charset=utf8;
+
+
+create table user(
+    id int auto_increment primary key,
+    username varchar(30) not null unique,
+    name varchar(30) not null,
+    password varchar(100),
+    email varchar(100),
+    provider varchar(100),
+    providerId varchar(100),
+    level varchar(30) CHECK(level IN('Bronze','Silver','Gold')) default 'Bronze',
+    createDate timestamp
+)engine=InnoDB default charset=utf8;
+
+
+create table user_card(
+    id int auto_increment primary key,
+    userId int,
+    cardId int,
+    cardName varchar(30) not null,
+    cardImage varchar(300),
+    point int default 0,
+    createDate timestamp,
+    foreign key(userId) references user(id),
+    foreign key(cardId) references card(id)
+)engine=InnoDB default charset=utf8;
+
+
+create table myCafe(
+    id int auto_increment primary key,
+    userId int,
+    name varchar(50) not null,
+    address varchar(50),
+    tel varchar(20),
+    lat varchar(30),
+    lng varchar(30),
+    createDate timestamp
+)engine=InnoDB default charset=utf8;
+
+
+create table myBeverage(
+    id int auto_increment primary key,
+    userId int,
+    beverageId int,
+    beverageName varchar(100) not null,
+    createDate timestamp,
+    foreign key(userId) references user(id),
+    foreign key(beverageId) references beverage(id)
+)engine=InnoDB default charset=utf8;
+
+
+create table myCoffee(
+    id int auto_increment primary key,
+    userId int,
+    coffeeId int,
+    coffeeName varchar(100) not null,
+    createDate timestamp,
+    foreign key(userId) references user(id),
+    foreign key(coffeeId) references coffee(id)
+)engine=InnoDB default charset=utf8;
+
+
+create table board(
+    id int auto_increment primary key,
+    title varchar(100) not null,
+    content longtext,
+    userId int,
+    createDate timestamp
+) engine=InnoDB default charset=utf8;
+
+
+
+insert into card(name,image,createDate) values 
+('커피하우스 카드','/image/card/card1.png',now()),
+('윈터 코어 블랙 카드','/image/card/card2.png',now()),
+('스타벅스 18주년 카드','/image/card/card3.png',now()),
+('크리스마스 카드','/image/card/card4.png',now());
+
+
+insert into coffee(name,detail,price,flavor,feel,strong,roast,createDate,image) values
+('크리스마스 블론드 로스트 250g','은은하고 감미로우면서 풍부한 맛을 가진 커피',30000,'짭짤한 맛','상쾌하고 부드러운 느낌','은은하고 부드러움','블론드 로스트',now(),'/image/coffee/cbr.jpg'),
+('베란다 블렌드 250g','강렬하고 친근한 성향을 가진 강도가 센 블렌드입니다.',25000,'짭짤한 맛','상쾌하고 부드러운 느낌','강도가 세고 강렬함','블론드 로스트',now(),'/image/coffee/bb.jpg'),
+('아이스 커피 블렌드 250g','훌륭한 아이스 커피를 만드는 감귤류 맛과 카라멜 향의 특징을 가진 아이스 커피 블렌드',20000,'짭짤한 맛','오랫동안 여운이 남는 느낌','은은하고 부드러움','미디엄 로스트',now(),'/image/coffee/icb.jpg'),
+('에티오피아 250g','다크초콜릿의 벨벳 같은 부드러움과 후추 같은 스파이시함, 달콤한 감귤류의 풍미가 특징인 원두',20000,'짭짤한 맛','오랫동안 여운이 남는 느낌','강도가 세고 강렬함','미디엄 로스트',now(),'/image/coffee/e.jpg'),
+('디카페인 하우스 블렌드 250g','깔끔하고 균형잡힌 맛이 특징인 중간정도 무게감의 커피',30000,'과일 맛','상쾌하고 부드러운 느낌','은은하고 부드러움','미디엄 로스트',now(),'/image/coffee/dhb.jpg'),
+('콜롬비아 250g','견과류의 풍미를 간직한 부드럽고 균형잡힌 향이 특징인 커피',20000,'과일 맛','상쾌하고 부드러운 느낌','강도가 세고 강렬함','미디엄 로스트',now(),'/image/coffee/c.jpg'),
+('파이크 플레이스 로스트 250g','부드러운 뒷맛이 특징이며 은은한 코코아와 구운 견과류 향이 특징인 커피',30000,'과일 맛','오랫동안 여운이 남는 느낌','은은하고 부드러움','미디엄 로스트',now(),'/image/coffee/ppr.jpg'),
+('과테말라 안티구아 250g','아름다운 상상을 더해주는 우아하고 깊은 맛을 가진 커피',25000,'과일 맛','오랫동안 여운이 남는 느낌','강도가 세고 강렬함','미디엄 로스트',now(),'/image/coffee/ga.jpg'),
+('케냐 250g','열대성 과일의 향기와 신비로움으로 깔끔한 주스와 같은 느낌을 가진 커피',20000,'구운 맛','상쾌하고 부드러운 느낌','은은하고 부드러움','미디엄 로스트',now(),'/image/coffee/k.jpg'),
+('브렉퍼스트 블렌드 250g','가벼운 무게감에 상쾌한 느낌의 아침에 마시기 좋고 밝은 하루를 시작하기 좋은 커피',25000,'구운 맛','상쾌하고 부드러운 느낌','강도가 세고 강렬함','미디엄 로스트',now(),'/image/coffee/bb2.jpg'),
+('하우스 블렌드 250g','깔끔하고 균형잡힌 맛이 특징인 중간정도 무게감의 커피',25000,'구운 맛','오랫동안 여운이 남는 느낌','은은하고 부드러움','미디엄 로스트',now(),'/image/coffee/hb.jpg'),
+('에스프레소 로스트 250g','풍부하고 조화로운 느낌으로 스타벅스 에스프레소 음료의 기본이 되는 커피',25000,'구운 맛','오랫동안 여운이 남는 느낌','강도가 세고 강렬함','다크 로스트',now(),'/image/coffee/er.jpg'),
+('이탈리안 로스트 250g','진하고 달콤하며 약간의 스모키 향이 특징인 커피',30000,'달콤한(캐러멜) 맛','상쾌하고 부드러운 느낌','은은하고 부드러움','다크 로스트',now(),'/image/coffee/ir.jpg'),
+('수마트라 250g','강렬하면서도 가득찬 풍미, 흙내음을 전해주는 무게감있는 커피',20000,'달콤한(캐러멜) 맛','상쾌하고 부드러운 느낌','강도가 세고 강렬함','다크 로스트',now(),'/image/coffee/s.jpg'),
+('카페 베로나 250g','따뜻한 로맨스를 상상하게 해 주는 깊고 달콤한 맛의 커피',25000,'달콤한(캐러멜) 맛','오랫동안 여운이 남는 느낌','은은하고 부드러움','다크 로스트',now(),'/image/coffee/cb2.jpg'),
+('크리스마스 블렌드 250g','크리스마스의 축제 분위기에 어울리는 달콤하고 스파이시한 크리스마스에 더 없이 잘 어울리는 커피입니다.',30000,'달콤한(캐러멜) 맛','오랫동안 여운이 남는 느낌','강도가 세고 강렬함','다크 로스트',now(),'/image/coffee/cb.jpg');
+
+
+insert into beverage(name,price,category,createDate,image) values
+('나이트로 바닐라 크림',6000,'콜드 브루 커피',now(),'/image/beverage/nbc.jpg'),
+('나이트로 쇼콜라 클라우드',6500,'콜드 브루 커피',now(),'/image/beverage/nsc.jpg'),
+('나이트로 콜드 브루',5000,'콜드 브루 커피',now(),'/image/beverage/ncb.jpg'),
+('돌체 콜드 브루',5500,'콜드 브루 커피',now(),'/image/beverage/dcb.jpg'),
+('바닐라 크림 콜드 브루',6500,'콜드 브루 커피',now(),'/image/beverage/bccb.jpg'),
+('콜드 브루 몰트',7000,'콜드 브루 커피',now(),'/image/beverage/cbm.jpg'),
+('콜드 브루 플로트',6500,'콜드 브루 커피',now(),'/image/beverage/cbp.jpg'),
+('콜드 폼 콜드 브루',6000,'콜드 브루 커피',now(),'/image/beverage/cpcb.jpg'),
+('아이스 커피',4000,'브루드 커피',now(),'/image/beverage/ic.jpg'),
+('오늘의 커피',4500,'브루드 커피',now(),'/image/beverage/tc.jpg'),
+('아이스 토피 넛 라떼',6500,'에스프레소',now(),'/image/beverage/itnl.jpg'),
+('아이스 홀리데이 카라멜 돌체 라떼',6500,'에스프레소',now(),'/image/beverage/ihcdl.jpg'),
+('토피 넛 라떼',6000,'에스프레소',now(),'/image/beverage/tnl.jpg'),
+('홀리데이 카라멜 돌체 라떼',6500,'에스프레소',now(),'/image/beverage/hcdl.jpg'),
+('에스프레소 콘 파나',5500,'에스프레소',now(),'/image/beverage/ecp.jpg'),
+('에스프레소 마키아또',5000,'에스프레소',now(),'/image/beverage/em.jpg'),
+('아이스 카페 아메리카노',4500,'에스프레소',now(),'/image/beverage/ica.jpg'),
+('카페 아메리카노',4000,'에스프레소',now(),'/image/beverage/ca.jpg'),
+('토피 넛 프라푸치노',6500,'프라프치노',now(),'/image/beverage/tnp.jpg'),
+('홀리데이 카라멜 돌체 프라푸치노',6500,'프라프치노',now(),'/image/beverage/hcdp.jpg'),
+('홀리데이 민트 초콜릿 크림 프라푸치노',6000,'프라프치노',now(),'/image/beverage/hmccp.jpg'),
+('모카 프라푸치노',6000,'프라프치노',now(),'/image/beverage/mp.jpg'),
+('에스프레소 프라푸치노',5500,'프라프치노',now(),'/image/beverage/ep.jpg'),
+('이천 햅쌀 커피 프라푸치노',7000,'프라프치노',now(),'/image/beverage/ehcp.jpg'),
+('자바 칩 프라푸치노',6500,'프라프치노',now(),'/image/beverage/jcp.jpg'),
+('그린 티 크림 프라푸치노',7000,'프라프치노',now(),'/image/beverage/gtcp.jpg'),
+('망고 패션 후르츠 블렌디드',6000,'블렌디드',now(),'/image/beverage/mphb.jpg'),
+('딸기 요거트 블렌디드',6500,'블렌디드',now(),'/image/beverage/syb.jpg'),
+('망고 바나나 블렌디드',6000,'블렌디드',now(),'/image/beverage/mbb.jpg'),
+('익스트림 티 블렌디드',7000,'블렌디드',now(),'/image/beverage/etb.jpg'),
+('자몽 셔벗 블렌디드',7500,'블렌디드',now(),'/image/beverage/gsb.jpg'),
+('매직 팝 스플래쉬 피지오',6500,'스타벅스 피지오',now(),'/image/beverage/mpsp.jpg'),
+('블랙 티 레모네이드 피지오',5500,'스타벅스 피지오',now(),'/image/beverage/btlp.jpg'),
+('쿨 라임 피지오',5000,'스타벅스 피지오',now(),'/image/beverage/clp.jpg'),
+('패션 탱고 티 레모네이드 피지오',5500,'스타벅스 피지오',now(),'/image/beverage/pttlp.jpg'),
+('핑크 자몽 피지오',6000,'스타벅스 피지오',now(),'/image/beverage/psp.jpg'),
+('그랜마 애플 블랙 티',7500,'티(티바나)',now(),'/image/beverage/gabt.jpg'),
+('라임 패션 티',6000,'티(티바나)',now(),'/image/beverage/rpt.jpg'),
+('민트 블렌드 티',5000,'티(티바나)',now(),'/image/beverage/mbt.jpg'),
+('아이스 그랜마 애플 블랙 티',7500,'티(티바나)',now(),'/image/beverage/igabt.jpg'),
+('아이스 라임 패션 티',6500,'티(티바나)',now(),'/image/beverage/irpt.jpg'),
+('아이스 민트 블렌드 티',6000,'티(티바나)',now(),'/image/beverage/imbt.jpg'),
+('아이스 유스베리 티',5500,'티(티바나)',now(),'/image/beverage/iut.jpg'),
+('아이스 유자 민트 티',5500,'티(티바나)',now(),'/image/beverage/iumt.jpg'),
+('아이스 오렌지 플로터',7500,'기타 제조 음료',now(),'/image/beverage/iop.jpg'),
+('아이스 와일드 베리 플로터',7500,'기타 제조 음료',now(),'/image/beverage/iwvp.jpg'),
+('아이스 제주 까망 라떼',6500,'기타 제조 음료',now(),'/image/beverage/ijbl.jpg'),
+('아이스 제주 노랑 고구마 라떼',7000,'기타 제조 음료',now(),'/image/beverage/ijygl.jpg'),
+('우유',4000,'기타 제조 음료',now(),'/image/beverage/milk.jpg'),
+('제주 쑥쑥 라떼',7000,'기타 제조 음료',now(),'/image/beverage/jsl.jpg'),
+('제주 노랑 고구마 라떼',6500,'기타 제조 음료',now(),'/image/beverage/jygl.jpg'),
+('제주 까망 라떼',7000,'기타 제조 음료',now(),'/image/beverage/jbl.jpg'),
+('햇사과 주스 190ML',4000,'스타벅스 주스(병음료)',now(),'/image/beverage/hj190.jpg'),
+('레드 선라이즈 270ML',5000,'스타벅스 주스(병음료)',now(),'/image/beverage/rs270.jpg'),
+('옐로우 패션 270ML',5000,'스타벅스 주스(병음료)',now(),'/image/beverage/yp270.jpg'),
+('파인 그린 270ML',5000,'스타벅스 주스(병음료)',now(),'/image/beverage/fg270.jpg'),
+('딸기주스 190ML',4000,'스타벅스 주스(병음료)',now(),'/image/beverage/st190.jpg'),
+('수박주스 190ML',4000,'스타벅스 주스(병음료)',now(),'/image/beverage/wm190.jpg'),
+('망고주스 190ML',4000,'스타벅스 주스(병음료)',now(),'/image/beverage/mg190.jpg'),
+('블루베리 요거트 190ML',4000,'스타벅스 주스(병음료)',now(),'/image/beverage/by190.jpg');

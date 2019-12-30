@@ -5,4 +5,17 @@
 <!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
 <mapper namespace="com.cos.starbucks.repository.StoreRepository">
 	
+	<select id="findAll" resultType="com.cos.starbucks.model.Mycafe">
+		SELECT *	FROM mycafe WHERE userId = #{userId}
+	</select>
+	
+	<insert id="save">
+		INSERT INTO mycafe(userId, name, address, tel, lat, lng, createDate) 
+		VALUES(#{userId},#{name},#{address},#{tel},#{lat},#{lng},now())
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM mycafe WHERE userId = #{userId} AND name = #{name}
+	</delete>
+	
 </mapper>

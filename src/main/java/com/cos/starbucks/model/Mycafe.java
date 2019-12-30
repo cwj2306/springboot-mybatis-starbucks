@@ -12,7 +12,11 @@ import lombok.NoArgsConstructor;
 public class Mycafe {
 
 	private int id;
-	private String name;
 	private int userId;
+	private String name;
+	private String address;
+	private String tel;
+	private String lat;
+	private String lng;
 	private Timestamp createDate;
 }
