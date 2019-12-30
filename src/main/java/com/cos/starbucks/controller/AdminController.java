@@ -135,4 +135,12 @@ public class AdminController {
 	public String forgot() {
 		return "admin/forgot-password";
 	}
+	@GetMapping("/charts")
+	public String charts() {
+		return "admin/charts";
+	}
+	@GetMapping("/blank")
+	public String blank() {
+		return "admin/blank";
+	}
 }
