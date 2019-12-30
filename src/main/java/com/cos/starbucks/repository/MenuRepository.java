@@ -22,4 +22,6 @@ public interface MenuRepository {
 	
 	List<Card> findAllCard();
 	
+	void uploadBev(String name,int price,String category,String image);
+	
 }

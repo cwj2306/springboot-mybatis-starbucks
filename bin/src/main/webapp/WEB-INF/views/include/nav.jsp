@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!-- header 시작 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
     <header>
         <div class="top_logo">
             <a href="/"><img src="/img/logo.png"/></a>
@@ -10,7 +14,15 @@
         <div class="nav_div">
             <nav class="top_first_nav">
                 <ul>
-                    <li class="top_fNav_01"><a href="/user/login">Sign In</a></li>
+                <c:choose>
+                	<c:when test="${empty principal.user}">
+                	<li class="top_fNav_01"><a href="/user/login">Sign In</a></li>
+                	</c:when>
+                	<c:otherwise>
+                	<li class="top_fNav_01"><a href="/logout">Sign Out</a></li>
+                	</c:otherwise>
+                </c:choose>
+                    
                     <li class="top_fNav_02">｜</li>
                     <li class="top_fNav_03"><a href="#">My Starbucks</a></li>
                 </ul>

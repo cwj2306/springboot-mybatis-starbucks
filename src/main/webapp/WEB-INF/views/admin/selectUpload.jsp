@@ -7,9 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/admin/uploadProc" method="POST" enctype="multipart/form-data">
-
-
-</form>
+<a href="/admin/uploadcoffee">커피업로드</a>
+<a href="/admin/uploadbev">음료업로드</a>
 </body>
 </html>

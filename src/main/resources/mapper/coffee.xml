@@ -25,7 +25,7 @@
 	
 	<insert id="uploadCoffee">
 	insert into coffee(name,detail,price,flavor,feel,strong,roast,image,createDate) values(
-	#{coffee.name},#{coffee.detail},#{coffee.price},#{coffee.flavor},#{coffee.feel},#{coffee.strong},
-	#{coffee.roast},#{coffee.image},now())
+	#{name},#{detail},#{price},#{flavor},#{feel},#{strong},
+	#{roast},#{image},now())
 	</insert>
 </mapper>

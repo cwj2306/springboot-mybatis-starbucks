@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cos.starbucks.model.Coffee;
 import com.cos.starbucks.repository.CoffeeRepository;
 import com.cos.starbucks.repository.MenuRepository;
 import com.cos.starbucks.security.MyUserDetails;
@@ -29,42 +28,90 @@ public class AdminController {
 	private CoffeeRepository cRepo;
 	@Autowired
 	private MenuRepository mRepo;
-	
+
 	@Value("${file.path}")
 	private String fileRealPath;
-	
+
 	@GetMapping("")
 	public String admin(@AuthenticationPrincipal MyUserDetails userDetail) {
-		if(userDetail.getUser().getUsername().equals("admin")) {
+		if (userDetail.getUser().getUsername().equals("admin")) {
 			return "admin/select";
 		}
 		return "index";
 	}
 
-	@GetMapping("/upload")
-	public String imageUpload() {
+	@GetMapping("/admin")
+	public String adminadmin(@AuthenticationPrincipal MyUserDetails userDetail) {
+		if (userDetail.getUser().getUsername().equals("admin"))
+			return "admin/selectUpload";
 
-		return "admin/uploadForm";
+		return null;
 	}
-	
-	@PostMapping("/uploadProc")
-	public String imageUploadProc(@AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam("file") MultipartFile file,Coffee coffee) {
 
-		UUID uuid = UUID.randomUUID();
-		String uuidFilename = uuid + "_" + file.getOriginalFilename();
+	@GetMapping("/uploadcoffee")
+	public String uploadForm(@AuthenticationPrincipal MyUserDetails userDetail) {
+		if (userDetail.getUser().getUsername().equals("admin"))
+			return "admin/uploadCoffee";
 
-		Path filePath = Paths.get(fileRealPath + uuidFilename);
+		return null;
+	}
 
-		try {
-			Files.write(filePath, file.getBytes());// 하드디스크 기록
-		} catch (IOException e) {
-			e.printStackTrace();
+	@GetMapping("/uploadbev")
+	public String uploadForm2(@AuthenticationPrincipal MyUserDetails userDetail) {
+		if (userDetail.getUser().getUsername().equals("admin"))
+			return "admin/uploadBev";
+
+		return null;
+	}
+
+	@PostMapping("/upload/coffee")
+	public String uploadCoffee(@AuthenticationPrincipal MyUserDetails userDetail,
+			@RequestParam("file") MultipartFile file, @RequestParam("name") String name,
+			@RequestParam("detail") String detail, @RequestParam("price") int price,
+			@RequestParam("flavor") String flavor, @RequestParam("feel") String feel,
+			@RequestParam("strong") String strong, @RequestParam("roast") String roast) {
+		if (userDetail.getUser().getUsername().equals("admin")) {
+			UUID uuid = UUID.randomUUID();
+			String uuidFilename = uuid + "_" + file.getOriginalFilename();
+
+			Path filePath = Paths.get(fileRealPath + uuidFilename);
+			System.out.println(filePath);
+			try {
+				Files.write(filePath, file.getBytes());// 하드디스크 기록
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			cRepo.uploadCoffee(name, detail, price, flavor, feel, strong, roast,"/upload/"+uuidFilename);
+
+			return "redirect:/coffee/product_list";
 		}
-		coffee.setImage(uuidFilename);
-		cRepo.uploadCoffee(coffee);
-		
-		
-		return "redirect:/coffee/product_list";
+
+		return null;
+	}
+
+	@PostMapping("/upload/bev")
+	public String uploadBev(@AuthenticationPrincipal MyUserDetails userDetail, @RequestParam("file") MultipartFile file,
+			@RequestParam("name") String name, @RequestParam("price") int price,
+			@RequestParam("category") String category) {
+
+		if (userDetail.getUser().getUsername().equals("admin")) {
+			UUID uuid = UUID.randomUUID();
+			String uuidFilename = uuid + "_" + file.getOriginalFilename();
+
+			Path filePath = Paths.get(fileRealPath + uuidFilename);
+			System.out.println(filePath);
+			try {
+				Files.write(filePath, file.getBytes());// 하드디스크 기록
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			mRepo.uploadBev(name, price, category,"/upload/"+uuidFilename);
+
+			return "redirect:/menu/drink_list";
+		}
+
+		return null;
 	}
 }
