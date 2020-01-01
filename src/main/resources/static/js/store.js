@@ -11,7 +11,6 @@ var options = {
 var map = new kakao.maps.Map(container, options);
 
 
-
 //마커를 담을 배열입니다
 var markers = [];
 
@@ -39,10 +38,20 @@ fetch("http://localhost:8080/store_map/mycafe",{
 	
 });
 
-// 현재 지도를 기준으로 검색함
+
+// 현재 위치 추적
+if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition (function(pos) {
+		map.setCenter(new kakao.maps.LatLng(pos.coords.latitude,  pos.coords.longitude));
+		searchPlaces();
+	}, function(error) {
+		
+	});
+} else {
+	
+}
+
 searchPlaces();
-
-
 
 // 현재 지도의 중심을 기준으로 스타벅스 검색하는 함수
 function searchPlaces() {
@@ -68,6 +77,7 @@ function searchPlaces() {
 function searchPlacesKeyword() {
 
     var keyword = document.getElementById('keyword').value;
+    keyword += " 스타벅스";
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
         alert('키워드를 입력해주세요!');
