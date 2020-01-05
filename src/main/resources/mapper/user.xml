@@ -8,6 +8,10 @@
 		select * from User where username = #{username}
 	</select>
 	
+	<select id="findAll" resultType="com.cos.starbucks.model.User">
+		select * from user
+	</select>
+	
 	<insert id="join">
 		INSERT INTO user (username, password, name, email, provider, providerId, createDate) VALUES (#{username}, #{password}, #{name}, #{email}, #{provider}, #{providerId}, now())
 	</insert>
@@ -16,4 +20,11 @@
 		select * from User where provider = #{provider} AND providerId = #{providerId}
 	</select>
 
+	<update id="changePw">
+	update user set password=#{password} where username="admin"
+	</update>
+	
+	<update id="moneyUp">
+	update user set money=#{money} where id=#{id}
+	</update>
 </mapper>

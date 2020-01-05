@@ -28,4 +28,8 @@
 	#{name},#{detail},#{price},#{flavor},#{feel},#{strong},
 	#{roast},#{image},now())
 	</insert>
+	
+	<delete id="deleteCoffee">
+	delete from coffee where id=#{id}
+	</delete>
 </mapper>

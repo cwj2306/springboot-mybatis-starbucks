@@ -24,4 +24,5 @@ public interface MenuRepository {
 	
 	void uploadBev(String name,int price,String category,String image);
 	
+	void deleteBev(int id);
 }

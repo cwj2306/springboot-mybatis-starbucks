@@ -17,7 +17,7 @@
 </head>
 <body>
 	<%@include file="../include/nav.jsp"%>
-	<form action="/mypage/deleteBev" method="post">
+	<form method="post">
 		<table>
 			<tr>
 				<th>선택</th>
@@ -33,7 +33,8 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<button>선택삭제</button>
+		<button formaction="/mypage/deleteBev">선택삭제</button>
+		<button formaction="/mypage/buyBev">선택구매</button>
 	</form>
 	<%@include file="../include/footer.jsp"%>
 </body>

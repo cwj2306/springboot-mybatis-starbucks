@@ -59,4 +59,8 @@
 	insert into beverage(name,price,category,image,createDate) values(
 	#{name},#{price},#{category},#{image},now())
 	</insert>
+	
+	<delete id="deleteBev">
+	delete from beverage where id=#{id}
+	</delete>
 </mapper>

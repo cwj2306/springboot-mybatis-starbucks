@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+
 
   <title>Starbucks Coffee Korea :: Admin</title>
 
@@ -21,6 +23,7 @@
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
 
@@ -28,7 +31,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="/admin/index">관리자 페이지</a>
+    <a class="navbar-brand mr-1" href="/admin">관리자 페이지</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -80,7 +83,7 @@
           <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          <a class="dropdown-item" href="/logout">Logout</a>
         </div>
       </li>
     </ul>
@@ -92,7 +95,7 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/admin/index">
+        <a class="nav-link" href="/admin">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
@@ -103,14 +106,17 @@
           <span>Pages</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="/admin/login">Login</a>
-          <a class="dropdown-item" href="/admin/register">Register</a>
-          <a class="dropdown-item" href="/admin/forgot">Forgot Password</a>
+          <h6 class="dropdown-header">Admin Screens:</h6>
+          <a class="dropdown-item" href="/">메인 페이지</a>
+          <a class="dropdown-item" href="/admin/changePwForm">비밀번호 변경</a>
           <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="/admin/blank">Blank Page</a>
-          <a class="dropdown-item" href="/admin/blank">Blank Page2</a>
+          <h6 class="dropdown-header">Upload:</h6>
+          <a class="dropdown-item" href="/admin/bevUpload">음료 추가</a>
+          <a class="dropdown-item" href="/admin/coffeeUpload">커피 추가</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Delete:</h6>
+          <a class="dropdown-item" href="/admin/bevDelete">음료 삭제</a>
+          <a class="dropdown-item" href="/admin/coffeeDelete">커피 삭제</a>
         </div>
       </li>
       <li class="nav-item">
@@ -132,5 +138,5 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="/admin/index">Dashboard</a>
+            <a href="/admin">Dashboard</a>
           </li>

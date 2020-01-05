@@ -41,6 +41,7 @@ create table user(
     username varchar(30) not null unique,
     name varchar(30) not null,
     password varchar(100),
+    money int default 0,
     email varchar(100),
     provider varchar(100),
     providerId varchar(100),
@@ -48,6 +49,15 @@ create table user(
     createDate timestamp
 )engine=InnoDB default charset=utf8;
 
+create table bev_trade(
+	id int auto_increment primary key,
+    userId int,
+    beverageId int,
+	price int not null,
+	createDate timestamp,
+    foreign key(userId) references user(id),
+    foreign key(beverageId) references beverage(id)
+)engine=InnoDB default charset=utf8;
 
 create table user_card(
     id int auto_increment primary key,
@@ -81,7 +91,7 @@ create table myBeverage(
     beverageName varchar(100) not null,
     createDate timestamp,
     foreign key(userId) references user(id),
-    foreign key(beverageId) references beverage(id)
+    foreign key(beverageId) references beverage(id) on delete cascade
 )engine=InnoDB default charset=utf8;
 
 
@@ -92,7 +102,7 @@ create table myCoffee(
     coffeeName varchar(100) not null,
     createDate timestamp,
     foreign key(userId) references user(id),
-    foreign key(coffeeId) references coffee(id)
+    foreign key(coffeeId) references coffee(id) on delete cascade
 )engine=InnoDB default charset=utf8;
 
 
@@ -144,7 +154,7 @@ insert into beverage(name,price,category,createDate,image) values
 ('아이스 커피',4000,'브루드 커피',now(),'/image/beverage/ic.jpg'),
 ('오늘의 커피',4500,'브루드 커피',now(),'/image/beverage/tc.jpg'),
 ('아이스 토피 넛 라떼',6500,'에스프레소',now(),'/image/beverage/itnl.jpg'),
-('아이스 홀리데이 카라멜 돌체 라떼',6500,'에스프레소',now(),'/image/beverage/ihcdl.jpg'),
+('아이스 홀리데이 돌체 라떼',6500,'에스프레소',now(),'/image/beverage/ihcdl.jpg'),
 ('토피 넛 라떼',6000,'에스프레소',now(),'/image/beverage/tnl.jpg'),
 ('홀리데이 카라멜 돌체 라떼',6500,'에스프레소',now(),'/image/beverage/hcdl.jpg'),
 ('에스프레소 콘 파나',5500,'에스프레소',now(),'/image/beverage/ecp.jpg'),
@@ -152,8 +162,8 @@ insert into beverage(name,price,category,createDate,image) values
 ('아이스 카페 아메리카노',4500,'에스프레소',now(),'/image/beverage/ica.jpg'),
 ('카페 아메리카노',4000,'에스프레소',now(),'/image/beverage/ca.jpg'),
 ('토피 넛 프라푸치노',6500,'프라프치노',now(),'/image/beverage/tnp.jpg'),
-('홀리데이 카라멜 돌체 프라푸치노',6500,'프라프치노',now(),'/image/beverage/hcdp.jpg'),
-('홀리데이 민트 초콜릿 크림 프라푸치노',6000,'프라프치노',now(),'/image/beverage/hmccp.jpg'),
+('홀리데이 카라멜 프라푸치노',6500,'프라프치노',now(),'/image/beverage/hcdp.jpg'),
+('민트 초콜릿 크림 프라푸치노',6000,'프라프치노',now(),'/image/beverage/hmccp.jpg'),
 ('모카 프라푸치노',6000,'프라프치노',now(),'/image/beverage/mp.jpg'),
 ('에스프레소 프라푸치노',5500,'프라프치노',now(),'/image/beverage/ep.jpg'),
 ('이천 햅쌀 커피 프라푸치노',7000,'프라프치노',now(),'/image/beverage/ehcp.jpg'),

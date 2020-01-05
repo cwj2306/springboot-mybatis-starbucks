@@ -14,6 +14,10 @@
         <div class="nav_div">
             <nav class="top_first_nav">
                 <ul>
+                <c:if test="${principal.user.username eq 'admin'}">
+                <li class="top_fNav_01"><a href="/admin">관리자 페이지</a></li>
+                <li class="top_fNav_02">｜</li>
+                </c:if>
                 <c:choose>
                 	<c:when test="${empty principal.user}">
                 	<li class="top_fNav_01"><a href="/user/login">Sign In</a></li>

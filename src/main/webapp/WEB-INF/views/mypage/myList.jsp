@@ -17,11 +17,11 @@
 </head>
 <body>
 	<%@include file="../include/nav.jsp"%>
-	<form action="/mypage/deleteCoffee" method="post">
+	<form method="post">
 		<table>
 			<tr>
 				<th>선택</th>
-				<th>음료명</th>
+				<th>커피명</th>
 				<th>등록일</th>
 			</tr>
 			<c:forEach var="coffee" items="${coffeeList}">
@@ -32,7 +32,8 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<button>선택삭제</button>
+		<button formaction="/mypage/deleteCoffee">선택삭제</button>
+		<button formaction="/mypage/buyCoffee">선택구매</button>
 	</form>
 	<%@include file="../include/footer.jsp"%>
 </body>

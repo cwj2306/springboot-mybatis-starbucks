@@ -4,21 +4,30 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cos.starbucks.model.Beverage;
+import com.cos.starbucks.model.Coffee;
+import com.cos.starbucks.model.User;
 import com.cos.starbucks.repository.CoffeeRepository;
 import com.cos.starbucks.repository.MenuRepository;
+import com.cos.starbucks.repository.UserRepository;
 import com.cos.starbucks.security.MyUserDetails;
+import com.cos.starbucks.util.Script;
 
 @Controller
 @RequestMapping("/admin")
@@ -28,41 +37,140 @@ public class AdminController {
 	private CoffeeRepository cRepo;
 	@Autowired
 	private MenuRepository mRepo;
+	@Autowired
+	private UserRepository uRepo;
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	@Value("${file.path}")
 	private String fileRealPath;
 
 	@GetMapping("")
-	public String admin(@AuthenticationPrincipal MyUserDetails userDetail) {
+	public String admin(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
 		if (userDetail.getUser().getUsername().equals("admin")) {
-			return "admin/select";
+			List<User> userList = uRepo.findAll();
+			model.addAttribute("userList", userList);
+			return "admin/index";
 		}
-		return "index";
-	}
-
-	@GetMapping("/admin")
-	public String adminadmin(@AuthenticationPrincipal MyUserDetails userDetail) {
-		if (userDetail.getUser().getUsername().equals("admin"))
-			return "admin/selectUpload";
 
 		return null;
 	}
 
-	@GetMapping("/uploadcoffee")
-	public String uploadForm(@AuthenticationPrincipal MyUserDetails userDetail) {
+	@GetMapping("/tables")
+	public String tables(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
+		if (userDetail.getUser().getUsername().equals("admin")) {
+			List<User> userList = uRepo.findAll();
+			model.addAttribute("userList", userList);
+			return "admin/tables";
+		}
+		return null;
+	}
+
+	@GetMapping("/changePwForm")
+	public String register(@AuthenticationPrincipal MyUserDetails userDetail) {
 		if (userDetail.getUser().getUsername().equals("admin"))
-			return "admin/uploadCoffee";
+			return "admin/changePwForm";
 
 		return null;
 	}
 
-	@GetMapping("/uploadbev")
-	public String uploadForm2(@AuthenticationPrincipal MyUserDetails userDetail) {
+	@GetMapping("/bevUpload")
+	public String bevUpload(@AuthenticationPrincipal MyUserDetails userDetail) {
 		if (userDetail.getUser().getUsername().equals("admin"))
-			return "admin/uploadBev";
+			return "admin/bevUpload";
 
 		return null;
 	}
+
+	@GetMapping("/coffeeUpload")
+	public String coffeeUpload(@AuthenticationPrincipal MyUserDetails userDetail) {
+		if (userDetail.getUser().getUsername().equals("admin"))
+			return "admin/coffeeUpload";
+
+		return null;
+	}
+
+	@GetMapping("/bevDelete")
+	public String bevDelete(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
+		if (userDetail.getUser().getUsername().equals("admin")) {
+			List<Beverage> bever = mRepo.findAll();
+			List<Beverage> cold = mRepo.findCold();
+			List<Beverage> brud = mRepo.findBrud();
+			List<Beverage> espr = mRepo.findEspr();
+			List<Beverage> prap = mRepo.findPrap();
+			List<Beverage> blend = mRepo.findBlend();
+			List<Beverage> fiz = mRepo.findFiz();
+			List<Beverage> etc = mRepo.findEtc();
+			List<Beverage> tea = mRepo.findTea();
+			List<Beverage> juice = mRepo.findJuice();
+
+			model.addAttribute("bever", bever);
+			model.addAttribute("cold", cold);
+			model.addAttribute("brud", brud);
+			model.addAttribute("espr", espr);
+			model.addAttribute("prap", prap);
+			model.addAttribute("blend", blend);
+			model.addAttribute("fiz", fiz);
+			model.addAttribute("tea", tea);
+			model.addAttribute("etc", etc);
+			model.addAttribute("juice", juice);
+			return "admin/bevDelete";
+		}
+
+		return null;
+	}
+	
+	@GetMapping("/coffeeDelete")
+	public String coffeeDelete(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
+		if (userDetail.getUser().getUsername().equals("admin")) {
+			List<Coffee> coffee= cRepo.findAll();
+			List<Coffee> blonde= cRepo.findBlonde();
+			List<Coffee> medium= cRepo.findMedium();
+			List<Coffee> dark= cRepo.findDark();
+			model.addAttribute("blonde",blonde);
+			model.addAttribute("coffees",coffee);
+			model.addAttribute("medium",medium);
+			model.addAttribute("dark",dark);
+			return "admin/coffeeDelete";
+		}
+		return null;
+	}
+
+	@PostMapping("/bev/delete")
+	public String deletebev(@AuthenticationPrincipal MyUserDetails userDetail, @RequestParam String[] check) {
+		if (userDetail.getUser().getUsername().equals("admin")) {
+		for (String ids : check) {
+			int id=Integer.parseInt(ids);
+			mRepo.deleteBev(id);
+		}
+		return "redirect:/admin/bevDelete";
+	}
+		return null;
+	}
+	@PostMapping("/coffee/delete")
+	public String deletecoffee(@AuthenticationPrincipal MyUserDetails userDetail, @RequestParam String[] check) {
+		if (userDetail.getUser().getUsername().equals("admin")) {
+		for (String ids : check) {
+			int id=Integer.parseInt(ids);
+			cRepo.deleteCoffee(id);
+		}
+		return "redirect:/admin/coffeeDelete";
+	}
+		return null;
+	}
+	@PostMapping("/changePw")
+	public @ResponseBody String changePw(@AuthenticationPrincipal MyUserDetails userDetail,
+			@RequestParam("password") String password) {
+		if (userDetail.getUser().getUsername().equals("admin")) {
+			String encPassword = passwordEncoder.encode(password);
+			uRepo.changePw(encPassword);
+
+			return Script.alertAndHref("비밀번호 변경 완료 다시로그인 해주세요.", "/logout");
+		}
+
+		return null;
+	}
+	
 
 	@PostMapping("/upload/coffee")
 	public String uploadCoffee(@AuthenticationPrincipal MyUserDetails userDetail,
@@ -82,9 +190,9 @@ public class AdminController {
 				e.printStackTrace();
 			}
 
-			cRepo.uploadCoffee(name, detail, price, flavor, feel, strong, roast,"/upload/"+uuidFilename);
+			cRepo.uploadCoffee(name, detail, price, flavor, feel, strong, roast, "/upload/" + uuidFilename);
 
-			return "redirect:/coffee/product_list";
+			return "redirect:/admin";
 		}
 
 		return null;
@@ -107,40 +215,22 @@ public class AdminController {
 				e.printStackTrace();
 			}
 
-			mRepo.uploadBev(name, price, category,"/upload/"+uuidFilename);
+			mRepo.uploadBev(name, price, category, "/upload/" + uuidFilename);
 
-			return "redirect:/menu/drink_list";
+			return "redirect:/admin";
 		}
 
 		return null;
 	}
-	
-	@GetMapping("/index")
-	public String index() {
-		return "admin/index";
-	}
-	@GetMapping("/login")
-	public String login() {
-		return "admin/login";
-	}
-	@GetMapping("/register")
-	public String register() {
-		return "admin/register";
-	}
-	@GetMapping("/tables")
-	public String tables() {
-		return "admin/tables";
-	}
+
 	@GetMapping("/forgot")
 	public String forgot() {
 		return "admin/forgot-password";
 	}
+
 	@GetMapping("/charts")
 	public String charts() {
 		return "admin/charts";
 	}
-	@GetMapping("/blank")
-	public String blank() {
-		return "admin/blank";
-	}
+
 }

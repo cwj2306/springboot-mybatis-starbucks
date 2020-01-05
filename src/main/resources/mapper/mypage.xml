@@ -20,15 +20,15 @@
 		select * from user_card where userId= #{?}
 	</select>
 	
-	<select id="CheckCoffeeDelete" resultType="Integer">
+	<select id="checkMyCoffee" resultType="Integer">
 		select userId from myCoffee where id=#{?} 
 	</select>
 	
-	<select id="CheckBevDelete" resultType="Integer">
+	<select id="checkMyBev" resultType="Integer">
 		select userId from myBeverage where id=#{?} 
 	</select>
 	
-	<select id="CheckCardDelete" resultType="Integer">
+	<select id="checkMyCard" resultType="Integer">
 		select userId from user_card where id=#{?} 
 	</select>
 

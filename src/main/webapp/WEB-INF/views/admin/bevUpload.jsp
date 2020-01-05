@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Starbucks Coffee Korea :: Admin</title>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    pageEncoding="UTF-8"%>
+ <link rel="stylesheet" href="../css/image_upload.css">
+<%@include file="../admin/nav.jsp"%>
 <link rel="stylesheet" href="../css/image_upload.css">
-</head>
-<body>
+  <li class="breadcrumb-item active">Blank Page</li>
+        </ol>
 
+     
 	<div class="container">
 		<div class="box">
 			<div class="bigbox">
@@ -71,8 +67,18 @@
 			</div>
 		</div>
 	</div>
+      </div>
+      <!-- /.container-fluid -->
 
-	<script>
+
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+  <%@include file="../admin/footer.jsp"%>
+  <script>
 		var sel_file;
 		$(document).ready(function() {
 			$('#input_img').on("change", handleImgFileSelect);
@@ -96,5 +102,17 @@
 			});
 		}
 	</script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../js/sb-admin.min.js"></script>
+
 </body>
+
 </html>

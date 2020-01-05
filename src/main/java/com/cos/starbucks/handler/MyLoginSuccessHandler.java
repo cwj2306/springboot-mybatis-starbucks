@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-
-
 public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -19,7 +17,6 @@ public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
 		String username = request.getParameter("username");
 		String rememberMe = request.getParameter("rememberMe");
 
-		
 		if (rememberMe != null) {
 
 			Cookie c = new Cookie("username", username);
@@ -32,11 +29,8 @@ public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
 			c.setMaxAge(0);// 즉시 사라짐
 			response.addCookie(c);
 		}
-		if(username.equals("admin")) {
-			response.sendRedirect("/admin");
-		}else {
-			response.sendRedirect("/");
-		}
-		
+
+		response.sendRedirect("/");
+
 	}
 }

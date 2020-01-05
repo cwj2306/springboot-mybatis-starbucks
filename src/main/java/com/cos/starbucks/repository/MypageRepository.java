@@ -20,7 +20,10 @@ public interface MypageRepository {
 	void deleteCoffee(int id);
 	void deleteBev(int id);
 	void deleteCard(int id);
-	int CheckCoffeeDelete(int id);
-	int CheckBevDelete(int id);
-	int CheckCardDelete(int id);
+	int checkMyCoffee(int id);
+	int checkMyBev(int id);
+	int checkMyCard(int id);
+	
+	void coffeeTrade();
+	void minusPoint();
 }

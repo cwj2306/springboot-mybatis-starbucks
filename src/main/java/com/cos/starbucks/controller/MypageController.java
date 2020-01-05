@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
-
+import com.cos.starbucks.model.User;
 import com.cos.starbucks.model.User_card;
 import com.cos.starbucks.repository.MypageRepository;
+import com.cos.starbucks.repository.UserRepository;
 import com.cos.starbucks.security.MyUserDetails;
+import com.cos.starbucks.service.TradeService;
 import com.cos.starbucks.util.Script;
 
 @Controller
@@ -29,13 +31,17 @@ public class MypageController {
 	
 	@Autowired
 	private MypageRepository mRepo;
+	@Autowired
+	private UserRepository uRepo;
+	@Autowired
+	private TradeService service;
 	
 	
 	@PostMapping("/deleteCoffee")
 	public @ResponseBody String coffeeDelete(@AuthenticationPrincipal MyUserDetails userDetail,@RequestParam String[] check) {
 		for (String ids : check) {
 			int id=Integer.parseInt(ids);
-			int result=mRepo.CheckCoffeeDelete(id);
+			int result=mRepo.checkMyCoffee(id);
 			System.out.println(result);
 			if(result==userDetail.getUser().getId())
 				mRepo.deleteCoffee(id);
@@ -50,7 +56,7 @@ public class MypageController {
 	public @ResponseBody String bevDelete(@AuthenticationPrincipal MyUserDetails userDetail,@RequestParam String[] check) {
 		for (String ids : check) {
 			int id=Integer.parseInt(ids);
-			int result=mRepo.CheckBevDelete(id);
+			int result=mRepo.checkMyBev(id);
 			System.out.println(result);
 			if(result==userDetail.getUser().getId())
 				mRepo.deleteBev(id);
@@ -60,10 +66,25 @@ public class MypageController {
 		return Script.href("/mypage/mybev");
 	}
 	
+	@PostMapping("/buyCoffee")
+	public @ResponseBody String buyCoffee(@AuthenticationPrincipal MyUserDetails userDetail,@RequestParam String[] check) {
+		for (String ids : check) {
+			int id=Integer.parseInt(ids);
+			int result=mRepo.checkMyCoffee(id);
+			System.out.println(result);
+			if(result==userDetail.getUser().getId())
+				service.coffeeTrade();
+			else return Script.alertAndHref("비정상적인 접근입니다.","/");
+		}
+	
+		
+		return Script.href("/mypage/mylist");
+	}
+		
 	
 	@PostMapping("/deleteCard/{id}")
 	public @ResponseBody String cardDelete(@PathVariable int id,@AuthenticationPrincipal MyUserDetails userDetail) {
-		int result=mRepo.CheckCardDelete(id);
+		int result=mRepo.checkMyCard(id);
 		System.out.println(result);
 		if(result==userDetail.getUser().getId())
 			mRepo.deleteCard(id);
@@ -143,9 +164,15 @@ public class MypageController {
 	@PostMapping("/pointup")
 	public String pointUp(@AuthenticationPrincipal MyUserDetails userDetail,@RequestParam int point){
 		User_card mycard=mRepo.findByUserIdCard(userDetail.getUser().getId());
+		User user=uRepo.findByUsername(userDetail.getUser().getUsername());
+		System.out.println(point);
+		System.out.println(user.getMoney());
+		int money=user.getMoney()+point;
+		System.out.println(money);
 		int result=mycard.getPoint()+point;
-		mRepo.updatePoint(userDetail.getUser().getId(),result);
 		
+		mRepo.updatePoint(userDetail.getUser().getId(),result);
+		uRepo.moneyUp(money,userDetail.getUser().getId());
 		return "redirect:/mypage/mycard";
 	}
 
