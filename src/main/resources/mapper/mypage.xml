@@ -20,6 +20,14 @@
 		select * from user_card where userId= #{?}
 	</select>
 	
+		<select id="countByUserId" resultType="Integer">
+		select count(*) from user_card where userId= #{?}
+	</select>
+	
+	<select id="findCardPoint" resultType="Integer">
+		select point from user_card where userId=#{?} 
+	</select>
+	
 	<select id="checkMyCoffee" resultType="Integer">
 		select userId from myCoffee where id=#{?} 
 	</select>
@@ -31,7 +39,23 @@
 	<select id="checkMyCard" resultType="Integer">
 		select userId from user_card where id=#{?} 
 	</select>
-
+	
+	<select id="findCoffeePrice" resultType="Integer">
+	select c.price from myCoffee m, coffee c where m.userId=#{userId} and m.id=${id} and m.coffeeId=c.id;
+	</select>
+	
+	<select id="findBevPrice" resultType="Integer">
+	select b.price from myBeverage m, beverage b where m.userId=#{userId} and m.id=${id} and m.beverageId=b.id;
+	</select>
+	
+	<select id="findCoffeeId" resultType="Integer">
+	select coffeeId from myCoffee where id=#{?}
+	</select>
+	
+	<select id="findBevId" resultType="Integer">
+	select beverageId from myBeverage where id=#{?}
+	</select>
+	
 	<insert id="coffeeSave">
 		insert into myCoffee(coffeeId,userId,coffeeName,createDate)
 		values(#{coffeeId},#{userId},#{coffeeName},now())
@@ -47,10 +71,14 @@
 		values(#{cardId},#{userId},#{cardName},#{cardImage},now())
 	</insert>
 	
-	<select id="countByUserId" resultType="Integer">
-		select count(*) from user_card where userId= #{?}
-	</select>
+	<insert id="coffeeTrade">
+	insert into coffee_trade(userId,coffeeId,price,createDate) values(#{userId},#{coffeeId},#{price},now())
+	</insert>
 	
+	<insert id="bevTrade">
+	insert into bev_trade(userId,beverageId,price,createDate) values(#{userId},#{bevId},#{price},now())
+	</insert>
+
 	<update id="updatePoint">
 	update user_card set point=#{point} where userId=#{id} 
 	</update>

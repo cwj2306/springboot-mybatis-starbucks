@@ -2,6 +2,7 @@ package com.cos.starbucks.repository;
 
 import java.util.List;
 
+
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
 import com.cos.starbucks.model.User_card;
@@ -24,6 +25,11 @@ public interface MypageRepository {
 	int checkMyBev(int id);
 	int checkMyCard(int id);
 	
-	void coffeeTrade();
-	void minusPoint();
+	void coffeeTrade(int userId , int price , int coffeeId);
+	void bevTrade(int userId , int price , int bevId);
+	int findCoffeePrice(int userId,int id);
+	int findCoffeeId(int id);
+	int findBevPrice(int userId,int id);
+	int findBevId(int id);
+	int findCardPoint(int userId);
 }
