@@ -55,6 +55,21 @@
 	<select id="findBevId" resultType="Integer">
 	select beverageId from myBeverage where id=#{?}
 	</select>
+	<select id="findCoffeeName" resultType="String">
+	select name from coffee where id=#{?}
+	</select>
+	<select id="findBevName" resultType="String">
+	select name from beverage where id=#{?}
+	</select>
+	
+	<select id="CheckCardExist" resultType="com.cos.starbucks.model.User_card">
+	select * from User_card where userId=#{?}
+	</select>
+	
+	<select id="findTradeLog" resultType="com.cos.starbucks.model.Trade">
+	select * from trade where userId=#{?}
+	</select>
+	
 	
 	<insert id="coffeeSave">
 		insert into myCoffee(coffeeId,userId,coffeeName,createDate)
@@ -71,14 +86,10 @@
 		values(#{cardId},#{userId},#{cardName},#{cardImage},now())
 	</insert>
 	
-	<insert id="coffeeTrade">
-	insert into coffee_trade(userId,coffeeId,price,createDate) values(#{userId},#{coffeeId},#{price},now())
+	<insert id="trade">
+	insert into trade(userId,name,price,createDate) values(#{userId},#{name},#{price},now())
 	</insert>
 	
-	<insert id="bevTrade">
-	insert into bev_trade(userId,beverageId,price,createDate) values(#{userId},#{bevId},#{price},now())
-	</insert>
-
 	<update id="updatePoint">
 	update user_card set point=#{point} where userId=#{id} 
 	</update>

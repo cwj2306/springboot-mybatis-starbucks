@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import com.cos.starbucks.model.Beverage;
 import com.cos.starbucks.model.Coffee;
+import com.cos.starbucks.model.Trade;
 import com.cos.starbucks.model.User;
+import com.cos.starbucks.repository.AdminRepository;
 import com.cos.starbucks.repository.CoffeeRepository;
 import com.cos.starbucks.repository.MenuRepository;
 import com.cos.starbucks.repository.UserRepository;
@@ -38,6 +41,8 @@ public class AdminController {
 	@Autowired
 	private MenuRepository mRepo;
 	@Autowired
+	private AdminRepository aRepo;
+	@Autowired
 	private UserRepository uRepo;
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
@@ -49,7 +54,9 @@ public class AdminController {
 	public String admin(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
 		if (userDetail.getUser().getUsername().equals("admin")) {
 			List<User> userList = uRepo.findAll();
+			int sum=uRepo.findSum();
 			model.addAttribute("userList", userList);
+			model.addAttribute("sum",sum);
 			return "admin/index";
 		}
 
@@ -59,8 +66,10 @@ public class AdminController {
 	@GetMapping("/tables")
 	public String tables(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
 		if (userDetail.getUser().getUsername().equals("admin")) {
-			List<User> userList = uRepo.findAll();
-			model.addAttribute("userList", userList);
+			List<Trade> tradeList = aRepo.findTrade();
+			int sum=aRepo.findSum();
+			model.addAttribute("tradeList",tradeList);
+			model.addAttribute("sum",sum);
 			return "admin/tables";
 		}
 		return null;

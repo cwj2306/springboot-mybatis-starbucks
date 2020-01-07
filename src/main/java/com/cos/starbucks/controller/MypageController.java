@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.starbucks.model.Beverage;
+import com.cos.starbucks.model.Trade;
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
 import com.cos.starbucks.model.User;
@@ -71,6 +73,8 @@ public class MypageController {
 	public @ResponseBody String buyCoffee(@AuthenticationPrincipal MyUserDetails userDetail,
 			@RequestParam String[] check) {
 		int principalId = userDetail.getUser().getId();
+		User_card userCard=mRepo.CheckCardExist(principalId);
+		if(userCard==null) return Script.alertAndHref("카드등록후 사용해주세요.", "/menu/card_list");
 		int price = 0;
 		int sum=0;
 		for (String ids : check) {
@@ -84,18 +88,20 @@ public class MypageController {
 		}
 		System.out.println("컨트롤러:"+price);
 		boolean bl = service.cardPoint(principalId, sum);
+
 		if (bl) {
 			for (String ids : check) {
 				int id = Integer.parseInt(ids);
 				int coffeeId = mRepo.findCoffeeId(id);
+				String name=mRepo.findCoffeeName(coffeeId);
 				price = service.findCoffeePrice(principalId, id);
-				service.coffeeTrade(principalId, price, coffeeId);
+				service.trade(principalId, price,name);
 			}
 
 		} else
 			return Script.alertAndHref("잔액부족, 충전하세요", "/mypage/mycard");
 
-		return Script.alertAndHref("구매완료 구매내역 페이지로가야함.", "/");
+		return Script.alertAndHref("구매완료", "/mypage/mylog");
 	}
 	
 	@PostMapping("/buyBev")
@@ -119,14 +125,15 @@ public class MypageController {
 			for (String ids : check) {
 				int id = Integer.parseInt(ids);
 				int bevId = mRepo.findBevId(id);
+				String name=mRepo.findBevName(bevId);
 				price = service.findBevPrice(principalId, id);
-				service.bevTrade(principalId, price, bevId);
+				service.trade(principalId, price,name);
 			}
 
 		} else
 			return Script.alertAndHref("잔액부족, 충전하세요", "/mypage/mycard");
 
-		return Script.alertAndHref("구매완료 구매내역 페이지로가야함.", "/");
+		return Script.alertAndHref("구매완료 ", "/mypage/mylog");
 	}
 
 	@PostMapping("/deleteCard/{id}")
@@ -136,7 +143,7 @@ public class MypageController {
 		if (result == userDetail.getUser().getId())
 			mRepo.deleteCard(id);
 		else
-			return Script.alertAndHref("비정상적인 접근입니다.", "/");
+			return Script.alertAndHref("비정상적인 접근입니다.", "/mypage");
 
 		return Script.href("/menu/card_list");
 	}
@@ -164,7 +171,7 @@ public class MypageController {
 		if (cardCheck == 0) {
 			mRepo.cardSave(id, userDetail.getUser().getId(), name, image);
 		} else {
-			return Script.alertAndHref("내카드는 한장만 등록가능합니다. 내카드페이지로 이동합니다.", "/mypage/mycard");
+			return Script.alertAndHref("이미 사용중인 카드가 있습니다. 내카드는 한장만 등록가능합니다. ", "/mypage/mycard");
 		}
 
 		return Script.href("/mypage/mycard");
@@ -201,6 +208,14 @@ public class MypageController {
 
 		return "/mypage/pay";
 	}
+	
+	@GetMapping("/mylog")
+	public String myCoffeelog(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
+		List<Trade> log=mRepo.findTradeLog(userDetail.getUser().getId());
+		model.addAttribute("log",log);
+		return "/mypage/mylog";
+	}
+	
 
 	@PostMapping("/pointup")
 	public String pointUp(@AuthenticationPrincipal MyUserDetails userDetail, @RequestParam int point) {

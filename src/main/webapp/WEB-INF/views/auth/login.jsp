@@ -48,6 +48,9 @@
                 <a id="custom-login-btn" href="/kakao/login">
                     <img src="http://mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="50%;" style="float:right;"/>
                 </a>
+                  <a id="custom-login-btn" href="/naver/login">
+                 	<img src="http://static.nid.naver.com/oauth/small_g_in.PNG" width="50%;" style="float:right;">
+                 </a>
                 <div style="clear:both;"></div>
             </form>
             <p class="login_whiteBox_p2">* 타 사이트와 비밀번호를 동일하게 사용할 경우 도용의 위험이 있으므로, <br/> 정기적인 비밀번호 변경을 해주시길 바랍니다.</p>

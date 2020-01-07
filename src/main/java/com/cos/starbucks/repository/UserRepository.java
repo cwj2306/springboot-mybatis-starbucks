@@ -11,4 +11,5 @@ public interface UserRepository {
 	void changePw(String password);
 	void moneyUp(int money,int id);
 	List<User> findAll();
+	int findSum();
 }

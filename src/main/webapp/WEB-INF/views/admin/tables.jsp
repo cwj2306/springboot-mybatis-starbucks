@@ -7,7 +7,7 @@
 <!-- DataTables Example -->
 <div class="card mb-3">
 	<div class="card-header">
-		<i class="fas fa-table"></i> Data Table Example
+		<i class="fas fa-table"></i>커피 판매 현황
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
@@ -15,40 +15,37 @@
 				cellspacing="0">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Level</th>
-						<th>E-mail</th>
-						<th>Start date</th>
-						<th>총 충전액</th>
+						<th>고객번호</th>
+						<th>상품이름</th>
+						<th>구매일</th>
+						<th>가격</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th>Name</th>
-						<th>Level</th>
-						<th>E-mail</th>
-						<th>Start date</th>
-						<th>총 충전액</th>
+						<th>고객번호</th>
+						<th>상품이름</th>
+						<th>구매일</th>
+						<th>총 판매액 ${sum}원</th>
 					</tr>
 				</tfoot>
 				<tbody>
-					<c:forEach var="user" items="${userList}">
+					<c:forEach var="trade" items="${tradeList}">
 						<tr>
-							<td>${user.name}</td>
-							<td>${user.level}</td>
-							<td>${user.email}</td>
-							<td>${user.createDate}</td>
-							<td>${user.money}</td>
+							<td>${trade.userId}</td>
+							<td>${trade.name}</td>
+							<td>${trade.createDate}</td>
+							<td>${trade.price}원</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<div class="card-footer small text-muted">Updated yesterday at
-		11:59 PM</div>
 </div>
 
+<div class="card-footer small text-muted">Updated yesterday at
+		11:59 PM</div>
 <p class="small text-center text-muted my-5">
 	<em>More table examples coming soon...</em>
 </p>

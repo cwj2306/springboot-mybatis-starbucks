@@ -97,7 +97,7 @@
                     <th>Level</th>
                     <th>E-mail</th>   
                     <th>Start date</th>
-                    <th>총 충전액</th>
+                    <th>충전액</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -106,7 +106,7 @@
                     <th>Level</th>  
                     <th>E-mail</th>     
                     <th>Start date</th>
-                    <th>총 충전액</th>
+                    <th>총 충전액 ${sum}원</th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -125,6 +125,7 @@
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
+        
 
       </div>
       <!-- /.container-fluid -->
