@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.cos.starbucks.handler.MyLoginSuccessHandler;
+import com.cos.starbucks.handler.MyLoginHandler;
 
 
 @Configuration
@@ -48,7 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.loginPage("/user/login")
 		//이 주소를 타고 로그인이 된다 (로그인폼에서 아래의 주소로 액션을 타게 해야한다.)
 		.loginProcessingUrl("/user/loginProc")
-		.successHandler(new MyLoginSuccessHandler());
+		.successHandler(new MyLoginHandler())
+		.failureHandler(new MyLoginHandler());
 		//로그인이 성공 할 때 이동
 		//	.defaultSuccessUrl("/user");
 		//.and()
