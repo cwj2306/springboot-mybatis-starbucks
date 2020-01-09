@@ -1,0 +1,48 @@
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {position:relative;width:100%;height:0px;padding-bottom: 40%;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255);z-index: 1;font-size:12px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option{text-align: center;}
+#menu_wrap .option p {margin:10px 0;}  
+#menu_wrap .option button {margin-left:5px;}
+#placesList li {list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {display: block;margin-top:4px;}
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info{padding:10px 0 10px 10px;}
+#placesList .info .gray {color:#8a8a8a;}
+#placesList .info .jibun {padding-left:26px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel {color:#009900;}
+#placesList .item .markerbg {float:right;position:relative;width:36px; height:50px;margin:10px 0 0 10px;background:url(/img/store/marker_star.png) no-repeat;background-size:contain;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+.quick_search_input { background:#006633; height:60px; width:100%; }
+.quick_search_inner { background:#fff; border:1px solid #ddd; border-radius:3px; float:left; height:38px; margin:10px 0 0 10px; position:relative; width:90%; }
+.quick_search_inner input { border:none; float:left; height:38px; margin-left:2%; padding:0; width:95%; }
+.quick_search_inner a { background:url("/img/store/icon_magnifier.png"); display:block; height:23px; overflow:hidden; position:absolute; right:7px; top:7px; text-indent:-20000px; width:19px; }
+
+#menu_wrap .header{
+	height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu_wrap .header div{
+	width: 50%;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bolder;
+}
+
+#menu_wrap .header div:hover{
+	cursor: pointer;
+}
+
+#menu_wrap .header .on{
+	background: #006633;
+	color: white;
+}

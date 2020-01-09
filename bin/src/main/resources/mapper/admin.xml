@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
+<mapper namespace="com.cos.starbucks.repository.AdminRepository">
+	
+	<select id="findTrade" resultType="com.cos.starbucks.model.Trade">
+		SELECT *	FROM trade order by createDate DESC
+	</select>
+	
+	<select id="findSum" resultType="Integer">
+		SELECT sum(price) FROM trade
+	</select>
+	
+
+	
+</mapper>

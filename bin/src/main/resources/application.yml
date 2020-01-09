@@ -34,8 +34,8 @@ spring:
 #      name: test
 #      password: 1234
 
-#파일 저장할 경로
+#파일 저장할 경로 git pull할때마다 자기주소로 바꿔야 에러안남
 file:
-  path: C:/src/starbucks/starbucks/src/main/resources/static/images/
+  path: C:/Users/it/Desktop/starbucks/starbucks/src/main/resources/upload/
           
 

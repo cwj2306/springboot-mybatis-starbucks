@@ -54,4 +54,13 @@
 	<select id="findByIdCard" resultType="com.cos.starbucks.model.Card">
 		select * from card where id=#{?};
 	</select>
+	
+	<insert id="uploadBev">
+	insert into beverage(name,price,category,image,createDate) values(
+	#{name},#{price},#{category},#{image},now())
+	</insert>
+	
+	<delete id="deleteBev">
+	delete from beverage where id=#{id}
+	</delete>
 </mapper>

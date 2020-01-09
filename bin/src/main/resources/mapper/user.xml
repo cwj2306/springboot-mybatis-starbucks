@@ -8,12 +8,29 @@
 		select * from User where username = #{username}
 	</select>
 	
-	<insert id="join">
-		INSERT INTO user (username, password, name, email, provider, providerId, createDate) VALUES (#{username}, #{password}, #{name}, #{email}, #{provider}, #{providerId}, now())
-	</insert>
+	<select id="findAll" resultType="com.cos.starbucks.model.User">
+		select * from user
+	</select>
 	
 	<select id="findByProviderAndProviderId" resultType="com.cos.starbucks.model.User">
 		select * from User where provider = #{provider} AND providerId = #{providerId}
 	</select>
+	
+	<select id="findSum" resultType="Integer">
+		select sum(money) from user;
+	</select>
+	
+	<insert id="join">
+		INSERT INTO user (username, password, name, email, provider, providerId, createDate) VALUES (#{username}, #{password}, #{name}, #{email}, #{provider}, #{providerId}, now())
+	</insert>
+	
+	
 
+	<update id="changePw">
+	update user set password=#{password} where username="admin"
+	</update>
+	
+	<update id="moneyUp">
+	update user set money=#{money} where id=#{id}
+	</update>
 </mapper>

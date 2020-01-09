@@ -19,4 +19,17 @@
 	<select id="findDark" resultType="com.cos.starbucks.model.Coffee">
 		select * from coffee where roast='다크 로스트'
 	</select>
+	<select id="findCoffee" resultType="com.cos.starbucks.model.Coffee">
+		select * from coffee where flavor=#{flavor} and feel=#{feel} and strong=#{strong} 
+	</select>
+	
+	<insert id="uploadCoffee">
+	insert into coffee(name,detail,price,flavor,feel,strong,roast,image,createDate) values(
+	#{name},#{detail},#{price},#{flavor},#{feel},#{strong},
+	#{roast},#{image},now())
+	</insert>
+	
+	<delete id="deleteCoffee">
+	delete from coffee where id=#{id}
+	</delete>
 </mapper>

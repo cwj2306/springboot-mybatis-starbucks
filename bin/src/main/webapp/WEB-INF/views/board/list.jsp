@@ -42,12 +42,14 @@
 		<c:forEach var="board" items="${boards}">
 			<tr>
 				<td>${board.id}</td>
-				<td><a href="/board/${board.id}">${board.title}</a></td>
+				<td><a href="/board/detail/${board.id}">${board.title}</a></td>
 				<td>${board.createDate}</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<c:if test="${principal.user.username eq 'admin'}">
 	<a href="/board/write">글쓰기</a>
+	</c:if>
 	<br/>
 <!-- 페이지 s-->
 	<div id="paginationBox">

@@ -20,18 +20,57 @@
 		select * from user_card where userId= #{?}
 	</select>
 	
-	<select id="CheckCoffeeDelete" resultType="Integer">
+		<select id="countByUserId" resultType="Integer">
+		select count(*) from user_card where userId= #{?}
+	</select>
+	
+	<select id="findCardPoint" resultType="Integer">
+		select point from user_card where userId=#{?} 
+	</select>
+	
+	<select id="checkMyCoffee" resultType="Integer">
 		select userId from myCoffee where id=#{?} 
 	</select>
 	
-	<select id="CheckBevDelete" resultType="Integer">
+	<select id="checkMyBev" resultType="Integer">
 		select userId from myBeverage where id=#{?} 
 	</select>
 	
-	<select id="CheckCardDelete" resultType="Integer">
+	<select id="checkMyCard" resultType="Integer">
 		select userId from user_card where id=#{?} 
 	</select>
-
+	
+	<select id="findCoffeePrice" resultType="Integer">
+	select c.price from myCoffee m, coffee c where m.userId=#{userId} and m.id=${id} and m.coffeeId=c.id;
+	</select>
+	
+	<select id="findBevPrice" resultType="Integer">
+	select b.price from myBeverage m, beverage b where m.userId=#{userId} and m.id=${id} and m.beverageId=b.id;
+	</select>
+	
+	<select id="findCoffeeId" resultType="Integer">
+	select coffeeId from myCoffee where id=#{?}
+	</select>
+	
+	<select id="findBevId" resultType="Integer">
+	select beverageId from myBeverage where id=#{?}
+	</select>
+	<select id="findCoffeeName" resultType="String">
+	select name from coffee where id=#{?}
+	</select>
+	<select id="findBevName" resultType="String">
+	select name from beverage where id=#{?}
+	</select>
+	
+	<select id="CheckCardExist" resultType="com.cos.starbucks.model.User_card">
+	select * from User_card where userId=#{?}
+	</select>
+	
+	<select id="findTradeLog" resultType="com.cos.starbucks.model.Trade">
+	select * from trade where userId=#{?}
+	</select>
+	
+	
 	<insert id="coffeeSave">
 		insert into myCoffee(coffeeId,userId,coffeeName,createDate)
 		values(#{coffeeId},#{userId},#{coffeeName},now())
@@ -47,9 +86,9 @@
 		values(#{cardId},#{userId},#{cardName},#{cardImage},now())
 	</insert>
 	
-	<select id="countByUserId" resultType="Integer">
-		select count(*) from user_card where userId= #{?}
-	</select>
+	<insert id="trade">
+	insert into trade(userId,name,price,createDate) values(#{userId},#{name},#{price},now())
+	</insert>
 	
 	<update id="updatePoint">
 	update user_card set point=#{point} where userId=#{id} 
