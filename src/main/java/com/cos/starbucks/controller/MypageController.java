@@ -36,6 +36,14 @@ public class MypageController {
 	private UserRepository uRepo;
 	@Autowired
 	private TradeService service;
+	
+	
+	@GetMapping("/myStarbucks")
+	public String myStarbucks() {
+		
+		return "/mypage/myStarBucks";
+	}
+	
 
 	@PostMapping("/deleteCoffee")
 	public @ResponseBody String coffeeDelete(@AuthenticationPrincipal MyUserDetails userDetail,
