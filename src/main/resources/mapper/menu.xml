@@ -55,6 +55,41 @@
 		select * from card where id=#{?};
 	</select>
 	
+		<!--푸드 -->
+	<select id="findAllFood" resultType="com.cos.starbucks.model.Food">
+		select * from food
+	</select>
+	
+	<select id="findBake" resultType="com.cos.starbucks.model.Food">
+		select * from food where category='베이커리'
+	</select>
+	
+	<select id="findCake" resultType="com.cos.starbucks.model.Food">
+		select * from food where category='케이크'
+	</select>
+	
+	<select id="findSand" resultType="com.cos.starbucks.model.Food">
+		select * from food where category='샌드위치와 샐러드'
+	</select>
+	
+	<select id="findHot" resultType="com.cos.starbucks.model.Food">
+		select * from food where category='따뜻한 푸드'
+	</select>
+	
+	<select id="findFruit" resultType="com.cos.starbucks.model.Food">
+		select * from food where category='과일과 요거트'
+	</select>
+	
+	<select id="findSnack" resultType="com.cos.starbucks.model.Food">
+		select * from food where category='스낵과 미니 디저트'
+	</select>
+	
+	<select id="findIce" resultType="com.cos.starbucks.model.Food">
+		select * from food where category='아이스크림'
+	</select>
+	<!--푸드 끝  -->
+	
+	
 	<insert id="uploadBev">
 	insert into beverage(name,price,category,image,createDate) values(
 	#{name},#{price},#{category},#{image},now())

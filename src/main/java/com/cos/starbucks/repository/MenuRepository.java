@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cos.starbucks.model.Beverage;
 import com.cos.starbucks.model.Card;
+import com.cos.starbucks.model.Food;
 
 public interface MenuRepository {
 	
@@ -19,6 +20,15 @@ public interface MenuRepository {
 	List<Beverage> findEtc();
 	List<Beverage> findTea();
 	List<Beverage> findJuice();
+	
+	List<Food> findAllFood();
+	List<Food> findBake();
+	List<Food> findCake();
+	List<Food> findSand();
+	List<Food> findHot();
+	List<Food> findFruit();
+	List<Food> findSnack();
+	List<Food> findIce();
 	
 	List<Card> findAllCard();
 	

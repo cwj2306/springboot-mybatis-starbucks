@@ -133,4 +133,81 @@ function espr() {
 }
 
 
+//푸드시작 
+
+function allFood() {
+	$("#bake_jquery").css("display", "block");
+	$("#cake_jquery").css("display", "block");
+	$("#sand_jquery").css("display", "block");
+	$("#hot_jquery").css("display", "block");
+	$("#fruit_jquery").css("display", "block");
+	$("#snack_jquery").css("display", "block");
+	$("#ice_jquery").css("display", "block");
+}
+function bake() {
+	$("#bake_jquery").css("display", "block");
+	$("#cake_jquery").css("display", "none");
+	$("#sand_jquery").css("display", "none");
+	$("#hot_jquery").css("display", "none");
+	$("#fruit_jquery").css("display", "none");
+	$("#snack_jquery").css("display", "none");
+	$("#ice_jquery").css("display", "none");
+}
+function cake() {
+	$("#bake_jquery").css("display", "none");
+	$("#cake_jquery").css("display", "block");
+	$("#sand_jquery").css("display", "none");
+	$("#hot_jquery").css("display", "none");
+	$("#fruit_jquery").css("display", "none");
+	$("#snack_jquery").css("display", "none");
+	$("#ice_jquery").css("display", "none");
+}
+function sand() {
+	$("#bake_jquery").css("display", "none");
+	$("#cake_jquery").css("display", "none");
+	$("#sand_jquery").css("display", "block");
+	$("#hot_jquery").css("display", "none");
+	$("#fruit_jquery").css("display", "none");
+	$("#snack_jquery").css("display", "none");
+	$("#ice_jquery").css("display", "none");
+}
+function hot() {
+	$("#bake_jquery").css("display", "none");
+	$("#cake_jquery").css("display", "none");
+	$("#sand_jquery").css("display", "none");
+	$("#hot_jquery").css("display", "block");
+	$("#fruit_jquery").css("display", "none");
+	$("#snack_jquery").css("display", "none");
+	$("#ice_jquery").css("display", "none");
+}
+function fruit() {
+	$("#bake_jquery").css("display", "none");
+	$("#cake_jquery").css("display", "none");
+	$("#sand_jquery").css("display", "none");
+	$("#hot_jquery").css("display", "none");
+	$("#fruit_jquery").css("display", "block");
+	$("#snack_jquery").css("display", "none");
+	$("#ice_jquery").css("display", "none");
+}
+function snack() {
+	$("#bake_jquery").css("display", "none");
+	$("#cake_jquery").css("display", "none");
+	$("#sand_jquery").css("display", "none");
+	$("#hot_jquery").css("display", "none");
+	$("#fruit_jquery").css("display", "none");
+	$("#snack_jquery").css("display", "block");
+	$("#ice_jquery").css("display", "none");
+}
+
+function ice() {
+	$("#bake_jquery").css("display", "none");
+	$("#cake_jquery").css("display", "none");
+	$("#sand_jquery").css("display", "none");
+	$("#hot_jquery").css("display", "none");
+	$("#fruit_jquery").css("display", "none");
+	$("#snack_jquery").css("display", "none");
+	$("#ice_jquery").css("display", "block");
+}
+//푸드끝
+
 

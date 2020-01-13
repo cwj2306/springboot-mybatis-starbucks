@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.starbucks.model.Beverage;
 import com.cos.starbucks.model.Card;
+import com.cos.starbucks.model.Food;
 import com.cos.starbucks.repository.MenuRepository;
 
 @Controller
@@ -56,6 +57,33 @@ public class MenuController {
 		return "menu/drink_list";
 	}
 	
+	@GetMapping("/food_list")
+	public String foodList(Model model) {
+		
+		List<Food> food=mRepo.findAllFood();
+		List<Food> bake=mRepo.findBake();
+		List<Food> cake=mRepo.findCake();
+		List<Food> sand=mRepo.findSand();
+		List<Food> hot=mRepo.findHot();
+		List<Food> fruit=mRepo.findFruit();
+		List<Food> snack=mRepo.findSnack();
+		List<Food> ice=mRepo.findIce();
+
+		model.addAttribute("food",food);
+		model.addAttribute("bake",bake);
+		model.addAttribute("cake",cake);
+		model.addAttribute("sand",sand);
+		model.addAttribute("hot",hot);
+		model.addAttribute("fruit",fruit);
+		model.addAttribute("snack",snack);
+		model.addAttribute("ice",ice);
+
+		
+		return "menu/food_list";
+	}
+	
+	
+	
 	@GetMapping("/detail/{id}")
 	public @ResponseBody Beverage detail(@PathVariable int id,Model model) {
 		Beverage bev=mRepo.findById(id);
@@ -70,9 +98,5 @@ public class MenuController {
 		return card;
 	}
 	
-	@GetMapping("/food_list")
-	public String foodList() {
-		return "menu/food_list";
-	}
 	
 }
