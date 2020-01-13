@@ -67,10 +67,15 @@ public class AdminController {
 	public String tables(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
 		if (userDetail.getUser().getUsername().equals("admin")) {
 			List<Trade> tradeList = aRepo.findTrade();
-			int sum=aRepo.findSum();
-			model.addAttribute("tradeList",tradeList);
-			model.addAttribute("sum",sum);
-			return "admin/tables";
+			System.out.println(tradeList);
+			if (tradeList.size()==0) {
+				return "admin/notable";
+			}else {
+				int sum=aRepo.findSum();
+				model.addAttribute("tradeList",tradeList);
+				model.addAttribute("sum",sum);
+				return "admin/tables";
+			}
 		}
 		return null;
 	}

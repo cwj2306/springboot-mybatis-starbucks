@@ -116,6 +116,8 @@ public class MypageController {
 	public @ResponseBody String buyBev(@AuthenticationPrincipal MyUserDetails userDetail,
 			@RequestParam String[] check) {
 		int principalId = userDetail.getUser().getId();
+		User_card userCard=mRepo.CheckCardExist(principalId);
+		if(userCard==null) return Script.alertAndHref("카드등록후 사용해주세요.", "/menu/card_list");
 		int price = 0;
 		int sum=0;
 		for (String ids : check) {

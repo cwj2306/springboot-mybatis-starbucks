@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.starbucks.model.User;
 import com.cos.starbucks.repository.UserRepository;
+import com.cos.starbucks.util.Script;
 
 
 @Controller
@@ -20,7 +22,7 @@ import com.cos.starbucks.repository.UserRepository;
 public class UserController {
 
 	@Autowired
-	UserRepository URepo;
+	UserRepository uRepo;
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
@@ -36,12 +38,17 @@ public class UserController {
 	}
 	
 	@PostMapping("/joinProc")
-	public String create(User user) {
+	public @ResponseBody String create(User user) {
 		String rawPassword = user.getPassword();
 		String encPassword = passwordEncoder.encode(rawPassword);
-		user.setPassword(encPassword);
-		URepo.join(user);
-		return "redirect:/user/login";
+		String username=user.getUsername();
+		int result=uRepo.usernameCheck(username);
+		if(result==0) {
+			user.setPassword(encPassword);
+			uRepo.join(user);
+			return Script.alertAndHref("가입완료", "/user/login");
+		}else
+		return Script.alertAndHref("중복확인 해주세요.","/user/join2");
 	}
 	
 	@GetMapping("/login")
@@ -49,5 +56,15 @@ public class UserController {
 		return "auth/login";
 	}
 	
+	@GetMapping("/usernameCheck/{username}")
+	public @ResponseBody String usernameCheck(@PathVariable String username) {
+		System.out.println(username);
+		int result=uRepo.usernameCheck(username);
+		System.out.println(result);
+		if(result==0) {
+			return "ok";
+		}else
+		return "exist";
+	}
 	
 }

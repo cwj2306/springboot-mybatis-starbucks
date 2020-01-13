@@ -12,4 +12,6 @@ public interface UserRepository {
 	void moneyUp(int money,int id);
 	List<User> findAll();
 	int findSum();
+	
+	int usernameCheck(String username);
 }
