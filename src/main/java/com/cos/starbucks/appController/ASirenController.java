@@ -10,36 +10,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.starbucks.model.Beverage;
-import com.cos.starbucks.model.Coffee;
-import com.cos.starbucks.repository.CoffeeRepository;
+import com.cos.starbucks.model.Food;
 import com.cos.starbucks.repository.MenuRepository;
 
 @RestController
 @RequestMapping("/android")
 public class ASirenController {
-	@Autowired
-	private CoffeeRepository cRepo;
+
 	@Autowired
 	private MenuRepository mRepo;
 	
 	@GetMapping("/siren")
 	public JSONObject json() {
-		List<Coffee> items = cRepo.findAll();
+		List<Food> items = mRepo.findAllFood();
 		List<Beverage> items2 = mRepo.findAll();
 		JSONObject jsonObject = new JSONObject();
-		JSONArray coffees = new JSONArray();
+		JSONArray foods = new JSONArray();
 		JSONArray beverages = new JSONArray();
-		for (Coffee item : items) {
-			JSONObject coffee = new JSONObject();			
-			coffee.put("id", item.getId());
-			coffee.put("detail", item.getDetail());
-			coffee.put("name", item.getName());
-			coffee.put("image", item.getImage());
-			coffee.put("price", item.getPrice());
-			coffee.put("roast", item.getRoast());
-			coffee.put("feel", item.getFeel());
-			coffee.put("strong", item.getStrong());
-			coffees.add(coffee);
+		for (Food item : items) {
+			JSONObject food = new JSONObject();			
+			food.put("id", item.getId());
+			food.put("name", item.getName());
+			food.put("image", item.getImage());
+			food.put("price", item.getPrice());
+			food.put("category", item.getCategory());
+			foods.add(food);
 		}
 		
 		for (Beverage item2 : items2) {
@@ -52,7 +47,7 @@ public class ASirenController {
 			beverages.add(beverage);
 		}
 		
-		jsonObject.put("coffees", coffees);
+		jsonObject.put("foods", foods);
 		jsonObject.put("beverages", beverages);
 		return jsonObject;
 	}

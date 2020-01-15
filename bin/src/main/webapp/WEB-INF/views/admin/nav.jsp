@@ -31,14 +31,14 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="/admin">관리자 페이지</a>
+    <a class="navbar-brand mr-1" href="/">메인 페이지</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button>
 
     <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+   <!--  <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
         <div class="input-group-append">
@@ -49,7 +49,7 @@
       </div>
     </form>
 
-    <!-- Navbar -->
+    Navbar
     <ul class="navbar-nav ml-auto ml-md-0">
       <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -86,7 +86,7 @@
           <a class="dropdown-item" href="/logout">Logout</a>
         </div>
       </li>
-    </ul>
+    </ul> -->
 
   </nav>
 
@@ -97,17 +97,17 @@
       <li class="nav-item">
         <a class="nav-link" href="/admin">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
+          <span>유저 현황</span>
         </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>메뉴</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Admin Screens:</h6>
-          <a class="dropdown-item" href="/">메인 페이지</a>
+          <a class="dropdown-item" href="/logout">로그아웃</a>
           <a class="dropdown-item" href="/admin/changePwForm">비밀번호 변경</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Upload:</h6>
@@ -119,15 +119,15 @@
           <a class="dropdown-item" href="/admin/coffeeDelete">커피 삭제</a>
         </div>
       </li>
-      <li class="nav-item">
+<!--       <li class="nav-item">
         <a class="nav-link" href="/admin/charts">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Charts</span></a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="/admin/tables">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>판매현황</span></a>
       </li>
     </ul>
 

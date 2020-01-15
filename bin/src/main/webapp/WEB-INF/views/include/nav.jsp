@@ -28,7 +28,7 @@
                 </c:choose>
                     
                     <li class="top_fNav_02">｜</li>
-                    <li class="top_fNav_03"><a href="#">My Starbucks</a></li>
+                    <li class="top_fNav_03"><a href="/mypage/myStarbucks">My Starbucks</a></li>
                 </ul>
             </nav>
         </div>

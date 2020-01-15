@@ -17,32 +17,31 @@
 <body>
 	<%@include file="../include/nav.jsp"%>
 
-	<form action="/user/joinProc" method="POST" onsubmit="return validateCheck()">
-		<table>
-			<tr>
-				<th>Username</th>
-				<td><input type="text" name="username" id="username" value="username" /></td>
-			</tr>
-			<tr>
-				<th>Name</th>
-				<td><input type="text" name="name" id="name" value="name" /></td>
-			</tr>
-			<tr>
-				<th>Email</th>
-				<td><input type="email" name="email" id="email" value="email" /></td>
-			</tr>
-			<tr>
-				<th>Password</th>
-				<td><input type="password" name="password" id="password"/></td>
-			</tr>
-			<tr>
-				<th>PasswordCheck</th>
-				<td><input type="password" name="passwordCheck"	id="passwordCheck"/></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="가입완료" /></td>
-			</tr>
-		</table>
+	<form action="/user/joinProc" method="POST"
+		onsubmit="return validateCheck()">
+
+		<div>
+			아이디:<input type="text" name="username" id="username" value="username" />
+			<a style="cursor: pointer;"  onClick="usernameCheck()">중복확인</a>
+		</div>
+			<span id="username_input" style="font-size:10px; color:red"></span>
+		<div>
+			이름:<input type="text" name="name" id="name" value="name" />
+		</div>
+		<div>
+			이메일:<input type="email" name="email" id="email" value="email" />
+		</div>
+		<div>
+			비밀번호:<input type="password" name="password" id="password" />
+		</div>
+		<div>
+			비밀번호 확인:<input type="password" name="passwordCheck"
+				id="passwordCheck" />
+		</div>
+		<div>
+			<input type="submit" value="가입완료" onClick="usernameCheck()" />
+		</div>
+
 	</form>
 
 	<script>
@@ -56,6 +55,25 @@
 				alert('비밀번호가 동일하지 않습니다. 다시 입력해주세요.');
 				return false;
 			}
+		}
+
+		//아이디 중복 확인
+		function usernameCheck(){
+			var username = document.querySelector("#username").value;
+			
+			fetch("/user/usernameCheck/"+username).then(function(r){
+				return r.text();
+			}).then(function(r){
+				console.log(r);
+				var status = r; //ok 중복되지 않음.
+				var et = document.querySelector("#username_input");
+
+				if(status === "ok"){
+					et.innerHTML = "사용할 수 있는 아이디 입니다.";
+				}else{
+					et.innerHTML = "이미 존재하는 아이디 입니다. 다른 아이디로 시도해주세요.";
+				}
+			});
 		}
 	</script>
 

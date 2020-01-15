@@ -1,0 +1,308 @@
+.my_sb_container {
+    width:100%;
+}
+/* 상단 제목 영역 */
+.my_sb_top_container {
+    width:100%; height:180px;
+    background-image: url("../img/my_starbucks/mysb_top_nav.jpg");
+    background-size: cover;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.my_sb_container h1 {
+    color:#fff;
+    margin-left:22.5%;
+    margin-top:110px;
+}
+
+/* 좌측 정보탭 */
+.my_sb_content {
+    width:75%;
+    float:left;
+    margin-right:5%;
+}
+
+/* 회색 박스 */
+.my_sb_gray_box {
+    width:100%; height:280px;
+    margin-bottom:30px;
+    margin-top:40px;
+    background-color: #f3f3f3;
+}
+
+/* left */ 
+.gray_box_left {
+    width:49%;
+    float:left;
+    text-align:center;
+}
+
+.gray_box_left p {
+    font-size:16px;
+    margin:20px 0;
+}
+
+.gray_box_left p span {
+    font-weight: bold;
+}
+
+.user_icon {
+    width:110px; height:110px;
+    border-radius: 50%;
+    border:3px solid #ccc;
+    overflow: hidden;
+    margin:0 auto;
+    margin-top:40px;
+}
+
+.user_icon img {
+    width:110px; height:110px;
+}
+
+.gray_box_button_div button {
+    width:130px; height:32px;
+    background-color: #222;
+    color:#fff;
+    border-radius: 5px;
+}
+
+.gray_box_button_div button:last-child {
+    background-color: #777;
+    margin-left:3px;
+}
+
+/* line */
+.line {
+    height:80%;
+    float:left;
+    margin:30px 0;
+    border-right:1px solid #ccc;
+}
+
+/* right */
+.gray_box_right {
+    width:50%;
+    float:right;
+    text-align:center;
+}
+
+.gray_box_right h3 {
+    float:left;
+    font-size:18px;
+    margin-top:30px;
+    margin-left:30px;
+}
+
+.star_icon {
+    width:120px; height:120px;
+    margin:0 auto;
+    margin-top:35px;
+}
+
+.star_icon img {
+    width:120px; height:120px;
+}
+
+.star_icon p {
+    position: relative;
+    top:-95px;
+    font-weight: bolder;
+}
+
+.gray_box_right p {
+    font-size:15px;
+    margin:10.5px 0;
+}
+
+.gray_box_right p span {
+    font-weight: bold;
+}
+
+.gray_box_right p span:last-child {
+    color:#006633;
+}
+
+.gray_box_right_button_div button {
+    width:130px; height:32px;
+    background-color: #e2c383;
+    color:#000;
+    border-radius: 5px;
+}
+
+/* 스타벅스 카드 */ 
+.my_sb_card_box {
+    width:100%; height:220px;
+    margin-bottom:30px;
+    border:1px solid #ccc;
+    border-radius: 2px;
+}
+
+/* 아이콘 탭 */
+.my_sb_icon_div {
+    width:100%; height:80px;
+    margin-bottom:30px;
+    border:1px solid #ccc;
+    border-radius: 2px;
+}
+
+.my_sb_icon_ul li {
+    float:left;
+}
+
+/* 우측 메뉴바 */
+.my_sb_right_nav {
+    width:20%;
+    float:right;
+    margin-top:40px;
+}
+
+.my_sb_right_ul li {
+    border-bottom: 1px solid #ccc;
+    padding:22px 0;
+    font-size:14px;
+    font-weight: bolder;
+}
+
+.my_sb_right_ul li:first-child {
+    border-top:2px solid black;
+}
+
+.my_sb_right_ul li:last-child {
+    border-bottom:2px solid black;
+}
+
+.my_sb_right_ul li a {
+    color:#444;
+}
+
+.my_sb_right_ul li a:hover {
+    color:#006633;
+}
+
+/* notice 페이지 (이후 제목 수정) */
+
+.notice_title {
+    margin-bottom:40px;
+}
+
+.notice_nav {
+    display:inline;
+}
+
+.notice_nav li {
+    float:right;
+}
+
+.notice_gray_box {
+    clear:both;
+    width:100%; height:70px;
+    background-color: #f4f4f2;
+    border-radius: 3px;
+}
+
+.notice_search {
+    float:right;
+    width:380px; height:35px;
+    margin:15px 0;
+    margin-right:20px;
+}
+
+.notice_search input:first-child {
+    width:320px; height:35px;
+    border:1px solid #d9d9d9;
+    border-radius: 2px;
+}
+
+.notice_search input:last-child {
+    width:55px; height:35px;
+    border:1px solid #777;
+    border-radius: 3px;
+    color:#fff; font-weight: bold;
+    background-color: #777;
+}
+
+.notice_table_div {
+    width:100%;
+    margin:40px 0;
+}
+
+.notice_table {
+    border-collapse: collapse;
+    margin:0 auto;
+}
+
+.notice_table th {
+    border-top:1.5px solid #222;
+    border-bottom:1.5px solid #222;
+}
+
+.notice_table td {
+    padding:15px 0;
+    border-bottom:1px solid #d6d6d6;
+}
+
+.notice_table tr th:nth-child(1) {padding:15px 40px;}
+.notice_table tr th:nth-child(2) {padding:15px 340px;}
+.notice_table tr th:nth-child(3) {padding:15px 45px;}
+.notice_table tr th:nth-child(4) {padding:15px 45px;}
+
+.notice_table tr td:nth-child(1) {padding-left:42px;}
+.notice_table tr td:nth-child(2) {padding-left:30px;}
+.notice_table tr td:nth-child(3) {padding-left:28px;}
+.notice_table tr td:nth-child(4) {padding-left:52px;}
+
+.paging {
+    text-align:center;
+    margin:50px 0 70px 0;
+}
+.paging li {display: inline;}
+.paging li a:hover {color:#006633; font-weight: bold;}
+.paging li a:active {color:#006633; font-weight: bold;}
+
+/* notice_content 페이지 (이후 제목 수정) */
+.notice_content_title {
+    border-top:1px solid #222;
+    border-bottom:1px solid #222;
+    padding:15px 0;
+}
+
+.notice_content_title h2 {margin-left:10px;}
+
+.notice_content {
+    margin:30px 0;
+    padding-bottom:30px;
+    border-bottom:1px solid #d6d6d6;
+}
+
+
+.list_button {
+    float:right;
+    width:85px; height:45px;
+    color:#fff; font-weight:bold; font-size:15px;
+    line-height: 28px;
+    background-color: #666;
+    border:1px solid #666;
+    border-radius: 5px;
+    margin-bottom:55px;
+}
+
+.notice_list {
+    clear:both;
+    border-collapse: collapse;
+    margin:0 auto;
+    border-top:1px solid #222;
+    border-bottom:1px solid #222;
+    font-size:14px;
+    margin-bottom:70px;
+}
+
+.notice_list tr .notice_list_th {
+    width:40%; height:40px;
+    background-color: #f4f4f2;
+    font-weight: bolder;
+}
+
+.notice_list tr td {
+    padding-left:20px;
+}

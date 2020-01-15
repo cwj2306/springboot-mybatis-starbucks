@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.starbucks.model.Beverage;
 import com.cos.starbucks.model.Coffee;
+import com.cos.starbucks.model.Food;
 import com.cos.starbucks.repository.CoffeeRepository;
 import com.cos.starbucks.repository.MenuRepository;
 
@@ -26,9 +27,14 @@ public class AMenuController {
 	public JSONObject json() {
 		List<Coffee> items = cRepo.findAll();
 		List<Beverage> items2 = mRepo.findAll();
+		List<Food> items3 = mRepo.findAllFood();
+		
 		JSONObject jsonObject = new JSONObject();
+		
 		JSONArray coffees = new JSONArray();
 		JSONArray beverages = new JSONArray();
+		JSONArray foods = new JSONArray();
+		
 		for (Coffee item : items) {
 			JSONObject coffee = new JSONObject();			
 			coffee.put("id", item.getId());
@@ -52,8 +58,19 @@ public class AMenuController {
 			beverages.add(beverage);
 		}
 		
+		for (Food item3 : items3) {
+			JSONObject food = new JSONObject();
+			food.put("id", item3.getId());
+			food.put("name", item3.getName());
+			food.put("image", item3.getImage());
+			food.put("price", item3.getPrice());
+			food.put("category", item3.getCategory());
+			foods.add(food);
+		}
+		
 		jsonObject.put("coffees", coffees);
 		jsonObject.put("beverages", beverages);
+		jsonObject.put("foods", foods);
 		return jsonObject;
 	}
 
