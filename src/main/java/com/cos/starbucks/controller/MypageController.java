@@ -18,13 +18,16 @@ import com.cos.starbucks.model.Beverage;
 import com.cos.starbucks.model.Trade;
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
+import com.cos.starbucks.model.Mycafe;
 import com.cos.starbucks.model.User;
 import com.cos.starbucks.model.User_card;
 import com.cos.starbucks.repository.MypageRepository;
+import com.cos.starbucks.repository.StoreRepository;
 import com.cos.starbucks.repository.UserRepository;
 import com.cos.starbucks.security.MyUserDetails;
 import com.cos.starbucks.service.TradeService;
 import com.cos.starbucks.util.Script;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/mypage")
@@ -36,13 +39,9 @@ public class MypageController {
 	private UserRepository uRepo;
 	@Autowired
 	private TradeService service;
+	@Autowired
+	private StoreRepository storeRepo;
 	
-	
-	@GetMapping("/myStarbucks")
-	public String myStarbucks() {
-		
-		return "/mypage/myStarBucks";
-	}
 	
 
 	@PostMapping("/deleteCoffee")
@@ -58,7 +57,7 @@ public class MypageController {
 				return Script.alertAndHref("비정상적인 접근입니다.", "/");
 		}
 
-		return Script.href("/mypage/mylist");
+		return Script.href("/mypage/myMenu");
 	}
 
 	@PostMapping("/deleteBev")
@@ -74,7 +73,7 @@ public class MypageController {
 				return Script.alertAndHref("비정상적인 접근입니다.", "/");
 		}
 
-		return Script.href("/mypage/mybev");
+		return Script.href("/mypage/myMenu");
 	}
 
 	@PostMapping("/buyCoffee")
@@ -107,7 +106,7 @@ public class MypageController {
 			}
 
 		} else
-			return Script.alertAndHref("잔액부족, 충전하세요", "/mypage/mycard");
+			return Script.alertAndHref("잔액부족, 충전하세요", "/mypage/pay");
 
 		return Script.alertAndHref("구매완료", "/mypage/mylog");
 	}
@@ -141,7 +140,7 @@ public class MypageController {
 			}
 
 		} else
-			return Script.alertAndHref("잔액부족, 충전하세요", "/mypage/mycard");
+			return Script.alertAndHref("잔액부족, 충전하세요", "/mypage/pay");
 
 		return Script.alertAndHref("구매완료 ", "/mypage/mylog");
 	}
@@ -153,7 +152,7 @@ public class MypageController {
 		if (result == userDetail.getUser().getId())
 			mRepo.deleteCard(id);
 		else
-			return Script.alertAndHref("비정상적인 접근입니다.", "/mypage");
+			return Script.alertAndHref("비정상적인 접근입니다.", "/mypage/myMenu");
 
 		return Script.href("/menu/card_list");
 	}
@@ -163,7 +162,7 @@ public class MypageController {
 			@RequestParam("name") String name) {
 		mRepo.coffeeSave(id, userDetail.getUser().getId(), name);
 
-		return "redirect:/mypage/mylist";
+		return "redirect:/mypage/myMenu";
 	}
 
 	@PostMapping("/bevSave/{id}")
@@ -171,7 +170,7 @@ public class MypageController {
 			@RequestParam("name") String name) {
 		mRepo.bevSave(id, userDetail.getUser().getId(), name);
 
-		return "redirect:/mypage/mybev";
+		return "redirect:/mypage/myMenu";
 	}
 
 	@PostMapping("/cardSave/{id}")
@@ -181,40 +180,33 @@ public class MypageController {
 		if (cardCheck == 0) {
 			mRepo.cardSave(id, userDetail.getUser().getId(), name, image);
 		} else {
-			return Script.alertAndHref("이미 사용중인 카드가 있습니다. 내카드는 한장만 등록가능합니다. ", "/mypage/mycard");
+			return Script.alertAndHref("이미 사용중인 카드가 있습니다. 내카드는 한장만 등록가능합니다. ", "/mypage/myStarBucks");
 		}
 
-		return Script.href("/mypage/mycard");
+		return Script.href("/mypage/myStarBucks");
 	}
 
-	@GetMapping("/mylist")
+	@GetMapping("/myMenu")
 	public String myList(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
 		List<MyCoffee> coffeeList = mRepo.findByUserId(userDetail.getUser().getId());
-
-		model.addAttribute("coffeeList", coffeeList);
-		return "/mypage/myList";
-	}
-
-	@GetMapping("/mybev")
-	public String myBev(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
 		List<MyBeverage> bevList = mRepo.findByUserIdBev(userDetail.getUser().getId());
-
+		model.addAttribute("coffeeList", coffeeList);
 		model.addAttribute("bevList", bevList);
-		return "/mypage/myList2";
+		return "/mypage/myMenu";
 	}
 
-	@GetMapping("/mycard")
+
+	@GetMapping("/myStarBucks")
 	public String myCard(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
 
 		User_card card = mRepo.findByUserIdCard(userDetail.getUser().getId());
 
 		model.addAttribute("card", card);
-		return "/mypage/myCard";
+		return "/mypage/myStarBucks";
 	}
 
 	@GetMapping("/pay")
-	public String pay(@RequestParam int point, Model model) {
-		model.addAttribute("point", point);
+	public String pay() {
 
 		return "/mypage/pay";
 	}
@@ -239,7 +231,7 @@ public class MypageController {
 
 		mRepo.updatePoint(userDetail.getUser().getId(), result);
 		uRepo.moneyUp(money, userDetail.getUser().getId());
-		return "redirect:/mypage/mycard";
+		return "redirect:/mypage/myStarBucks";
 	}
-
+	
 }

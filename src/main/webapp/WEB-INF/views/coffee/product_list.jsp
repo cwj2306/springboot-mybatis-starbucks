@@ -28,16 +28,11 @@
 				<h4>분류 보기</h4>
 				<hr>
 				<ul class="content_category_selectAll">
-					<li><a href="#">전체 상품보기</a></li>
+					<li onClick="allRoast()"><a href="#">전체 상품보기</a></li>
+					<li onClick="blonde()"><a href="#">블론드 로스트</a></li>
+					<li onClick="medium()"><a href="#">미디엄 로스트</a></li>
+					<li onClick="dark()"><a href="#">다크 로스트</a></li>
 				</ul>
-				<form class="content_category_list">
-					<input type="button" name="content_coffee" value="전체 상품보기"
-						onClick="allRoast()"><input type="button"
-						name="content_coffee" value="블론드 로스트" onClick="blonde()"><input
-						type="button" name="content_coffee" value="미디엄 로스트"
-						onClick="medium()"> <input type="button"
-						name="content_coffee" value="다크 로스트" onClick="dark()">
-				</form>
 			</div>
 			<!-- 블론드 로스트 시작 -->
 			<div class="coffee_divBox" id="blonde_jquery">

@@ -46,10 +46,10 @@
                 <div style="clear:both;"></div>
                 <input class="login_submit" type="submit" value="로그인" />
                 <a id="custom-login-btn" href="/kakao/login">
-                    <img src="http://mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="50%;" style="float:right;"/>
+                    <img src="/img/auth/kakaolink_btn_medium.png" width="9%"/>
                 </a>
                   <a id="custom-login-btn" href="/naver/login">
-                 	<img src="http://static.nid.naver.com/oauth/small_g_in.PNG" width="50%;" style="float:right;">
+                 	<img src="/img/auth/naver.PNG" width="9%" >
                  </a>
                 <div style="clear:both;"></div>
             </form>

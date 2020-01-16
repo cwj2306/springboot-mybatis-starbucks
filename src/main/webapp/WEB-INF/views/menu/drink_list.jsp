@@ -27,23 +27,17 @@
 				<h4>분류 보기</h4>
 				<hr>
 				<ul class="content_category_selectAll">
-					<li><a href="#">전체 상품보기</a></li>
+					<li onClick="allCoffee()"><a href="#">전체 상품보기</a></li>
+					<li onClick="cold()"><a href="#">콜드 브루 커피</a></li>
+					<li onClick="brud()"><a href="#">브루드 커피</a></li>
+					<li onClick="espr()"><a href="#">에스프레소</a></li>
+					<li onClick="prap()"><a href="#">프라푸치노</a></li>
+					<li onClick="blend()"><a href="#">블렌디드</a></li>
+					<li onClick="fiz()"><a href="#">피지오</a></li>
+					<li onClick="tea()"><a href="#">티(타바나)</a></li>
+					<li onClick="etc()"><a href="#">기타 제조 음료</a></li>
+					<li onClick="botl()"><a href="#">병음료</a></li>
 				</ul>
-				<form class="content_category_list">
-					<input type="button" name="content_drink" value="전체 상품보기"
-						onClick="allCoffee()"><input type="button"
-						name="content_drink" value="콜드 브루 커피" onClick="cold()"><input
-						type="button" name="content_drink" value="브루드 커피" onClick="brud()"><input
-						type="button" name="content_drink" value="에스프레소" onClick="espr()"><input
-						type="button" name="content_drink" value="프라푸치노" onClick="prap()"><input
-						type="button" name="content_drink" value="블렌디드" onClick="blend()"><input
-						type="button" name="content_drink" value="스타벅스 피지오"
-						onClick="fiz()"><input type="button" name="content_drink"
-						value="티(티바나)" onClick="tea()"><input type="button"
-						name="content_drink" value="키타 제조 음료" onClick="etc()"><input
-						type="button" name="content_drink" value="스타벅스 주스(병음료)"
-						onClick="botl()">
-				</form>
 			</div>
 			<!-- 음료 메뉴 시작 -->
 			<!-- 카테고리 박스 시작 (샘플로 4종류만 출력함) -->

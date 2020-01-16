@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/content.css">
     <link rel="stylesheet" href="/css/myStarbucks.css">
+    <link rel="stylesheet" href="/css/notice.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>Starbucks Coffee Korea :: Login </title>
 </head>
@@ -32,12 +33,10 @@
             </ul>
         </div>
         <div class="notice_content_title">
-            <h2>제목을 출력해주세요.</h2>
+            <h2>${board.title}</h2>
         </div>
         <div class="notice_content">
-            <h2>제목 : ${board.title}</h2>
-            <br /> 작성자 아이디 : ${board.userId}
-            <br /><p> 내용 : ${board.content}</p>
+            <br /><p> ${board.content}</p>
             <br />
             <c:if test="${principal.user.username eq 'admin'}">
             <a href="/board/update/${board.id}">수정하기</a>
@@ -48,25 +47,25 @@
         <div class="notice_list">
             <c:choose>
                 <c:when test="${board.id eq 1}">
-                        <table border="1">
+                        <table>
                             <tr>
-                                <th>윗글</th>
+                                <td class="notice_list_th">윗글</td>
                                 <td><a href="/board/detail/${pan[0].id}">${pan[0].title}</a></td>
                             </tr>
                         </table>
                 </c:when>
                 <c:otherwise>
-                    <table border="1">
+                    <table>
                         <c:if test="${!empty pan[1].id}">
                             <tr>
-                                <th>윗글</th>
+                                <td class="notice_list_th">윗글</td>
                                 <td><a href="/board/detail/${pan[1].id}">${pan[1].title}</a></td>
                             </tr>
                         </c:if>
         
                         <c:if test="${!empty pan[0].id}">
                             <tr>
-                                <th>아랫글</th>
+                                <td class="notice_list_th">아랫글</td>
                                 <td><a href="/board/detail/${pan[0].id}">${pan[0].title}</a></td>
                             </tr>
                         </c:if>

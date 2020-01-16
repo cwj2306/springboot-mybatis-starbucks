@@ -21,7 +21,7 @@
 	카드번호<input type="number" required="required"><br />
 	카드유효기간<input type="date" required="required"><br /> 
 	카드비밀번호<input type="password" required="required"><br /> 
-	충전금액<input type="number" value="${point}" name="point" readonly="readonly">원
+	충전금액<input type="number" name="point">원
 	<button>충전하기</button>
 </form>
 	

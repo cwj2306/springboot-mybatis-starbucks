@@ -57,7 +57,9 @@
            	    서비스 이용기록, 접속 로그, 쿠키, 접속IP정보, 결제기록, 이용정지 기록, e-스티커 적립 기록, 통신사 멤버십 카드 번호, 단말기정보(OS종류, PUSH용 토큰, 디바이스 ID), DI<br/><br/>
                * 쿠키의 경우 구체적인 운영 내역과 설정 거부 방법 등은 본 홈페이지 이용약관 7조에 정하고 있습니다.
             </div>
-            <div><a href="javascript:void(0)" id="next_page"> 회원가입 정보 입력 페이지로 넘어가는 링크 (나중에 수정) </a></div>
+            <div>
+            	<p style="margin-bottom:20px; margin-right:30px; font-size:14px; text-align:right;"><a href="javascript:void(0)" id="next_page" >정보 입력하기 <span style="color:#006633;">&#10145;</span></a></p>
+            </div>
         </div>  
     </div>
     <%@include file="../include/footer.jsp"%>
