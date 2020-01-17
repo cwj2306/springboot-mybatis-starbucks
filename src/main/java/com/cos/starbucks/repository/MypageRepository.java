@@ -36,7 +36,8 @@ public interface MypageRepository {
 	User_card CheckCardExist(int userId);
 	List<Trade> findTradeLog(int userid);
 
-
+//안드로이드
+	void AcardSave(User_card userCard);
 	
 	
 }

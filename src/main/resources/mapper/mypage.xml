@@ -104,4 +104,10 @@
 	<delete id="deleteCard">
 		delete from user_card where id=#{id}
 	</delete>
+	
+	<!-- 안드로이드  -->
+		<insert id="AcardSave">
+		insert into user_card(cardId,userId,cardName,cardImage,createDate) 
+		values(#{cardId},#{userId},#{cardName},#{cardImage},now())
+	</insert>
 </mapper>
