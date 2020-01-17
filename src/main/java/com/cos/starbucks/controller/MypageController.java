@@ -39,8 +39,7 @@ public class MypageController {
 	private UserRepository uRepo;
 	@Autowired
 	private TradeService service;
-	@Autowired
-	private StoreRepository storeRepo;
+
 	
 	
 

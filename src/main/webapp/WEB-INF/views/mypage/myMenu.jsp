@@ -60,20 +60,23 @@
 									<td><input type="checkbox" id="coffee_check_all" /></td>
 									<td>커피명</td>
 									<td>등록일</td>
+									<td>수량</td>
 								</tr>
 
 								<c:forEach var="coffee" items="${coffeeList}">
 									<tr>
-										<td><input type="checkbox" class="coffee_checkbox" name="check"
-											value="${coffee.id}"></td>
+										<td><input type="checkbox" class="coffee_checkbox"
+											name="check" value="${coffee.id}"></td>
 										<td>${coffee.coffeeName}</td>
 										<td>${coffee.createDate}</td>
+									 	<td><input id="amount${coffee.id}"></td> 
 									</tr>
 								</c:forEach>
 
 							</table>
 							<div class="delete_button_div">
-								<button class="delete_button" formaction="/mypage/deleteCoffee" style="float:left; margin-right:5px;">선택삭제</button>
+								<button class="delete_button" formaction="/mypage/deleteCoffee"
+									style="float: left; margin-right: 5px;">선택삭제</button>
 							</div>
 							<div class="delete_button_div">
 								<button class="buy_button" formaction="/mypage/buyCoffee">선택구매</button>
@@ -93,14 +96,16 @@
 
 								<c:forEach var="bev" items="${bevList}">
 									<tr>
-										<td><input type="checkbox" class="drink_checkbox" name="check" value="${bev.id}"></td>
+										<td><input type="checkbox" class="drink_checkbox"
+											name="check" value="${bev.id}"></td>
 										<td>${bev.beverageName}</td>
 										<td>${bev.createDate}</td>
 									</tr>
 								</c:forEach>
 							</table>
 							<div class="delete_button_div">
-								<button class="delete_button" formaction="/mypage/deleteBev" style="float:left; margin-right:5px;">선택삭제</button>
+								<button class="delete_button" formaction="/mypage/deleteBev"
+									style="float: left; margin-right: 5px;">선택삭제</button>
 							</div>
 							<div class="delete_button_div">
 								<button class="buy_button" formaction="/mypage/buyBev">선택구매</button>
@@ -148,7 +153,7 @@
 			<div style="clear: both;"></div>
 		</div>
 		<!-- footer 시작 (나중에 include로 빼서 넣기) -->
- <%@include file="../include/footer.jsp"%>
+		<%@include file="../include/footer.jsp"%>
 		<!-- footer 끝 -->
 	</div>
 	<script>
@@ -175,7 +180,7 @@
 			});
 		});
 
-	// 우측 메뉴바 슬라이드 토글
+		// 우측 메뉴바 슬라이드 토글
 		$(function() {
 			$(document).ready(function() {
 				$('#slide_toggle_1').click(function() {
@@ -189,7 +194,7 @@
 					$("#slide_toggle_ul_2").slideToggle();
 				});
 			});
-		}); 
+		});
 
 		// 체크박스 전체 선택 & 삭제
 		$(document).ready(function() {
@@ -232,7 +237,21 @@
 					return false;
 				}
 			});
-		});
+
+			
+			//수량구매를 위해 필요함				
+			$(".coffee_checkbox").change(function(){
+				var ident=$(this).attr("value");
+					
+				if($(this).is(":checked")){
+					$("#amount"+ident).attr("name","amount");
+				}else{
+					$("#amount"+ident).removeAttr("name");
+				}
+			});  
+
+
+		}); 
 	</script>
 </body>
 </html>
