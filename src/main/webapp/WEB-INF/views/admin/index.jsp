@@ -102,7 +102,7 @@
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>Name</th>
+                    <th>총 회원수 ${count}명</th>
                     <th>Level</th>  
                     <th>E-mail</th>     
                     <th>Start date</th>

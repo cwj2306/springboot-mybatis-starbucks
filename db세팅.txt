@@ -63,6 +63,7 @@ create table trade(
     userId int,
     name varchar(100) not null,
 	price int not null,
+	amount int not null,
 	createDate timestamp,
     foreign key(userId) references user(id)
 )engine=InnoDB default charset=utf8;
@@ -97,6 +98,7 @@ create table myBeverage(
     userId int,
     beverageId int,
     beverageName varchar(100) not null,
+    price int not null,
     createDate timestamp,
     foreign key(userId) references user(id),
     foreign key(beverageId) references beverage(id) on delete cascade
@@ -108,6 +110,7 @@ create table myCoffee(
     userId int,
     coffeeId int,
     coffeeName varchar(100) not null,
+     price int not null,
     createDate timestamp,
     foreign key(userId) references user(id),
     foreign key(coffeeId) references coffee(id) on delete cascade

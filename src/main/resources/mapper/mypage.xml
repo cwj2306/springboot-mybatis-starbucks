@@ -72,13 +72,13 @@
 	
 	
 	<insert id="coffeeSave">
-		insert into myCoffee(coffeeId,userId,coffeeName,createDate)
-		values(#{coffeeId},#{userId},#{coffeeName},now())
+		insert into myCoffee(coffeeId,userId,coffeeName,createDate,price)
+		values(#{coffeeId},#{userId},#{coffeeName},now(),#{price})
 	</insert>
 	
 	<insert id="bevSave">
-		insert into myBeverage(beverageId,userId,beverageName,createDate)
-		values(#{bevId},#{userId},#{bevName},now())
+		insert into myBeverage(beverageId,userId,beverageName,createDate,price)
+		values(#{bevId},#{userId},#{bevName},now(),#{price})
 	</insert>
 	
 	<insert id="cardSave">
@@ -87,7 +87,7 @@
 	</insert>
 	
 	<insert id="trade">
-	insert into trade(userId,name,price,createDate) values(#{userId},#{name},#{price},now())
+	insert into trade(userId,name,price,createDate,amount) values(#{userId},#{name},#{price},now(),#{amount})
 	</insert>
 	
 	<update id="updatePoint">

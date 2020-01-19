@@ -15,5 +15,6 @@ public class MyCoffee {
 	private int coffeeId;
 	private int userId;
 	private String coffeeName;
+	private int price;
 	private Timestamp createDate;
 }

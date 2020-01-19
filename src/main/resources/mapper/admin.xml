@@ -13,6 +13,10 @@
 		SELECT sum(price) FROM trade
 	</select>
 	
+	<select id="findAmount" resultType="Integer">
+		SELECT sum(amount) FROM trade
+	</select>
+	
 
 	
 </mapper>

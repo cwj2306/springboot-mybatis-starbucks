@@ -15,5 +15,7 @@ public class Trade {
 	private int userId;
 	private String name;
 	private int price;
+	private int amount;
 	private Timestamp createDate;
+	
 }

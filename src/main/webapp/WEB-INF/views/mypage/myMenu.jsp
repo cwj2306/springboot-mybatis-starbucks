@@ -59,6 +59,7 @@
 								<tr>
 									<td><input type="checkbox" id="coffee_check_all" /></td>
 									<td>커피명</td>
+									<td>가격</td>
 									<td>등록일</td>
 									<td>수량</td>
 								</tr>
@@ -68,8 +69,9 @@
 										<td><input type="checkbox" class="coffee_checkbox"
 											name="check" value="${coffee.id}"></td>
 										<td>${coffee.coffeeName}</td>
+										<td>${coffee.price}</td>
 										<td>${coffee.createDate}</td>
-									 	<td><input id="amount${coffee.id}"></td> 
+									 	<td><input type="number" value=1 id="amount${coffee.id}"></td> 
 									</tr>
 								</c:forEach>
 
@@ -91,7 +93,9 @@
 								<tr>
 									<td><input type="checkbox" id="drink_check_all" /></td>
 									<td>음료명</td>
+									<td>가격</td>
 									<td>등록일</td>
+									<td>수량</td>
 								</tr>
 
 								<c:forEach var="bev" items="${bevList}">
@@ -99,7 +103,9 @@
 										<td><input type="checkbox" class="drink_checkbox"
 											name="check" value="${bev.id}"></td>
 										<td>${bev.beverageName}</td>
+										<td>${bev.price}</td>
 										<td>${bev.createDate}</td>
+										<td><input type="number" value=1 id="amount${bev.id}"></td> 
 									</tr>
 								</c:forEach>
 							</table>
@@ -241,6 +247,16 @@
 			
 			//수량구매를 위해 필요함				
 			$(".coffee_checkbox").change(function(){
+				var ident=$(this).attr("value");
+					
+				if($(this).is(":checked")){
+					$("#amount"+ident).attr("name","amount");
+				}else{
+					$("#amount"+ident).removeAttr("name");
+				}
+			});  
+
+			$(".drink_checkbox").change(function(){
 				var ident=$(this).attr("value");
 					
 				if($(this).is(":checked")){

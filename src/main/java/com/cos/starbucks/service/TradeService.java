@@ -13,11 +13,11 @@ public class TradeService {
 	private MypageRepository mRepo;
 
 	@Transactional
-	public void trade(int principalId, int price, String name) {
+	public void trade(int principalId, int price, String name,int amount) {
 		try {
 			int point = mRepo.findCardPoint(principalId);
-			int result = point - price;
-			mRepo.trade(principalId, price, name);
+			int result = point - price*amount;
+			mRepo.trade(principalId, price, name,amount);
 			mRepo.updatePoint(principalId, result);
 		} catch (Exception e) {
 			System.out.println(" increaseCountAndTimeupdate 오류 : 트랜잭션 실패");

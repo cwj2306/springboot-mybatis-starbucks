@@ -15,8 +15,8 @@ public interface MypageRepository {
 	User_card findByUserIdCard(int id);
 	void updatePoint(int id,int point);
 	int countByUserId(int id);
-	void coffeeSave(int coffeeId,int userId,String coffeeName);
-	void bevSave(int bevId,int userId,String bevName);
+	void coffeeSave(int coffeeId,int userId,String coffeeName,int price);
+	void bevSave(int bevId,int userId,String bevName,int price);
 	void cardSave(int cardId,int userId,String cardName,String cardImage);
 	void deleteCoffee(int id);
 	void deleteBev(int id);
@@ -25,7 +25,7 @@ public interface MypageRepository {
 	int checkMyBev(int id);
 	int checkMyCard(int id);
 	
-	void trade(int userId , int price , String name);
+	void trade(int userId , int price , String name,int amount);
 	int findCoffeePrice(int userId,int id);
 	int findCoffeeId(int id);
 	int findBevPrice(int userId,int id);

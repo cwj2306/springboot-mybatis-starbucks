@@ -24,6 +24,7 @@ async function loadDetailPopup(id){
 function makeDetailBox(detail){
 	let detailBox=`<form action="/mypage/coffeeSave/${detail.id}" method="post">`
 	detailBox+=`<img src="${detail.image}"><input type="hidden" name="name" value="${detail.name}">`
+	detailBox+=`<input type="hidden" name="price" value="${detail.price}">`
 	detailBox+=`<div>${detail.name}</div>${detail.price}원 <button>내상품 등록</button></form>`
 
 	return detailBox;
@@ -56,6 +57,7 @@ async function loadDetailPopup2(id){
 function makeDetailBox2(detail){
 	let detailBox=`<form action="/mypage/bevSave/${detail.id}" method="post">`
 	detailBox+=`<img src="${detail.image}"><input type="hidden" name="name" value="${detail.name}">`
+	detailBox+=`<input type="hidden" name="price" value="${detail.price}">`
 	detailBox+=`<div>${detail.name}</div><div>${detail.price}원</div><button>내상품 등록</button>`
 
 	return detailBox;
@@ -120,6 +122,7 @@ async function loadDetailPopup4(id){
 function makeDetailBox4(detail){
 	let detailBox=`<form action="/mypage/coffeeSave/${detail.id}" method="post">`
 	detailBox+=`<img src="${detail.image}"><input type="hidden" name="name" value="${detail.name}">`
+	detailBox+=`<input type="hidden" name="price" value="${detail.price}">`
 	detailBox+=`<div>${detail.name}</div>${detail.price}원 <button>내상품 등록</button></form>`
 
 	return detailBox;

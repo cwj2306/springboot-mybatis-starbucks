@@ -55,8 +55,10 @@ public class AdminController {
 		if (userDetail.getUser().getUsername().equals("admin")) {
 			List<User> userList = uRepo.findAll();
 			int sum=uRepo.findSum();
+			int count=uRepo.findCount();
 			model.addAttribute("userList", userList);
 			model.addAttribute("sum",sum);
+			model.addAttribute("count",count);
 			return "admin/index";
 		}
 
@@ -72,8 +74,10 @@ public class AdminController {
 				return "admin/notable";
 			}else {
 				int sum=aRepo.findSum();
+				int amount=aRepo.findAmount();
 				model.addAttribute("tradeList",tradeList);
 				model.addAttribute("sum",sum);
+				model.addAttribute("amount",amount);
 				return "admin/tables";
 			}
 		}

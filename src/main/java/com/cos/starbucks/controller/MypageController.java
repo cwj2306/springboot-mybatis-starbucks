@@ -14,20 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cos.starbucks.model.Beverage;
 import com.cos.starbucks.model.Trade;
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
-import com.cos.starbucks.model.Mycafe;
 import com.cos.starbucks.model.User;
 import com.cos.starbucks.model.User_card;
 import com.cos.starbucks.repository.MypageRepository;
-import com.cos.starbucks.repository.StoreRepository;
 import com.cos.starbucks.repository.UserRepository;
 import com.cos.starbucks.security.MyUserDetails;
 import com.cos.starbucks.service.TradeService;
 import com.cos.starbucks.util.Script;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/mypage")
@@ -77,18 +73,20 @@ public class MypageController {
 
 	@PostMapping("/buyCoffee")
 	public @ResponseBody String buyCoffee(@AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam String[] check) {
+			@RequestParam String[] check,@RequestParam int[] amount) {
 		int principalId = userDetail.getUser().getId();
 		User_card userCard=mRepo.CheckCardExist(principalId);
 		if(userCard==null) return Script.alertAndHref("카드등록후 사용해주세요.", "/menu/card_list");
 		int price = 0;
 		int sum=0;
+		int count=0;
 		for (String ids : check) {
 			int id = Integer.parseInt(ids);
 			int result = mRepo.checkMyCoffee(id);
 			if (result == principalId) {
 				price = service.findCoffeePrice(principalId, id);
-				sum+=price;
+				sum+=price*amount[count];
+				count++;
 			} else
 				return Script.alertAndHref("비정상적인 접근입니다.", "/");
 		}
@@ -96,12 +94,14 @@ public class MypageController {
 		boolean bl = service.cardPoint(principalId, sum);
 
 		if (bl) {
+			int ident=0;
 			for (String ids : check) {
 				int id = Integer.parseInt(ids);
 				int coffeeId = mRepo.findCoffeeId(id);
 				String name=mRepo.findCoffeeName(coffeeId);
 				price = service.findCoffeePrice(principalId, id);
-				service.trade(principalId, price,name);
+				service.trade(principalId, price,name,amount[ident]);
+				ident++;
 			}
 
 		} else
@@ -112,30 +112,34 @@ public class MypageController {
 	
 	@PostMapping("/buyBev")
 	public @ResponseBody String buyBev(@AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam String[] check) {
+			@RequestParam String[] check,@RequestParam int[] amount) {
 		int principalId = userDetail.getUser().getId();
 		User_card userCard=mRepo.CheckCardExist(principalId);
 		if(userCard==null) return Script.alertAndHref("카드등록후 사용해주세요.", "/menu/card_list");
 		int price = 0;
 		int sum=0;
+		int count=0;
 		for (String ids : check) {
 			int id = Integer.parseInt(ids);
 			int result = mRepo.checkMyBev(id);
 			if (result == principalId) {
 				price = service.findBevPrice(principalId, id);
-				sum+=price;
+				sum+=price*amount[count];
+				count++;
 			} else
 				return Script.alertAndHref("비정상적인 접근입니다.", "/");
 		}
 		System.out.println("컨트롤러:"+price);
 		boolean bl = service.cardPoint(principalId, sum);
 		if (bl) {
+			int ident=0;
 			for (String ids : check) {
 				int id = Integer.parseInt(ids);
 				int bevId = mRepo.findBevId(id);
 				String name=mRepo.findBevName(bevId);
 				price = service.findBevPrice(principalId, id);
-				service.trade(principalId, price,name);
+				service.trade(principalId, price,name,amount[ident]);
+				ident++;
 			}
 
 		} else
@@ -158,16 +162,16 @@ public class MypageController {
 
 	@PostMapping("/coffeeSave/{id}")
 	public String coffeeSave(@PathVariable int id, @AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam("name") String name) {
-		mRepo.coffeeSave(id, userDetail.getUser().getId(), name);
+			@RequestParam("name") String name,@RequestParam("price") int price) {
+		mRepo.coffeeSave(id, userDetail.getUser().getId(), name,price);
 
 		return "redirect:/mypage/myMenu";
 	}
 
 	@PostMapping("/bevSave/{id}")
 	public String bevSave(@PathVariable int id, @AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam("name") String name) {
-		mRepo.bevSave(id, userDetail.getUser().getId(), name);
+			@RequestParam("name") String name,@RequestParam("price") int price) {
+		mRepo.bevSave(id, userDetail.getUser().getId(), name,price);
 
 		return "redirect:/mypage/myMenu";
 	}

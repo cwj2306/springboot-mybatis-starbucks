@@ -77,6 +77,7 @@
                                 <td>${log.name}</td>
                                 <td>${log.createDate}</td>
                                 <td>${log.price}</td>
+                                <td>${log.amount}</td>
                             </tr>
                         </c:forEach>
                         <!-- 데이터 있는만큼 출력 끝 -->

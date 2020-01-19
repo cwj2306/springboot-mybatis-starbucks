@@ -20,6 +20,10 @@
 		select sum(money) from user;
 	</select>
 	
+	<select id="findCount" resultType="Integer">
+		select count(*) from user;
+	</select>
+	
 	<select id="usernameCheck" resultType="Integer">
 		select count(*) from user where username=#{?};
 	</select>
