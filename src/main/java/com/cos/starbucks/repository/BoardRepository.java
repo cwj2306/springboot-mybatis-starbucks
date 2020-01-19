@@ -13,5 +13,8 @@ public interface BoardRepository {
 	Board findById(int id); // 상세보기
 	List<Board> prevAndNext(int id);//이전글다음글
 	void delete(int id); //삭제하기
+	
+//	안드로이드
+	List<Board> AfindAll();
 
 }
