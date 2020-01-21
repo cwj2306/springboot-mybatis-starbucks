@@ -108,5 +108,14 @@ public class BoardController {
 		model.addAttribute("pan", pan);
 		return "board/detail";
 	}
+//	안드로이드 웹뷰용
+	@GetMapping("/Adetail/{id}")
+	public String Apost(@PathVariable int id, Model model) {
+		Board board = mBoardRepo.findById(id);
+		model.addAttribute("board", board);
+		List<Board> pan = mBoardRepo.prevAndNext(id);
+		model.addAttribute("pan", pan);
+		return "board/Adetail";
+	}
 
 }
