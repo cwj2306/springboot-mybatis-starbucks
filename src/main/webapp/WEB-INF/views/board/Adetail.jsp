@@ -12,13 +12,17 @@
     <link rel="stylesheet" href="/css/myStarbucks.css">
     <link rel="stylesheet" href="/css/notice.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title>Starbucks Coffee Korea :: Login </title>
+<title>Starbucks Coffee Korea</title>
 </head>
 <body>
 <div class="wrap">
 
     <!-- 본문 시작 -->
-    <div class="content" style='width:100%';>
+    <div class="content" style='width:100%'>
+
+		<div class="notice_content_title">
+            <h2 style="text-align: center;">${board.title}</h2>
+        </div>
 
         <div class="notice_content">
             <br /><p> ${board.content}</p>
@@ -30,7 +34,7 @@
                 <c:when test="${board.id eq 1}">
                         <table>
                             <tr>
-                                <td class="notice_list_th">윗글</td>
+                                <td class="notice_list_th" style="width:60px;">윗글</td>
                                 <td><a href="/board/Adetail/${pan[0].id}">${pan[0].title}</a></td>
                             </tr>
                         </table>
@@ -39,14 +43,14 @@
                     <table>
                         <c:if test="${!empty pan[1].id}">
                             <tr>
-                                <td class="notice_list_th">윗글</td>
+                                <td class="notice_list_th" style="width:60px;">윗글</td>
                                 <td><a href="/board/Adetail/${pan[1].id}">${pan[1].title}</a></td>
                             </tr>
                         </c:if>
         
                         <c:if test="${!empty pan[0].id}">
                             <tr>
-                                <td class="notice_list_th">아랫글</td>
+                                <td class="notice_list_th" style="width:60px;">아랫글</td>
                                 <td><a href="/board/Adetail/${pan[0].id}">${pan[0].title}</a></td>
                             </tr>
                         </c:if>
