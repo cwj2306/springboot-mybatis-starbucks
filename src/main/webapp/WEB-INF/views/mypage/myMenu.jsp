@@ -105,7 +105,7 @@
 										<td>${bev.beverageName}</td>
 										<td>${bev.price}</td>
 										<td>${bev.createDate}</td>
-										<td><input type="number" value=1 id="amount${bev.id}"></td> 
+										<td><input type="number" value=1 id="bamount${bev.id}"></td> 
 									</tr>
 								</c:forEach>
 							</table>
@@ -260,9 +260,9 @@
 				var ident=$(this).attr("value");
 					
 				if($(this).is(":checked")){
-					$("#amount"+ident).attr("name","amount");
+					$("#bamount"+ident).attr("name","amount");
 				}else{
-					$("#amount"+ident).removeAttr("name");
+					$("#bamount"+ident).removeAttr("name");
 				}
 			});  
 
