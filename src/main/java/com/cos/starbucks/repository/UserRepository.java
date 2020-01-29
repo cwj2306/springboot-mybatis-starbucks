@@ -14,5 +14,10 @@ public interface UserRepository {
 	int findSum();
 	int findCount();
 	
+	void changeSilverLevel(int id);
+	void changeGoldLevel(int id);
+	
+	
 	int usernameCheck(String username);
+	void changeUserInfo(int id,String name,String password);
 }

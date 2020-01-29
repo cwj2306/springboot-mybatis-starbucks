@@ -19,6 +19,7 @@
 						<th>상품이름</th>
 						<th>구매일</th>
 						<th>가격</th>
+						<th>수량</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -27,6 +28,7 @@
 						<th>상품이름</th>
 						<th>구매일</th>
 						<th>총 판매액 0원</th>
+						<th>총 판매수량 0개 </th>
 					</tr>
 				</tfoot>
 				<tbody>

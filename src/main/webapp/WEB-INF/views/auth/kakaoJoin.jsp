@@ -23,9 +23,9 @@
             <p class="login_whiteBox_p1">Welcome! 카카오 회원가입을 위한 추가정보가 필요합니다.</p>
             <hr/>
             <form action="/kakao/joinProc" method="POST">
-                <input type="text" name="username" placeholder="아이디를 입력해 주세요."/>
-                <input type="text" name="name" placeholder="이름을 입력해 주세요."/>
-                <input type="email" name="email" placeholder="이메일을 입력해 주세요."/>
+           		<input type="hidden" name="username" value="kakao${sessionScope.providerId}"/>
+                <input type="text" name="name" placeholder="이름을 입력해 주세요." required="required"/>
+                <input type="email" name="email" placeholder="이메일을 입력해 주세요."required="required"/>
                 <div style="clear:both;"></div>
                 <input style="width:100%;" class="login_submit" type="submit" value="가입완료" />
                 <div style="clear:both;"></div>

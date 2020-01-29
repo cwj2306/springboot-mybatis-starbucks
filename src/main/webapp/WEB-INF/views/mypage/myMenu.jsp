@@ -134,16 +134,9 @@
 							<tr>
 								<td><input type="checkbox" class="food_checkbox" /></td>
 								<td>No</td>
-								<td>상품명</td>
-								<td>그라인드 옵션</td>
-								<td>등록일</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" class="food_checkbox" /></td>
-								<td>No</td>
-								<td>상품명</td>
-								<td>그라인드 옵션</td>
-								<td>등록일</td>
+								<td>판매 준비 중 입니다</td>
+								<td>판매 준비 중 입니다</td>
+								<td>판매 준비 중 입니다</td>
 							</tr>
 							<!-- 내용 있는만큼 출력 끝 -->
 						</table>

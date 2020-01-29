@@ -19,6 +19,7 @@
 						<th>상품이름</th>
 						<th>구매일</th>
 						<th>가격</th>
+						<th>수량</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -27,6 +28,7 @@
 						<th>상품이름</th>
 						<th>구매일</th>
 						<th>총 판매액 ${sum}원</th>
+						<th>총 판매수량${amount}개</th>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -36,6 +38,7 @@
 							<td>${trade.name}</td>
 							<td>${trade.createDate}</td>
 							<td>${trade.price}원</td>
+							<td>${trade.amount}개</td>
 						</tr>
 					</c:forEach>
 				</tbody>

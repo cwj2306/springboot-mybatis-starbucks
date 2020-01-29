@@ -73,7 +73,12 @@ public class AdminController {
 			if (tradeList.size()==0) {
 				return "admin/notable";
 			}else {
-				int sum=aRepo.findSum();
+				int sum=0;
+				for (Trade trade : tradeList) {
+					int amount=trade.getAmount();
+					int price=trade.getPrice();
+					sum+=price*amount;
+				}
 				int amount=aRepo.findAmount();
 				model.addAttribute("tradeList",tradeList);
 				model.addAttribute("sum",sum);

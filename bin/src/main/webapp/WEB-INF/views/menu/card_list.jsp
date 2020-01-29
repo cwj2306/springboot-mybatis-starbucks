@@ -22,13 +22,7 @@
     <!-- 본문 시작 -->
     <div class="content">
         <h1>카드</h1>
-        <div class="content_category">
-            <h4>분류 보기</h4>
-            <hr>
-            <ul class="content_category_selectAll">
-                <li><a href="#">전체 상품보기</a></li>
-            </ul>
-        </div>
+
         <!-- 카드 시작 -->
         <div class="coffee_divBox">
             <div class="content_item_title">

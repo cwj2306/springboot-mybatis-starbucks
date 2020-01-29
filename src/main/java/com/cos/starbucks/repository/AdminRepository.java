@@ -9,7 +9,6 @@ public interface AdminRepository {
 
 	List<Trade> findTrade();
 	
-	int findSum();
 	int findAmount();
 	
 }

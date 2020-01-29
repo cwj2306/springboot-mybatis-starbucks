@@ -9,9 +9,6 @@
 		SELECT *	FROM trade order by createDate DESC
 	</select>
 	
-	<select id="findSum" resultType="Integer">
-		SELECT sum(price) FROM trade
-	</select>
 	
 	<select id="findAmount" resultType="Integer">
 		SELECT sum(amount) FROM trade

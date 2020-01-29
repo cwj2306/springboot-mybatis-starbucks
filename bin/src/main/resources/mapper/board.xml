@@ -58,4 +58,12 @@
 		DELETE FROM board WHERE id = #{id}
 	</delete>
 	
+	<!-- 안드로이드 -->
+		<select id="AfindAll" resultType="com.cos.starbucks.model.Board">
+		SELECT * 
+		FROM board 
+		ORDER BY id DESC 
+		LIMIT 0, 20
+	</select>
+	
 </mapper>

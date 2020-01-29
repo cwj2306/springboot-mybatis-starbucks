@@ -27,20 +27,17 @@
 				<h4>분류 보기</h4>
 				<hr>
 				<ul class="content_category_selectAll">
-					<li><a href="#">전체 상품보기</a></li>
+					<li onClick="allFood()"><a href="#">전체 상품보기</a></li>
+					<li onClick="bake()"><a href="#">베이커리</a></li>
+					<li onClick="cake()"><a href="#">케이크</a></li>
+					<li onClick="sand()"><a href="#">샌드위치</a></li>
+					<li onClick="hot()"><a href="#">따뜻한 푸드</a></li>
+					<li onClick="fruit()"><a href="#">과일 & 요거트</a></li>
+					<li onClick="snack()"><a href="#">스낵 & 디저트</a></li>
+					<li onClick="ice()"><a href="#">아이스크림</a></li>
+					
 				</ul>
-				<form class="content_category_list">
-					<input type="button" name="content_drink" value="전체 상품보기"
-						onClick="allFood()"><input type="button"
-						name="content_drink" value="베이커리" onClick="bake()"><input
-						type="button" name="content_drink" value="케이크" onClick="cake()"><input
-						type="button" name="content_drink" value="샌드위치 & 샐러드" onClick="sand()"><input
-						type="button" name="content_drink" value="따뜻한 푸드" onClick="hot()"><input
-						type="button" name="content_drink" value="과일 & 요거트" onClick="fruit()"><input
-						type="button" name="content_drink" value="스낵 & 미니 디저트"
-						onClick="snack()"><input type="button" name="content_drink"
-						value="아이스크림" onClick="ice()">
-				</form>
+			
 			</div>
 			<!-- 음료 메뉴 시작 -->
 			<!-- 카테고리 박스 시작 (샘플로 4종류만 출력함) -->

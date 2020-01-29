@@ -41,4 +41,16 @@
 	<update id="moneyUp">
 	update user set money=#{money} where id=#{id}
 	</update>
+	
+	<update id="changeSilverLevel">
+	update user set level='Silver' where id=#{id}
+	</update>
+	
+	<update id="changeGoldLevel">
+	update user set level='Gold' where id=#{id}
+	</update>
+	
+	<update id="changeUserInfo">
+	update user set name=#{name},password=#{password} where id=#{id}
+	</update>
 </mapper>

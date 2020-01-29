@@ -37,8 +37,25 @@ public class MypageController {
 	private TradeService service;
 
 	
-	
+	@GetMapping("/myStarBucks")
+	public String myCard(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
 
+		User_card card = mRepo.findByUserIdCard(userDetail.getUser().getId());
+		try {
+			int amount=mRepo.findAmountByUserId(userDetail.getUser().getId());
+			model.addAttribute("amount",amount);
+		} catch (Exception e) {
+			int amount=0;
+			model.addAttribute("amount",amount);
+		}
+		
+		
+		model.addAttribute("card", card);
+	
+		return "/mypage/myStarBucks";
+	}
+
+	
 	@PostMapping("/deleteCoffee")
 	public @ResponseBody String coffeeDelete(@AuthenticationPrincipal MyUserDetails userDetail,
 			@RequestParam String[] check) {
@@ -103,7 +120,14 @@ public class MypageController {
 				service.trade(principalId, price,name,amount[ident]);
 				ident++;
 			}
-
+				int amountCheck=mRepo.findAmountByUserId(principalId);
+				if(amountCheck>=20 && amountCheck<50) {
+					uRepo.changeSilverLevel(principalId);
+					userDetail.getUser().setLevel("Silver");
+				}else if(amountCheck>=50) {
+					userDetail.getUser().setLevel("Gold");
+					uRepo.changeGoldLevel(principalId);
+				}
 		} else
 			return Script.alertAndHref("잔액부족, 충전하세요", "/mypage/pay");
 
@@ -142,6 +166,15 @@ public class MypageController {
 				ident++;
 			}
 
+			int amountCheck=mRepo.findAmountByUserId(principalId);
+			if(amountCheck>=20 && amountCheck<50) {
+				uRepo.changeSilverLevel(principalId);
+				userDetail.getUser().setLevel("Silver");
+			}else if(amountCheck>=50) {
+				userDetail.getUser().setLevel("Gold");
+				uRepo.changeGoldLevel(principalId);
+			}
+			
 		} else
 			return Script.alertAndHref("잔액부족, 충전하세요", "/mypage/pay");
 
@@ -199,14 +232,6 @@ public class MypageController {
 	}
 
 
-	@GetMapping("/myStarBucks")
-	public String myCard(@AuthenticationPrincipal MyUserDetails userDetail, Model model) {
-
-		User_card card = mRepo.findByUserIdCard(userDetail.getUser().getId());
-
-		model.addAttribute("card", card);
-		return "/mypage/myStarBucks";
-	}
 
 	@GetMapping("/pay")
 	public String pay() {
@@ -236,5 +261,6 @@ public class MypageController {
 		uRepo.moneyUp(money, userDetail.getUser().getId());
 		return "redirect:/mypage/myStarBucks";
 	}
+	
 	
 }

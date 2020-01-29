@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/content.css">
     <link rel="stylesheet" href="/css/myStarbucks.css">
+    <link rel="stylesheet" href="/css/notice.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>Starbucks Coffee Korea :: Login </title>
 </head>
@@ -32,6 +33,9 @@
             </ul>
         </div>
         <div class="notice_gray_box">
+        <c:if test="${principal.user.username eq 'admin' }">
+          <button class="notice_write"><a href="/board/write">글쓰기</a></button>
+          </c:if>
             <form class="notice_search">
                 <input type="search" placeholder="검색어를 입력해 주세요."/>
                 <input type="submit" value="검색" />

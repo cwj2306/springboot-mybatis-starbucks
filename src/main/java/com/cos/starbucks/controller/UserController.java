@@ -3,17 +3,19 @@ package com.cos.starbucks.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.starbucks.model.User;
 import com.cos.starbucks.repository.UserRepository;
+import com.cos.starbucks.security.MyUserDetails;
 import com.cos.starbucks.util.Script;
 
 
@@ -65,6 +67,20 @@ public class UserController {
 			return "ok";
 		}else
 		return "exist";
+	}
+	@GetMapping("/updateForm")
+	public String updateFrom() {
+		return "mypage/update";
+	}
+	
+	@PostMapping("/updateProc")
+	public @ResponseBody String updateProc(@AuthenticationPrincipal MyUserDetails userdetail,@RequestParam String name,
+			@RequestParam String password) {
+		System.out.println(userdetail.getUser().getId());
+		String encPassword = passwordEncoder.encode(password);
+		uRepo.changeUserInfo(userdetail.getUser().getId(),name,encPassword);
+		return Script.alertAndHref("변경완료", "/mypage/myStarBucks");
+		
 	}
 	
 }

@@ -6,21 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/content.css">
-    <link rel="stylesheet" href="/css/jquery.bxslider.css">
-    <link rel="stylesheet" href="/css/auth.css">
-    <link rel="stylesheet" href="/css/myStarbucks.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <link rel="stylesheet" href="../css/jquery.bxslider.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/myStarbucks.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title>Starbucks Coffee Korea :: Login </title>
+<title>Starbucks Coffee Korea :: My Starbucks </title>
 </head>
 <body>
 <div class="wrap">
-    <div id="header_include"></div>
     <!-- header 시작 (나중에 include로 빼서 넣기) -->
     <header>
-         <%@include file="../include/nav.jsp"%>
-    </header>
+        <%@include file="../include/nav.jsp"%>
+   </header>
     <!-- header 끝 -->
     <!-- 본문 시작 -->
     <div class="my_sb_container"> 
@@ -43,7 +42,7 @@
                         <div class="user_icon">
                             <img src="../img/my_starbucks/user_pic_sample.jpg" alt="user_icon">
                         </div>
-                        <p><span id="name">회원명</span>님은 현재 <span id="level">Level명</span>이십니다.</p>
+                        <p><span id="name">${principal.user.username}</span>님은 현재 <span id="level">${principal.user.level}</span>이십니다.</p>
                         <div class="gray_box_button_div">
                             <button>개인정보 수정</button>
                             <button>비밀번호 변경</button>
@@ -67,74 +66,67 @@
                 </div>
                 <!-- 회색 박스 끝 -->
                 <!-- 스타벅스 카드 시작 -->
+                <c:if test="${card ne null}">
                 <div class="my_sb_card_box">
                     <div class="my_sb_card_title">
-                        <p>My 스타벅스 카드</p>
+                        <h4>My 스타벅스 카드</h4>
                         <p>총 보유카드 : <span id ="card_num">1</span>장</p>
+                        <hr/>
                     </div>
                     <div class="my_sb_card_content">
-                        <img src="" alt="card_image">
-                        <div class="my_sb_card_content_right">
-                            <p><span id="username">닉네임</span></p>
-                            <p><span id ="balance">5,000</span>원</p>
-                            <p>최종 사용일 : <span id="update_date">2019-11-12 21:06:55</span></p>
+                        <div class="my_sb_card_content_left">
+                            <img class="my_sb_card_img" src="${card.cardImage}" alt="card_image">
+                        </div>
+                        <div class="my_sb_card_content_right"
+                        >
+                            <p><span id="username">${card.cardName}</span></p>
+                            <p><span id ="balance">${card.point}</span>원</p>
+                            <p>등록일 : <span id="update_date">${card.createDate}</span></p>
+                            
                             <div class="my_sb_card_button_div">
-                                <button>카드 관리</button>
-                                <button>충전하기</button>
+                            <form action="/mypage/pay">
+                            <button>충전하기</button>
+                            </form>
+                            <form action="/mypage/deleteCard/${card.id}" method="post">
+                                <button>카드 삭제</button>
+                            </form>
                             </div>
                         </div>
                     </div>
                 </div>
+                </c:if>
                 <!-- 스타벅스 카드 끝 -->
-                <!-- 아이콘 탭 시작 -->
-                <div class="my_sb_icon_div">
-                    <ul class="my_sb_icon_ul">
-                       <li>
-                           <img src="#">
-                           <p>인박스</p>
-                       </li> 
-                       <li>
-                            <img src="#">
-                            <p>캘린더</p>
-                        </li> 
-                        <li>
-                            <img src="#">
-                            <p>e-쿠폰</p>
-                        </li> 
-                        <li>
-                            <img src="#">
-                            <p>카드 충전</p>
-                        </li> 
-                        <li>
-                            <img src="#">
-                            <p>카드 등록</p>
-                        </li> 
-                    </ul>
-                </div>
-                <!-- 아이콘 탭 끝 -->
             </div>
             <!-- 좌측 정보탭 끝 -->
             <!-- 우측 메뉴바 시작 -->
-            <div class="my_sb_right_nav">
-                <ul class="my_sb_right_ul">
-                    <li>&emsp;<a href="#">My 리워드</a></li>
-                    <li>&emsp;<a href="#">My 스타벅스 카드</a></li>
-                    <li>&emsp;<a href="#">My 쿠폰</a></li>
-                    <li>&emsp;<a href="#">My 메뉴</a></li>
-                    <li>&emsp;<a href="#">My 매장</a></li>
-                    <li>&emsp;<a href="#">개인정보관리</a></li>
-                </ul>
-            </div>
+		<%@include file="../include/menu.jsp"%>
             <!-- 우측 메뉴바 끝 -->
         </div>
         <div style="clear:both;"></div>
     </div>
     <!-- footer 시작 (나중에 include로 빼서 넣기) -->
     <footer>
-<%@include file="../include/footer.jsp"%>
-    </footer>
+        <%@include file="../include/footer.jsp"%>
+            </footer>
     <!-- footer 끝 -->
 </div>
-
+<script>
+  // 우측 메뉴바 슬라이드 토글
+    $(function() {
+        $(document).ready(function() {
+            $('#slide_toggle_1').click(function() {
+                $("#slide_toggle_ul_1").slideToggle();
+            });
+        });
+    });
+    $(function() {
+        $(document).ready(function() {
+            $('#slide_toggle_2').click(function() {
+                $("#slide_toggle_ul_2").slideToggle();
+            });
+        });
+    });
+</script>
+<%@include file="../include/footer.jsp"%>
 </body>
 </html>

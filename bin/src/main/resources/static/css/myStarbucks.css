@@ -132,10 +132,50 @@
 
 /* 스타벅스 카드 */ 
 .my_sb_card_box {
-    width:100%; height:220px;
+    width:100%; height:250px;
     margin-bottom:30px;
     border:1px solid #ccc;
     border-radius: 2px;
+}
+
+.my_sb_card_title h4 {
+    margin:20px 0;
+    margin-left:5%;
+    display:inline-block;
+}
+
+.my_sb_card_title p {
+    margin-left:10px;
+    display:inline-block;
+
+}
+
+.my_sb_card_title hr {
+    width:90%;
+    margin:0 auto;
+    border: 0.5px solid #ccc;
+    color : #ccc;
+    border-color : #ccc;
+    background-color : #ccc;
+}
+
+.my_sb_card_content {
+    width:60%;
+    margin:15px auto;
+}
+
+.my_sb_card_content_left {
+    float:left;
+}
+
+.my_sb_card_content_left .my_sb_card_img {
+    width:250px;
+    height:150px;
+}
+
+.my_sb_card_content_right {
+    float:right;
+    text-align: center;
 }
 
 /* 아이콘 탭 */
@@ -157,18 +197,27 @@
     margin-top:40px;
 }
 
-.my_sb_right_ul li {
+.my_sb_right_ul {
+    margin-bottom:100px;
+}
+
+.my_sb_right_ul > li {
     border-bottom: 1px solid #ccc;
     padding:22px 0;
     font-size:14px;
     font-weight: bolder;
 }
 
-.my_sb_right_ul li:first-child {
+.my_sb_right_ul > li > a > span {
+    float:right;
+    margin-right:20px;
+}
+
+.my_sb_right_ul .my_sb_ul_first {
     border-top:2px solid black;
 }
 
-.my_sb_right_ul li:last-child {
+.my_sb_right_ul .my_sb_ul_last {
     border-bottom:2px solid black;
 }
 
@@ -176,133 +225,102 @@
     color:#444;
 }
 
-.my_sb_right_ul li a:hover {
+.my_sb_right_ul li a:hover,
+.my_sb_right_ul > li > a > span:hover {
     color:#006633;
 }
 
-/* notice 페이지 (이후 제목 수정) */
-
-.notice_title {
-    margin-bottom:40px;
+.my_sb_right_sub_ul {
+    font-size:12px; font-weight: lighter;
+    margin:10px 0 0 15px;
 }
 
-.notice_nav {
-    display:inline;
+.my_sb_right_sub_ul > li {margin-top:5px;}
+
+
+/* 우측 메뉴바 별 페이지 css */
+.my_sb_content_page {
+    margin-top:40px;
 }
 
-.notice_nav li {
-    float:right;
+/* My 메뉴 */
+/* My 메뉴 - 상단 라디오버튼 */
+.radio_button {
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    width: 0.1px;
+    height: 0.1px;
 }
 
-.notice_gray_box {
-    clear:both;
-    width:100%; height:70px;
-    background-color: #f4f4f2;
-    border-radius: 3px;
+.my_sb_menu_radio {
+    display: table;
+    width: 100%; height:40px;
+    box-sizing: border-box;
+    margin-bottom:20px;
 }
 
-.notice_search {
-    float:right;
-    width:380px; height:35px;
-    margin:15px 0;
-    margin-right:20px;
+.my_sb_menu_radio > div {
+    display: table-cell;
+    width:33%;
+    height:40px;
+    line-height:40px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.my_sb_menu_radio label {
+    display: block;
+    width: 100%; height: 100%;
+    background-color: #fff; color: #222;
+    font-weight:bold; font-size:12px;
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
-.notice_search input:first-child {
-    width:320px; height:35px;
-    border:1px solid #d9d9d9;
-    border-radius: 2px;
+input[type="radio"]:hover + label,
+input[type="radio"]:checked + label {
+    background-color: #006633;
+    color:#fff;
 }
 
-.notice_search input:last-child {
-    width:55px; height:35px;
-    border:1px solid #777;
-    border-radius: 3px;
-    color:#fff; font-weight: bold;
-    background-color: #777;
-}
-
-.notice_table_div {
+/* My 메뉴 - 테이블 */
+.my_sb_menu_table {
     width:100%;
-    margin:40px 0;
-}
-
-.notice_table {
     border-collapse: collapse;
     margin:0 auto;
 }
 
-.notice_table th {
+.my_sb_menu_table td {
+    padding:15px 0;
+    border-bottom:1px solid #d6d6d6;
+}
+
+.my_sb_menu_table tr:first-child > td {
     border-top:1.5px solid #222;
     border-bottom:1.5px solid #222;
+    font-weight: bold;
 }
 
-.notice_table td {
-    padding:15px 0;
-    border-bottom:1px solid #d6d6d6;
+.my_sb_menu_table tr td:nth-child(1) {width:3%; padding:0px 2%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(2) {width:5%; padding:0px 2%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(3) {width:30%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(4) {width:15%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(5) {width:15%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(6) {width:10%; text-align:center;}
+
+/* My 메뉴 - 삭제버튼 */
+.delete_button_div {margin-top:20px;}
+.delete_button_div > button {
+    width:60px; height:22px;
+    border:0.5px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 3px;
+    font-size:12px; font-weight: bold;
 }
 
-.notice_table tr th:nth-child(1) {padding:15px 40px;}
-.notice_table tr th:nth-child(2) {padding:15px 340px;}
-.notice_table tr th:nth-child(3) {padding:15px 45px;}
-.notice_table tr th:nth-child(4) {padding:15px 45px;}
-
-.notice_table tr td:nth-child(1) {padding-left:42px;}
-.notice_table tr td:nth-child(2) {padding-left:30px;}
-.notice_table tr td:nth-child(3) {padding-left:28px;}
-.notice_table tr td:nth-child(4) {padding-left:52px;}
-
-.paging {
-    text-align:center;
-    margin:50px 0 70px 0;
-}
-.paging li {display: inline;}
-.paging li a:hover {color:#006633; font-weight: bold;}
-.paging li a:active {color:#006633; font-weight: bold;}
-
-/* notice_content 페이지 (이후 제목 수정) */
-.notice_content_title {
-    border-top:1px solid #222;
-    border-bottom:1px solid #222;
-    padding:15px 0;
-}
-
-.notice_content_title h2 {margin-left:10px;}
-
-.notice_content {
-    margin:30px 0;
-    padding-bottom:30px;
-    border-bottom:1px solid #d6d6d6;
-}
-
-
-.list_button {
-    float:right;
-    width:85px; height:45px;
-    color:#fff; font-weight:bold; font-size:15px;
-    line-height: 28px;
-    background-color: #666;
-    border:1px solid #666;
-    border-radius: 5px;
-    margin-bottom:55px;
-}
-
-.notice_list {
-    clear:both;
-    border-collapse: collapse;
-    margin:0 auto;
-    border-top:1px solid #222;
-    border-bottom:1px solid #222;
-    font-size:14px;
-    margin-bottom:70px;
-}
-
-.notice_list tr .notice_list_th {
-    width:40%; height:40px;
-    background-color: #f4f4f2;
-    font-weight: bolder;
-}
-
-.notice_list tr td {
-    padding-left:20px;
+/* 전자영수증 */
+.receipt_form > p {
+    float:left;
+    line-height:20px;
+    margin:10px 0;
 }

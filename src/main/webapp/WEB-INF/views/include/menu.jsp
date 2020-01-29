@@ -14,6 +14,6 @@
 		</li>
 		<li style="clear: both;">&emsp;<a href="/mypage/myMenu">My 메뉴</a></li>
 		<li>&emsp;<a href="/mypage/mylog">구매내역</a></li>
-		<li class="my_sb_ul_last">&emsp;<a href="#">개인정보관리</a></li>
+		<li class="my_sb_ul_last">&emsp;<a href="/user/updateForm">개인정보관리</a></li>
 	</ul>
 </div>

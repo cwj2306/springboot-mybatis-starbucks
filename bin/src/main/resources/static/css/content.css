@@ -190,3 +190,144 @@ hr {
     color: #555;
     text-align:center;
 }
+
+/* 나와 어울리는 커피 */
+.product_finder_div {
+    width:100%;
+    height:700px;
+    background-image: url("../img/coffee/product_finder_bg.jpg");
+    overflow:hidden;
+}
+
+.product_finder_content_div {
+    width:60%;
+    margin:0 auto;
+    text-align:center;
+}
+
+.product_finder_content_div label p {
+    margin-top:10px;
+    font-size:14px;
+    letter-spacing: -2px;
+}
+
+.product_finder_title {
+    margin:30px 0;
+}
+
+.check_flavor {
+    width:100%; height:700px;
+}
+
+.check_feel {
+    width:100%; height:700px;
+}
+
+.check_strong {
+    width:100%; height:700px;
+}
+
+/* 나와 어울리는 커피 - 라디오 버튼 */
+.radio_button {
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px;
+    height: 1px;
+}
+
+.check_flavor > div {
+    width:25%;
+    float:left;
+}
+
+.check_flavor > div:first-child {
+    display:block;
+    width:100%; height:280px;
+    margin-top:40px;
+}
+
+.check_feel {
+    width:60%;
+    margin:0 auto;
+}
+
+.check_feel > div {
+    width:50%;
+    float:left;
+}
+
+.check_feel > div:first-child {
+    display:block;
+    width:100%; height:280px;
+    margin-top:40px;
+}
+
+.check_strong {
+    width:60%;
+    margin:0 auto;
+}
+
+.check_strong > div {
+    width:50%;
+    float:left;
+}
+
+.check_strong > div:first-child {
+    display:block;
+    width:100%; height:280px;
+    margin-top:40px;
+}
+
+/* 나와 어울리는 커피 결과 */
+.content_product_finder_view {
+    width:100%; 
+    background-image: url("../img/coffee/product_finder_bg.jpg");
+    overflow: hidden;
+}
+
+.product_finder_view_div {
+    width:100%;
+    height:600px;
+    background-color: #fff;
+}
+
+.finder_view_left_div {
+    width:40%;
+    height:600px;
+    margin-top:40px;
+    overflow:hidden;
+    float:left;
+}
+
+.finder_view_img {
+    width:100%;
+}
+
+.finder_view_img:hover {
+    transform:scale(1.1);
+    transition:all 0.3s ease-in-out; 
+}
+
+.finder_view_right_div {
+    width:50%;
+    height:600px;
+    margin:40px 40px 0 20px;
+    float:right;
+    text-align:left;
+}
+
+.finder_view_right_div > h1 {
+    font-size:24px;
+}
+
+.finder_view_right_div > hr {
+    border:1px solid black;
+    margin:10px 0 20px 0;
+}
+
+.finder_view_right_div > p {
+    font-size:13.5px;
+    margin-bottom:40px;
+}
+

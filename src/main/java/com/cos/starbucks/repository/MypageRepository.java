@@ -34,7 +34,9 @@ public interface MypageRepository {
 	String findCoffeeName(int coffeeId);
 	String findBevName(int bevId);
 	User_card CheckCardExist(int userId);
-	List<Trade> findTradeLog(int userid);
+	List<Trade> findTradeLog(int userId);
+	
+	int findAmountByUserId(int userId);
 
 //안드로이드
 	void AcardSave(User_card userCard);

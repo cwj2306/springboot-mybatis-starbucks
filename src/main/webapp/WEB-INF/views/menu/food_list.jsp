@@ -22,9 +22,9 @@
 
 		<!-- 본문 시작 -->
 		<div class="content">
-			<h1>음료</h1>
+			<h1>푸드</h1>
 			<div class="content_category">
-				<h4>분류 보기</h4>
+				<h4>분류 보기(판매 준비중입니다.)</h4>
 				<hr>
 				<ul class="content_category_selectAll">
 					<li onClick="allFood()"><a href="#">전체 상품보기</a></li>
