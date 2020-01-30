@@ -80,7 +80,7 @@ public class MyLoginHandler implements AuthenticationSuccessHandler, Authenticat
 		}
 		
 		response.setContentType("text/html; charset=UTF-8");
-        out.println("<script>alert('아디이 또는 비밀번호를 정확하게 입력해주세요.'); history.go(-1);</script>");
+        out.println("<script>alert('아이디 또는 비밀번호를 정확하게 입력해주세요.'); history.go(-1);</script>");
         out.flush();
         out.close();
 	}
