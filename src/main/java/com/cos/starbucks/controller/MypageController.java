@@ -236,6 +236,12 @@ public class MypageController {
 	@GetMapping("/pay")
 	public String pay() {
 
+		return "/mypage/pay2";
+	}
+	
+	@PostMapping("/pay2")
+	public String pay2(int point,Model model) {
+		model.addAttribute("point",point);
 		return "/mypage/pay";
 	}
 	
@@ -247,8 +253,8 @@ public class MypageController {
 	}
 	
 
-	@PostMapping("/pointup")
-	public String pointUp(@AuthenticationPrincipal MyUserDetails userDetail, @RequestParam int point) {
+	@GetMapping("/pointup/{point}")
+	public String pointUp(@AuthenticationPrincipal MyUserDetails userDetail, @PathVariable int point) {
 		User_card mycard = mRepo.findByUserIdCard(userDetail.getUser().getId());
 		User user = uRepo.findByUsername(userDetail.getUser().getUsername());
 		System.out.println(point);
