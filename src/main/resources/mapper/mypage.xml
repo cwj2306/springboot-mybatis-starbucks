@@ -110,8 +110,29 @@
 	</delete>
 	
 	<!-- 안드로이드  -->
-		<insert id="AcardSave">
+	<insert id="AcardSave">
 		insert into user_card(cardId,userId,cardName,cardImage,createDate) 
 		values(#{cardId},#{userId},#{cardName},#{cardImage},now())
 	</insert>
+	
+	<insert id="Acart">
+		insert into cart(userId,name,price,createDate) values(#{userId},#{name},#{price},now())
+	</insert>
+	
+	<select id="AcartfindbyuserId" resultType="com.cos.starbucks.model.Cart">
+		select * from cart where userId=#{?} ORDER BY id DESC 
+	</select>
+	
+	<select id="AfindExistProduct" resultType="com.cos.starbucks.model.Cart">
+		select * from cart where userId=#{userId} and name =#{name}
+	</select>
+	
+	<delete id="AdeleteCart">
+		delete from cart where id=#{id}
+	</delete>
+	
+	<delete id="AdeleteCartOrder">
+		delete from cart where userId=#{userId}
+	</delete>
+	
 </mapper>

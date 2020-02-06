@@ -3,6 +3,7 @@ package com.cos.starbucks.repository;
 import java.util.List;
 
 import com.cos.starbucks.model.Trade;
+import com.cos.starbucks.model.Cart;
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
 import com.cos.starbucks.model.User_card;
@@ -40,6 +41,9 @@ public interface MypageRepository {
 
 //안드로이드
 	void AcardSave(User_card userCard);
-	
-	
+	void Acart(int userId , String name , int price);
+	Cart AfindExistProduct(int userId, String name);
+	List<Cart> AcartfindbyuserId(int userId);
+	void AdeleteCart(int id);
+	void AdeleteCartOrder(int userId);
 }

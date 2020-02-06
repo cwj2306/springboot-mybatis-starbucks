@@ -68,6 +68,15 @@ create table trade(
     foreign key(userId) references user(id)
 )engine=InnoDB default charset=utf8;
 
+create table cart(
+	id int auto_increment primary key,
+    userId int,
+    name varchar(100) not null,
+	price int not null,
+	createDate timestamp,
+    foreign key(userId) references user(id)
+)engine=InnoDB default charset=utf8;
+
 create table user_card(
     id int auto_increment primary key,
     userId int,
