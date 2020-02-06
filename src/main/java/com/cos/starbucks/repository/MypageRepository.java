@@ -41,9 +41,15 @@ public interface MypageRepository {
 
 //안드로이드
 	void AcardSave(User_card userCard);
+
 	void Acart(int userId , String name , int price);
 	Cart AfindExistProduct(int userId, String name);
 	List<Cart> AcartfindbyuserId(int userId);
 	void AdeleteCart(int id);
 	void AdeleteCartOrder(int userId);
+
+	int AfindMyBeverage(MyBeverage myBeverage);
+	int AfindMyCoffee(MyCoffee myCoffee);
+	void AdeleteMyBeverage(MyBeverage myBeverage);
+	void AdeleteMyCoffee(MyCoffee myCoffee);
 }

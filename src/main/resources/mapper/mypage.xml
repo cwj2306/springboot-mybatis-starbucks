@@ -67,7 +67,7 @@
 	</select>
 	
 	<select id="findTradeLog" resultType="com.cos.starbucks.model.Trade">
-	select * from trade where userId=#{?}
+	select * from trade where userId=#{?} order by createDate desc
 	</select>
 	
 	<select id="findAmountByUserId" resultType="Integer">
@@ -115,6 +115,7 @@
 		values(#{cardId},#{userId},#{cardName},#{cardImage},now())
 	</insert>
 	
+	
 	<insert id="Acart">
 		insert into cart(userId,name,price,createDate) values(#{userId},#{name},#{price},now())
 	</insert>
@@ -133,6 +134,23 @@
 	
 	<delete id="AdeleteCartOrder">
 		delete from cart where userId=#{userId}
+	</delete>
+
+
+	<select id="AfindMyBeverage" resultType="Integer">
+		select count(*) from myBeverage where userId=#{userId} and beverageId=#{beverageId}
+	</select>
+	
+	<select id="AfindMyCoffee" resultType="Integer">
+		select count(*) from myCoffee where userId=#{userId} and coffeeId=#{coffeeId}
+	</select>
+	
+	<delete id="AdeleteMyBeverage">
+		delete from myBeverage where userId=#{userId} and beverageId=#{beverageId}
+	</delete>
+	
+	<delete id="AdeleteMyCoffee">
+		delete from myCoffee where userId=#{userId} and coffeeId=#{coffeeId} 
 	</delete>
 	
 </mapper>

@@ -20,6 +20,7 @@ public interface MenuRepository {
 	List<Beverage> findEtc();
 	List<Beverage> findTea();
 	List<Beverage> findJuice();
+	List<Beverage> findByIds(List<Integer> ids);
 	
 	List<Food> findAllFood();
 	List<Food> findBake();

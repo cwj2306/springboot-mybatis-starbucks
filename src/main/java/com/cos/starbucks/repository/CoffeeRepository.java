@@ -15,4 +15,5 @@ public interface CoffeeRepository {
 	Coffee findCoffee(String flavor,String feel,String strong);
 	void uploadCoffee(String name,String detail,int price,String flavor,String feel,String strong,String roast,String image);
 	void deleteCoffee(int id);
+	List<Coffee> findByIds(List<Integer> ids);
 }

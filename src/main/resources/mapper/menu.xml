@@ -47,6 +47,14 @@
 		select * from beverage where category='스타벅스 주스(병음료)'
 	</select>
 	
+	<select id="findByIds" resultType="com.cos.starbucks.model.Beverage">
+		select * from beverage 
+		where id in 
+			<foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+				#{item}
+			</foreach>
+	</select>
+	
 	<select id="findAllCard" resultType="com.cos.starbucks.model.Card">
 		select * from card;
 	</select>
