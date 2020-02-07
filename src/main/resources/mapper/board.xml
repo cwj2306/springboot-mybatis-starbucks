@@ -59,11 +59,12 @@
 	</delete>
 	
 	<!-- 안드로이드 -->
-		<select id="AfindAll" resultType="com.cos.starbucks.model.Board">
-		SELECT * 
-		FROM board 
-		ORDER BY id DESC 
-		LIMIT 0, 20
+	<select id="AfindAll" resultType="com.cos.starbucks.model.Board">
+		SELECT * FROM board ORDER BY id DESC LIMIT 0, 10
+	</select>
+	
+	<select id="AfindNext" resultType="com.cos.starbucks.model.Board">
+		SELECT * FROM board ORDER BY id DESC LIMIT #{position}, 5
 	</select>
 	
 </mapper>

@@ -16,5 +16,6 @@ public interface BoardRepository {
 	
 //	안드로이드
 	List<Board> AfindAll();
+	List<Board> AfindNext(int position);
 
 }
