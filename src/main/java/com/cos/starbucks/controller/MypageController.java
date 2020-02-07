@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.starbucks.model.Trade;
+import com.cos.starbucks.model.Board;
 import com.cos.starbucks.model.MyBeverage;
 import com.cos.starbucks.model.MyCoffee;
 import com.cos.starbucks.model.User;
@@ -267,6 +268,32 @@ public class MypageController {
 		uRepo.moneyUp(money, userDetail.getUser().getId());
 		return "redirect:/mypage/myStarBucks";
 	}
+//	안드로이드용
+	@GetMapping("/Apay/{userId}/{point}")
+	public String Apay(@PathVariable("userId") int userId,@PathVariable("point") int point, Model model) {
+		model.addAttribute("userId", userId);
+		model.addAttribute("point", point);
+		return "mypage/Apay";
+	}
 	
+	@GetMapping("/Apointup/{userId}/{point}")
+	public String ApointUp(
+			@PathVariable int userId, @PathVariable int point, 
+			@RequestParam("imp_success") String success, Model model) {
+		
+		model.addAttribute("success", success);
+		
+		if(success.equals("true")) {
+			User_card mycard = mRepo.findByUserIdCard(userId);
+			User user = uRepo.findById(userId);
+			int money = user.getMoney() + point;
+			int result = mycard.getPoint() + point;
+
+			mRepo.updatePoint(userId, result);
+			uRepo.moneyUp(money, userId);	
+		}
+		
+		return "/mypage/Apointup";
+	}
 	
 }

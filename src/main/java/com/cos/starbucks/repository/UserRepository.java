@@ -20,4 +20,6 @@ public interface UserRepository {
 	
 	int usernameCheck(String username);
 	void changeUserInfo(int id,String name,String password);
+	
+	User findById(int id);
 }

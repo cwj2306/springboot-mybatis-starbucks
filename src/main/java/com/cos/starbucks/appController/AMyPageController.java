@@ -82,27 +82,6 @@ public class AMyPageController {
 		return null;
 	}
 		
-	@PostMapping("/recharge")
-	public String mypageRecharge(@AuthenticationPrincipal MyUserDetails userDetail, @RequestParam int point) {
-		if(userDetail != null) {
-			User user = userDetail.getUser();
-			User_card mycard = mRepo.findByUserIdCard(user.getId());
-			
-			if(mycard != null) {
-				int money = user.getMoney() + point;
-				int result = mycard.getPoint() + point;
-
-				mRepo.updatePoint(user.getId(), result);
-				uRepo.moneyUp(money, user.getId());
-				
-				return "1";
-			}
-			
-			return "nocard";
-		}
-				
-		return "notlogin";
-	}
 	
 	@PostMapping("/delete_card")
 	public String mypageDeleteCard(@AuthenticationPrincipal MyUserDetails userDetail, @RequestParam int id) {
