@@ -13,7 +13,7 @@
 
 <link rel="stylesheet" href="../css/store.css">
 
-<title>Starbucks Coffee Korea</title>
+<title>Starbucks Coffee Korea :: Store map</title>
 </head>
 <body>
 	<div class="wrap">

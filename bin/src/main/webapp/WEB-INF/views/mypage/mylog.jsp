@@ -32,44 +32,15 @@
         </div>
         <!-- 상단 제목영역 끝 -->
         <div class="content">
-            <div class="my_sb_content">
-                <!-- 상단 회색 박스 시작 -->
-<!--                 <div class="my_sb_gray_box" style="height:120px;">
-                    <div class="gray_box_left" >
-                        <form class="receipt_form">
-                            <p>기간별
-                                <input type="radio" name="receipt_period" value="1month"/> 1개월
-                                <input type="radio" name="receipt_period" value="3month" /> 3개월
-                                <input type="radio" name="receipt_period" value="6month" /> 6개월
-                                <input type="radio" name="receipt_period" value="1year" /> 1년
-                            </p>
-                            <p>결제수단
-                                <select>
-                                    <option>전체보기</option>
-                                    <option>스타벅스 카드</option>
-                                    <option>스타벅스 카드 외</option>
-                                </select>
-                            </p>
-                            <p>거래유형
-                                <select>
-                                    <option>전체보기</option>
-                                    <option>결제</option>
-                                    <option>충전</option>
-                                </select>
-                            </p>
-                            <p><input type="submit" value="검색" /></p>
-                            <p>*최근 1년까지의 이력만 조회 가능합니다.</p>
-                        </form>
-                    </div>
-                </div> -->
-                <!-- 상단 회색 박스 끝 -->
+            <div class="my_sb_content" style="margin-top:18px;">
                 <div class="receipt_result_table_div">
-                    <p>매장에 방문하여 거래하신 건에 한하여 전자 영수증을 확인하실 수 있습니다.</p>
-                    <table>
+                    <p style="text-align:right; font-size:10px; margin-bottom:10px; color:#444;">* 매장에 방문하여 거래하신 건에 한하여 전자 영수증을 확인하실 수 있습니다.</p>
+                    <table class="my_sb_menu_table" style="margin-bottom:60px;">
                         <tr>
-                            <td>상품명</td>
+                            <td style="width:30%;">상품명</td>
                             <td>구매일</td>
                             <td>가격</td>
+                            <td>수량</td>
                         </tr>
                         <!-- 데이터 있는만큼 출력 시작 -->
                         <c:forEach var="log" items="${log}">

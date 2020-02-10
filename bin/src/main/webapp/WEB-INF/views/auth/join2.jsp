@@ -58,15 +58,15 @@
                             <select name="date" id="date" title="일" class="select"></select>
                         </td>
                     </tr>    
-                   <p>회원가입 완료 후 스타벅스 카드를 등록하시면 생일 무료음료 쿠폰이 발행됩니다.</p>
+                   <p style="margin-top:10px;">회원가입 완료 후 스타벅스 카드를 등록하시면 생일 무료음료 쿠폰이 발행됩니다.</p>
                     <hr/>
                     <p class="join_input_title">휴대폰(필수)</p>
                     <input type="tel" placeholder="하이픈을 포함해서 입력해주세요. ex) 010-1234-5678" class="join_input" required/>
                     <hr/>
                     <p class="join_input_title">메일(필수)</p>
                     <input type="email" id="email"name="email" placeholder="E-mail을 입력하세요." class="join_input" required/>
-                    <p><b>* 선택항목은 입력하지 않거나 동의하지 않아도 회원 가입이 가능합니다.</b></p>
-                    <input class="btn_submit" type="submit" value="가입하기" />
+                    <p style="margin-top:15px; "><b>* 선택항목은 입력하지 않거나 동의하지 않아도 회원 가입이 가능합니다.</b></p>
+                    <input style="color:#fff;" class="btn_submit" type="submit" value="가입하기" />
                 </form>
             </div>
             <!-- 회원정보 끝 -->

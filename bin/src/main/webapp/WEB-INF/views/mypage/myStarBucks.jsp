@@ -43,10 +43,10 @@
                             <img src="../img/my_starbucks/user_pic_sample.jpg" alt="user_icon">
                         </div>
                         <p><span id="name">${principal.user.username}</span>님은 현재 <span id="level">${principal.user.level}</span>이십니다.</p>
-                        <div class="gray_box_button_div">
+<!--                         <div class="gray_box_button_div">
                             <button>개인정보 수정</button>
                             <button>비밀번호 변경</button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="line"></div>
                     <div class="gray_box_right">
@@ -54,14 +54,29 @@
                         <div>
                             <div class="star_icon">
                                 <img src="../img/my_starbucks/star_line.png" alt="star_icon">
-                                <p id="num" style="font-size:40px;">0</p>
+                                <p id="num" style="font-size:40px;">${amount}</p>
                             </div>
-                            <p><span id="left_num">5</span id="left_num">개의 별★이 더 모이면 <br> <span id="level">Green Level</span>만의 특별한 혜택이!</p>
+                            <c:choose>
+                            	<c:when test="${principal.user.level eq 'Bronze'}">
+                            		 <c:set var="lessCount" value="${20-amount}"/>
+                           			 <p><span id="left_num"><c:out value="${lessCount}"/></span id="left_num">개의 별★이 더 모이면 <br> <span id="level">Silver Level</span>만의 특별한 혜택이!</p>
+                            	</c:when>
+                            	
+                            	<c:when test="${principal.user.level eq 'Silver'}">
+                            		<c:set var="lessCount" value="${50-amount}"/>
+                            		<p><span id="left_num"><c:out value="${lessCount}"/></span id="left_num">개의 별★이 더 모이면 <br> <span id="level">Gold Level</span>만의 특별한 혜택이!</p>
+                            	</c:when>
+                            	<c:otherwise>
+                            	<p><span id="level">최고 레벨 Gold Level</span>만의 특별한 혜택을 누리세요!</p>
+                            	</c:otherwise>
+                            </c:choose>
+
+                        	
                         </div>
-                        <div class="gray_box_right_button_div">
+<!--                         <div class="gray_box_right_button_div">
                             <button>리워드 및 혜택</button>
                             <button>별 히스토리</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- 회색 박스 끝 -->
@@ -77,18 +92,17 @@
                         <div class="my_sb_card_content_left">
                             <img class="my_sb_card_img" src="${card.cardImage}" alt="card_image">
                         </div>
-                        <div class="my_sb_card_content_right"
-                        >
-                            <p><span id="username">${card.cardName}</span></p>
-                            <p><span id ="balance">${card.point}</span>원</p>
-                            <p>등록일 : <span id="update_date">${card.createDate}</span></p>
+                        <div class="my_sb_card_content_right" style="margin-top:20px;">
+                            <p style="font-size:16px; margin-bottom:5px;"><span id="username">${card.cardName}</span></p>
+                            <p><span id ="balance" style="color:#006633;">${card.point}</span>원</p>
+                            <p style="margin-bottom:10px;">등록일 : <span id="update_date">${card.createDate}</span></p>
                             
                             <div class="my_sb_card_button_div">
-                            <form action="/mypage/pay">
-                            <button>충전하기</button>
+                            <form style="float:left;" action="/mypage/pay">
+                            	<button style="width:60px; height:30px; border:1px solid #777; border-radius: 3px; margin:15px 0; background-color: #fff; margin-left:12px;">충전하기</button>
                             </form>
                             <form action="/mypage/deleteCard/${card.id}" method="post">
-                                <button>카드 삭제</button>
+                                <button style="width:60px; height:30px; border:1px solid #777; border-radius: 3px; margin:15px 0; background-color: #fff;">카드 삭제</button>
                             </form>
                             </div>
                         </div>
@@ -127,6 +141,5 @@
         });
     });
 </script>
-<%@include file="../include/footer.jsp"%>
 </body>
 </html>

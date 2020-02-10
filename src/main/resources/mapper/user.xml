@@ -53,8 +53,10 @@
 	<update id="changeUserInfo">
 	update user set name=#{name},password=#{password} where id=#{id}
 	</update>
+
 	<!-- 안드로이드 -->
 	<select id="findById" resultType="com.cos.starbucks.model.User">
 		select * from User where Id = #{id}
 	</select>
+	
 </mapper>

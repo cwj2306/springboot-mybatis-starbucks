@@ -17,22 +17,17 @@
 	background: #FFF;
 	padding: 20px;
 	position: fixed;
-	width: 400px;
+	width: 400px; height:450px;
 	left: 10%;
 	right: 10%;
 	margin: 0 auto;
 	top: 30%;
 	overflow-y: scroll;
-	height: 400px;
 }
 
 .detailPopupItem {
 	display: grid;
-	grid-template-columns: auto auto;
 	align-items: center;
-	justify-content: flex-start;
-	grid-gap: 15px;
-	border-bottom: 1px dashed #999;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }

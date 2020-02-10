@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/myStarbucks.css">
     <link rel="stylesheet" href="/css/notice.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title>Starbucks Coffee Korea :: Login </title>
+<title>Starbucks Coffee Korea :: what's new </title>
 </head>
 <body>
 <div class="wrap">

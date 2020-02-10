@@ -36,6 +36,6 @@ spring:
 
 #파일 저장할 경로 git pull할때마다 자기주소로 바꿔야 에러안남
 file:
-  path: C:/Users/it/Desktop/starbucks/starbucks/src/main/resources/upload/
+  path: /home/ubuntu/upload/
           
 

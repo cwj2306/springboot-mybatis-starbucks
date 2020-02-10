@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/myStarbucks.css">
     <link rel="stylesheet" href="/css/notice.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title>Starbucks Coffee Korea :: Login </title>
+<title>Starbucks Coffee Korea :: detail </title>
 </head>
 <body>
 <div class="wrap">
@@ -39,11 +39,12 @@
             <br /><p> ${board.content}</p>
             <br />
             <c:if test="${principal.user.username eq 'admin'}">
-            <a href="/board/update/${board.id}">수정하기</a>
-            <a href="/board/delete/${board.id}">삭제하기</a>
             </c:if>
         </div>
         <button class="list_button" type="button" onclick="location.href='/board'">목록</button>
+        <div class="list_button" style="margin-top:6px; margin-right:10px; background-color:#fff; text-align:center; color:#fff; height:35px;"><a href="/board/update/${board.id}">수정하기</a></div>
+        <div class="list_button" style="margin-top:6px; margin-right:10px; background-color:#fff; text-align:center; color:#fff; height:35px;"><a href="/board/delete/${board.id}">삭제하기</a></div>
+        
         <div class="notice_list">
             <c:choose>
                 <c:when test="${board.id eq 1}">

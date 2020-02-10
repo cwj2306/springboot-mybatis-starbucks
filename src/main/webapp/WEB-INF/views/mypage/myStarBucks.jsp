@@ -42,7 +42,7 @@
                         <div class="user_icon">
                             <img src="../img/my_starbucks/user_pic_sample.jpg" alt="user_icon">
                         </div>
-                        <p><span id="name">${principal.user.username}</span>님은 현재 <span id="level">${principal.user.level}</span>이십니다.</p>
+                        <p><span id="name">${principal.user.name}</span>님은 현재 <span id="level">${principal.user.level}</span>이십니다.</p>
 <!--                         <div class="gray_box_button_div">
                             <button>개인정보 수정</button>
                             <button>비밀번호 변경</button>
@@ -92,18 +92,17 @@
                         <div class="my_sb_card_content_left">
                             <img class="my_sb_card_img" src="${card.cardImage}" alt="card_image">
                         </div>
-                        <div class="my_sb_card_content_right"
-                        >
-                            <p><span id="username">${card.cardName}</span></p>
-                            <p><span id ="balance">${card.point}</span>원</p>
-                            <p>등록일 : <span id="update_date">${card.createDate}</span></p>
+                        <div class="my_sb_card_content_right" style="margin-top:20px;">
+                            <p style="font-size:16px; margin-bottom:5px;"><span id="username">${card.cardName}</span></p>
+                            <p><span id ="balance" style="color:#006633;">${card.point}</span>원</p>
+                            <p style="margin-bottom:10px;">등록일 : <span id="update_date">${card.createDate}</span></p>
                             
                             <div class="my_sb_card_button_div">
-                            <form action="/mypage/pay">
-                            <button>충전하기</button>
+                            <form style="float:left;" action="/mypage/pay">
+                            	<button style="width:60px; height:30px; border:1px solid #777; border-radius: 3px; margin:15px 0; background-color: #fff; margin-left:12px;">충전하기</button>
                             </form>
                             <form action="/mypage/deleteCard/${card.id}" method="post">
-                                <button>카드삭제</button>
+                                <button style="width:60px; height:30px; border:1px solid #777; border-radius: 3px; margin:15px 0; background-color: #fff;">카드 삭제</button>
                             </form>
                             </div>
                         </div>
@@ -142,6 +141,5 @@
         });
     });
 </script>
-<%@include file="../include/footer.jsp"%>
 </body>
 </html>

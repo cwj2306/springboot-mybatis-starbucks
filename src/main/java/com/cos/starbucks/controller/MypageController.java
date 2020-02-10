@@ -296,4 +296,5 @@ public class MypageController {
 		return "/mypage/Apointup";
 	}
 	
+	
 }

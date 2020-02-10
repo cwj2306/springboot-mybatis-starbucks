@@ -12,6 +12,7 @@
 	<groupId>com.cos</groupId>
 	<artifactId>starbucks</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>starbucks</name>
 	<description>Demo project for Spring Boot</description>
 

@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../css/modal.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title>Starbucks Coffee Korea :: drink</title>
+<title>Starbucks Coffee Korea :: food</title>
 </head>
 <body>
 	<div class="wrap">

@@ -104,10 +104,55 @@ header {
 
 .top_promo_div {
     width:100%; height:645px;
-    background-image: url("../img/index/top_promo_img.png");
+    animation: bg_change 5s infinite;
     background-repeat: no-repeat;
-    background-color: #cd002b;
+    background-color: #042a1d;
     overflow: hidden;
+}
+
+@keyframes bg_change {
+    0%, 100% {
+        background-image: url("../img/index/top_promo_img.png");
+    } 50% {
+        background-image: url("../img/index/top_promo_img_2.png");
+    }
+}
+
+
+.promo_img_01 {
+    float:left;
+    margin-left:20%;
+    margin-top:80px;
+    animation: fadein 2s;
+}
+
+.promo_img_02 {
+    position:absolute;
+    top:180px; left:740px;
+    animation: fadein 6s;
+}
+
+
+ .promo_img_03 {
+    position:absolute;
+    top:360px; left:630px;
+    animation: fadein 4s;
+}
+
+
+.promo_img_04 {
+    position:absolute;
+    top:320px; left:1120px;
+    animation: fadein 10s;
+} 
+
+@keyframes fadein {
+    from {
+        opacity:0.2;
+    }
+    to {
+        opacity:1;
+    }
 }
 
 /* 음료 / 카드 / 메뉴 하이퍼링크 */
@@ -118,65 +163,41 @@ header {
 .main_drink_section {
     width:100%;
     height:400px;
-    background-image: url("../img/index/m_menu_bimg1.png");
+    background-image: url("../img/index/m_menu_bimg1.jpg");
+    background-size:cover;
     background-repeat: no-repeat;
     background-color: #000;
-    background-position: left bottom;
     color:#fff;
     overflow: hidden;
-}
-
-.main_drink_section .main_img_section_textbox {
-    position: relative;
-    top:100px; left:1200px;
 }
 
 .main_card_section {
     width:100%;
     height:400px;
-    background-image: url("../img/index/m_menu_bimg4.png");
+    background-image: url("../img/index/m_menu_bimg2.jpg");
+    background-size:cover;
     background-repeat: no-repeat;
     background-color: #fbf5e9;
-    background-position: right bottom;
     overflow: hidden;
-}
-
-.main_card_section .main_img_section_textbox {
-    position: relative;
-    top:100px; left:300px;
 }
 
 .main_menu_section {
     width:100%;
     height:400px;
-    background-image: url("../img/index/m_menu_bimg5.png");
+    background-image: url("../img/index/m_menu_bimg3.jpg");
+    background-size:cover;
     background-repeat: no-repeat;
     background-color: #f0cfbc;
-    background-position: left bottom;
     overflow: hidden;
 }
 
-.main_menu_section .main_img_section_textbox {
-    position: relative;
-    top:100px; left:1200px;
+
+.main_img_section_textbox > p {
+    position:relative;
+    top:313px; border-color: #fff;
 }
 
-.main_img_section div div p:nth-child(1) {
-    font-weight: bolder;
-    font-size:23px;
-}
-
-.main_img_section div div p:nth-child(2) {
-    font-weight: bolder;
-    font-size:18px;
-}
-
-.main_img_section div div p:nth-child(3) {
-    font-size:14px;
-    margin:10px 0;
-}
-
-.main_img_section div div p:nth-child(4) {
+.line_button_box {
     text-align:center;
     font-size:13px;
     line-height: 20px;
@@ -191,6 +212,232 @@ header {
 .main_drink_section a {color:#fff;}
 .main_card_section a {color:#000;}
 .main_menu_section a {color:#000;}
+
+/* 원두 */
+.coffee_bean_div {
+    width:100%;
+    height:405px;
+    background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=f1edec&noise=d9d9d9&density=13&opacity=62);
+}
+
+.coffee_bean_pattern {
+    width:400px; height:100%;
+    overflow:hidden;
+}
+
+.coffee_bean_pattern > img {
+    width:100%; height:100%;
+}
+
+.coffee_bean_fadein > img {
+    width:100%;
+    animation: fadein 8s;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+
+/* 나와 어울리는 커피 */
+
+.pick_fav_div {
+    width:100%;
+    height:700px;
+    background-attachment: fixed;
+    background-image: url("../img/index/pick_fav_div.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow:hidden;
+}
+
+.pick_fav_text_div {
+    float:left;
+    text-align:right;
+    margin-left:15%;
+    margin-top:4%;
+    color:#fff;
+}
+
+.pick_text_01 > p:nth-child(1) {font-size:100px; letter-spacing: 3px;}
+.pick_text_01 > p:nth-child(2) {font-size:58px; line-height: 25px;}
+.pick_text_01 > p:nth-child(3) {font-size:32px; line-height: 80px;}
+
+
+.pick_text_02 {
+    font-size:24px;
+    margin-top:5px;
+    letter-spacing: -1px;
+}
+
+.pick_text_03 {
+    font-size:14px;
+    margin-top:15px;
+    letter-spacing: -1px;
+}
+
+.pick_text_01 > p {animation: Move 3s forwards;}
+.pick_text_02 > p {animation: Move 4.5s forwards;}
+.pick_text_03 > p {animation: Move 5s forwards;}
+.pick_text_04 > p {animation: Movebox 5s forwards;}
+
+@keyframes Move {
+    from {
+        opacity: 0;
+        width:500px;
+        margin-left:-1000px;
+    }
+    to {
+        opacity: 1;
+        width:500px;
+        margin:0;
+    }
+  }
+
+  @keyframes Movebox {
+    from {
+        opacity: 0;
+        margin-left:-100px;
+        margin-top:40px;
+    }
+    to {
+        opacity: 1;
+        margin-top:40px;
+    }
+  }
+
+.pick_fav_img_div {
+    float:right;
+    width:700px; height:600px;
+    margin-right:18%;
+    margin-top:100px;
+}
+
+.pick_fav_img_div > img {
+    width:100%;
+}
+
+/* 공지 확인 */
+.whats_new_div {
+    width:100%;
+    height:550px;
+    background-image: url("../img/index/sb_store_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow:hidden;
+}
+
+.whats_new_circle_div {
+    width:340px; height:340px;
+    margin:0 auto;
+    margin-top:8%;
+    transform: perspective(668px);
+}
+
+.whats_new_circle {
+    width:200px; height:200px;
+    margin:0 auto;
+    background-color: #fff;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out 0s;
+    background-image: url("../img/index/whats_new_image.png");
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.whats_new_circle:hover {
+    transform:rotateY(180deg) scale(1.6);
+    background-image:none;
+}
+
+.whats_new_text {
+    vertical-align: middle;
+    text-align:center;
+    position:relative; top:-170px;
+}
+
+
+/* 매장 찾기 */
+.store_search {
+    width:100%; height:380px;
+    background-color: #e8e8e8;
+    color:#333333;
+    background-image:
+        linear-gradient(115deg, transparent 75%, rgb(231, 231, 231) 75%),
+        linear-gradient(245deg, transparent 75%, rgb(230, 230, 230) 75%),
+        linear-gradient(115deg, transparent 75%, rgb(235, 235, 235) 75%),
+        linear-gradient(245deg, transparent 75%, rgb(238, 238, 238) 75%);
+    background-position: 0 0, 0 0, 10px -20px, 10px -20px;
+    background-size: 20px 40px;
+}
+
+.store_search .store_search_img {
+    width:460px; height:100%;
+    margin-left:25%;
+    float:left;
+}
+
+.store_search .store_search_img > img {
+    width:100%;
+    animation: fadein 8s;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+.store_search_text_div {
+    width:500px; height:50%;
+    margin-top:90px;
+    float:left;
+}
+
+.store_search_text_div > div > div:first-child {
+    animation: fadeInAndMove 3s forwards;
+    margin-bottom:15px; 
+}
+.store_search_text_div > div > div:nth-child(2) {
+    animation: fadeInAndMove 4.5s forwards;
+}
+.store_search_text_div > div > div:last-child {
+    animation: fadeInAndMove 4s forwards;
+}
+
+@keyframes fadeInAndMove {
+    from {
+        opacity: 0;
+        width:500px;
+        margin-left:1000px;
+    }
+    to {
+        opacity: 1;
+        width:500px;
+        margin-left:100px;
+    }
+  }
+
+
+.store_search_text_div > div:first-child {
+    margin-bottom:10px;
+    letter-spacing: -2px;
+}
+
+.store_search_text_div p {
+    font-size:14.5px;
+    margin-top:3px;
+    letter-spacing: -1px;
+}
 
 /* footer */
 

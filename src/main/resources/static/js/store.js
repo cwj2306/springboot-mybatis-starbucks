@@ -26,7 +26,7 @@ let quickSearch = true;
 // DB에 있는 mycafe 목록 들고오기
 let mycafe_list = []; // 비로그인, db연결 실패, 등록한 매장이 없는 경우 모두 빈 리스트임
 
-fetch("http://localhost:8080/store_map/mycafe",{
+fetch("/store_map/mycafe",{
 	method:'GET',
 }).then(function(response){
 	return response.text();
@@ -337,7 +337,7 @@ function save_my_cafe(el, index){
 	if(el.getAttribute('src').indexOf('off') != -1){ // off -> on (관심매장에 등록)
 
 		// Ajax
-		fetch("http://localhost:8080/store_map/save",{
+		fetch("/store_map/save",{
 			method:'POST',
 			body: formData
 		}).then(function(response){
@@ -358,7 +358,7 @@ function save_my_cafe(el, index){
 	}else{// on -> off (관심매장에서 삭제)
 		
 		// Ajax
-		fetch("http://localhost:8080/store_map/delete",{
+		fetch("/store_map/delete",{
 			method:'POST',
 			body: formData
 		}).then(function(response){
@@ -418,7 +418,7 @@ function my(el){
 	let e2 = document.querySelector('#placesList');
 	let e3 = document.querySelector('#pagination');
 	
-	fetch("http://localhost:8080/store_map/mycafe",{
+	fetch("/store_map/mycafe",{
 		method:'GET',
 	}).then(function(response){
 		return response.text();

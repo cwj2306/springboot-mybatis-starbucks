@@ -302,11 +302,11 @@ input[type="radio"]:checked + label {
 }
 
 .my_sb_menu_table tr td:nth-child(1) {width:3%; padding:0px 2%; text-align:center;}
-.my_sb_menu_table tr td:nth-child(2) {width:5%; padding:0px 2%; text-align:center;}
-.my_sb_menu_table tr td:nth-child(3) {width:30%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(2) {width:30%; padding:0px 2%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(3) {width:20%; text-align:center;}
 .my_sb_menu_table tr td:nth-child(4) {width:15%; text-align:center;}
-.my_sb_menu_table tr td:nth-child(5) {width:15%; text-align:center;}
-.my_sb_menu_table tr td:nth-child(6) {width:10%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(5) {width:20%; text-align:center;}
+.my_sb_menu_table tr td:nth-child(6) {width:5%; text-align:center;}
 
 /* My 메뉴 - 삭제버튼 */
 .delete_button_div {margin-top:20px;}

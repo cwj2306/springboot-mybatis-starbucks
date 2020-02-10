@@ -54,7 +54,7 @@ create table user(
     email varchar(100),
     provider varchar(100),
     providerId varchar(100),
-    level varchar(30) CHECK(level IN('Bronze','Silver','Gold')) default 'Bronze',
+    level varchar(30)  default 'Bronze',
     createDate timestamp
 )engine=InnoDB default charset=utf8;
 

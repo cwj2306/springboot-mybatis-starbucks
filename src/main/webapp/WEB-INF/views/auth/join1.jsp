@@ -70,7 +70,7 @@ window.onload = function() {
 	var next_page = document.getElementById('next_page');
 	next_page.onclick = function() {
 		if($("#manual_check_01").is(":checked")&&$("#manual_check_02").is(":checked")){
-			location.href="http://localhost:8080/user/join2";
+			location.href="/user/join2";
 		} else {
 	   		alert("필수 약관에 모두 동의해주세요");
  			}

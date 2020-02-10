@@ -12,7 +12,7 @@
    <link rel="stylesheet" href="../css/modal.css">
    <script type="text/javascript" src="/js/modal.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title>Starbucks Coffee Korea :: product finder view</title>
+<title>Starbucks Coffee Korea :: favorite</title>
 </head>
 <body>
 <div class="wrap">
@@ -60,15 +60,15 @@
 </div>
 
 <!-- 디테일 Modal 시작 -->
-<div id="modal">
-    <div id="detailBox">
-        <div class="detailPopupItem"></div>
-        <div class="detailPoupClose">
-            <button type="button">닫기</button>
-        </div>
-    </div>
-</div>
-<!-- 디테일 Modal 끝 -->
+		<div id="modal">
+			<div id="detailBox">
+				<div class="detailPoupClose" style="text-align:right;">
+					<button type="button" style="width:30px; height:30px; text-align:center; border:1px solid #fff; border-radius:5px; color:#FFF; background-color:#222;">X</button>
+				</div>
+				<div class="detailPopupItem"></div>
+			</div>
+		</div>
+		<!-- 디테일 Modal 끝 -->
 
  <script type="text/javascript" src="/js/modal.js"></script>
 </body>

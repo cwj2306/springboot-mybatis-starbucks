@@ -73,7 +73,8 @@ public class ASirenController {
 					uRepo.changeGoldLevel(principalId);
 				}
 				// 구매가 완료되었습니다.
-				return "tradeSuccess";
+				int restPoint = mpRepo.findCardPoint(principalId);
+				return Integer.toString(restPoint);
 			} else {
 				// 잔액이 부족합니다.
 				return "noPoint";
@@ -125,7 +126,8 @@ public class ASirenController {
 					uRepo.changeGoldLevel(principalId);
 				}
 				// 구매가 완료되었습니다.
-				return "tradeSuccess";
+				int restPoint = mpRepo.findCardPoint(principalId);
+				return Integer.toString(restPoint);
 			}else {
 				// 잔액이 부족합니다.
 				return "noPoint";
