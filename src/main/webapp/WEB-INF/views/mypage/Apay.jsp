@@ -31,7 +31,7 @@
 			buyer_addr : '서울특별시 강남구 삼성동',
 			buyer_postcode : '123-456',
 			//각자 url 쓰세요
-			m_redirect_url : 'http://ec2-54-180-121-202.ap-northeast-2.compute.amazonaws.com:8080/mypage/Apointup/'+${userId}+'/'+${point},
+			m_redirect_url : 'http://ec2-15-164-166-29.ap-northeast-2.compute.amazonaws.com:8080/mypage/Apointup/'+${userId}+'/'+${point},
 			app_scheme : 'iamporttest'
 		});
 		
