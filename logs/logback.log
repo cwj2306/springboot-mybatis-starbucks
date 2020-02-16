@@ -1,0 +1,5 @@
+[2020-02-16 20:10:10:25179][http-nio-8080-exec-4] WARN  com.cos.starbucks.aop.BindingAdvice - com.cos.starbucks.controller.UserController.create() => 필드 :name메시지:이름은 한글만 입력될 수 있습니다.
+[2020-02-16 20:15:03:317993][http-nio-8080-exec-1] WARN  com.cos.starbucks.aop.BindingAdvice - com.cos.starbucks.controller.UserController.create() => 필드 :name메시지:이름은 한글만 입력될 수 있습니다.
+[2020-02-16 20:15:11:326421][http-nio-8080-exec-7] WARN  com.cos.starbucks.aop.BindingAdvice - com.cos.starbucks.controller.UserController.create() => 필드 :username메시지:아이디에 한글이 입력될 수 없습니다.
+[2020-02-16 20:17:24:56148][http-nio-8080-exec-8] WARN  com.cos.starbucks.aop.BindingAdvice - com.cos.starbucks.controller.UserController.create() => 필드 :username메시지:아이디에 한글이 입력될 수 없습니다.
+[2020-02-16 20:36:49:1221145][http-nio-8080-exec-5] WARN  com.cos.starbucks.aop.BindingAdvice - com.cos.starbucks.controller.UserController.create() => 필드 :username메시지:아이디에 한글이 입력될 수 없습니다.

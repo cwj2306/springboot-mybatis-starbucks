@@ -2,10 +2,13 @@ package com.cos.starbucks.controller;
 
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +43,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/joinProc")
-	public @ResponseBody String create(User user) {
+	public @ResponseBody String create(@Valid User user,BindingResult bindingResult) {
 		String rawPassword = user.getPassword();
 		String encPassword = passwordEncoder.encode(rawPassword);
 		String username=user.getUsername();
@@ -48,6 +51,7 @@ public class UserController {
 		if(result==0) {
 			user.setPassword(encPassword);
 			uRepo.join(user);
+			
 			return Script.alertAndHref("가입완료", "/user/login");
 		}else
 		return Script.alertAndHref("중복확인 해주세요.","/user/join2");

@@ -63,7 +63,7 @@
 									<td>등록일</td>
 									<td>수량</td>
 								</tr>
-
+	
 								<c:forEach var="coffee" items="${coffeeList}">
 									<tr>
 										<td><input type="checkbox" class="coffee_checkbox"

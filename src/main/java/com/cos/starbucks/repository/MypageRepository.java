@@ -19,7 +19,7 @@ public interface MypageRepository {
 	void coffeeSave(int coffeeId,int userId,String coffeeName,int price);
 	void bevSave(int bevId,int userId,String bevName,int price);
 	void cardSave(int cardId,int userId,String cardName,String cardImage);
-	void deleteCoffee(int id);
+	int deleteCoffee(int id);
 	void deleteBev(int id);
 	void deleteCard(int id);
 	int checkMyCoffee(int id);

@@ -59,7 +59,8 @@ public class MypageController {
 	
 	@PostMapping("/deleteCoffee")
 	public @ResponseBody String coffeeDelete(@AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam String[] check) {
+			@RequestParam(required=false) String[] check) {
+		if(check==null) return Script.Back("삭제 할 상품을 선택하세요.");
 		for (String ids : check) {
 			int id = Integer.parseInt(ids);
 			int result = mRepo.checkMyCoffee(id);
@@ -75,7 +76,8 @@ public class MypageController {
 
 	@PostMapping("/deleteBev")
 	public @ResponseBody String bevDelete(@AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam String[] check) {
+			@RequestParam(required=false) String[] check) {
+		if(check==null) return Script.Back("삭제 할 상품을 선택하세요.");
 		for (String ids : check) {
 			int id = Integer.parseInt(ids);
 			int result = mRepo.checkMyBev(id);
@@ -91,7 +93,8 @@ public class MypageController {
 
 	@PostMapping("/buyCoffee")
 	public @ResponseBody String buyCoffee(@AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam String[] check,@RequestParam int[] amount) {
+			@RequestParam(required=false)String[] check,@RequestParam(defaultValue="1") int[] amount) {
+		if(check==null) return Script.Back("구매 할 상품을 선택하세요.");
 		int principalId = userDetail.getUser().getId();
 		User_card userCard=mRepo.CheckCardExist(principalId);
 		if(userCard==null) return Script.alertAndHref("카드등록후 사용해주세요.", "/menu/card_list");
@@ -137,7 +140,8 @@ public class MypageController {
 	
 	@PostMapping("/buyBev")
 	public @ResponseBody String buyBev(@AuthenticationPrincipal MyUserDetails userDetail,
-			@RequestParam String[] check,@RequestParam int[] amount) {
+			@RequestParam(required=false) String[] check,@RequestParam(defaultValue="1") int[] amount) {
+		if(check==null) return Script.Back("구매 할 상품을 선택하세요.");
 		int principalId = userDetail.getUser().getId();
 		User_card userCard=mRepo.CheckCardExist(principalId);
 		if(userCard==null) return Script.alertAndHref("카드등록후 사용해주세요.", "/menu/card_list");

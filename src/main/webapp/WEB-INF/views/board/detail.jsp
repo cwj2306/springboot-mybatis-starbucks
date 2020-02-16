@@ -42,9 +42,10 @@
             </c:if>
         </div>
         <button class="list_button" type="button" onclick="location.href='/board'">목록</button>
+        <c:if test="${principal.user.username eq 'admin' }">
         <div class="list_button" style="margin-top:6px; margin-right:10px; background-color:#fff; text-align:center; color:#fff; height:35px;"><a href="/board/update/${board.id}">수정하기</a></div>
         <div class="list_button" style="margin-top:6px; margin-right:10px; background-color:#fff; text-align:center; color:#fff; height:35px;"><a href="/board/delete/${board.id}">삭제하기</a></div>
-        
+        </c:if>
         <div class="notice_list">
             <c:choose>
                 <c:when test="${board.id eq 1}">

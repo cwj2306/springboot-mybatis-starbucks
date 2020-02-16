@@ -61,7 +61,7 @@
                    <p style="margin-top:10px;">회원가입 완료 후 스타벅스 카드를 등록하시면 생일 무료음료 쿠폰이 발행됩니다.</p>
                     <hr/>
                     <p class="join_input_title">휴대폰(필수)</p>
-                    <input type="tel" placeholder="하이픈을 포함해서 입력해주세요. ex) 010-1234-5678" class="join_input" required/>
+                    <input type="tel" placeholder="하이픈을 빼고 입력해주세요. ex) 01012345678" class="join_input"id="phone" required/>
                     <hr/>
                     <p class="join_input_title">메일(필수)</p>
                     <input type="email" id="email"name="email" placeholder="E-mail을 입력하세요." class="join_input" required/>
@@ -138,13 +138,29 @@ function validateCheck() {
 			});
 		}
 
-// 폼 유효성 검사
-// 아이디 중복확인 Ajax
-// 비밀번호 & 비밀번호 확인 동일여부
-// 이름에 한글만 들어왔는지 확인
-// 휴대폰 번호 하이픈 기준으로 끊어서 3~4자리 숫자인지 확인
-// 이메일 주소 올바른 형식인지 확인
-// 닉네임 입력 전 약관 동의 여부 확인
+		//validation 체크
+		$(function(){
+			$('#username').on("keyup",function(){
+				$(this).val( $(this).val().replace( /[^0-9a-zA-Z]/gi, '' ) );
+				});
+			})
+			
+		$(function(){
+			$('#phone').on("keyup",function(){
+				$(this).val( $(this).val().replace( /[^0-9]/g, '' ) );
+				});
+			})
+			
+		$(function(){
+			$('#email').on("keyup",function(){
+				$(this).val( $(this).val().replace( /[^0-9a-zA-Z@]/gi, '' ) );
+				});
+			})
+		$(function(){
+			$('#name').on("keyup",function(){
+				$(this).val( $(this).val().replace( /[^가-힣ㄱ-ㅎ]/gi, '' ) );
+				});
+			})
 </script>
 
 <%@include file="../include/footer.jsp"%>
